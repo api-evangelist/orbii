@@ -1,0 +1,24 @@
+openapi: 3.0.0
+info:
+  title: Orbii KSA Business Category Assignment General API
+  description: API for managing transactions, clients, and companies.
+  version: 1.0.3
+servers:
+- url: https://api.sa.orbii.ai/
+  description: Production server
+tags:
+- name: General
+paths:
+  /:
+    get:
+      summary: Welcome message
+      description: Returns a welcome message.
+      tags:
+      - General
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string

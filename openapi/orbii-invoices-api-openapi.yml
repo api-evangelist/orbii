@@ -1,0 +1,1028 @@
+openapi: 3.0.0
+info:
+  title: Orbii KSA Business Category Assignment Invoices API
+  description: API for managing transactions, clients, and companies.
+  version: 1.0.3
+servers:
+- url: https://api.sa.orbii.ai/
+  description: Production server
+tags:
+- name: Invoices
+paths:
+  /invoice-extract-upload:
+    post:
+      summary: Upload Excel invoice extract
+      description: 'Upload Excel files (.xlsx, .xls, .xlsm).
+
+        '
+      tags:
+      - Invoices
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: string
+                  description: 'Username.
+
+                    '
+                  example: client123
+                customer_identifier:
+                  type: string
+                  format: uuid
+                  description: 'Customer GUID identifier. Must be a valid GUID (e.g., `43d027ff-e6cc-4f77-ab7a-1a8f34259035`).
+
+                    '
+                  example: 43d027ff-e6cc-4f77-ab7a-1a8f34259035
+                date:
+                  type: string
+                  description: 'Optional date in format `YYYYMMDD`. Defaults to current date if not provided.
+
+                    '
+                  example: '20250923'
+                files:
+                  type: array
+                  description: 'One or more Excel files to upload. Only `.xlsx`, `.xls`, and `.xlsm` are accepted.
+
+                    '
+                  items:
+                    type: string
+                    format: binary
+              required:
+              - user
+              - customer_identifier
+              - files
+      responses:
+        '200':
+          description: Files uploaded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Files uploaded successfully
+                  folder:
+                    type: string
+                    description: Directory created in ADLS Gen2
+                    example: 43d027ff-e6cc-4f77-ab7a-1a8f34259035
+                  container:
+                    type: string
+                    description: Target container in ADLS Gen2
+                    example: client123_inv
+                  uploaded_files:
+                    type: array
+                    items:
+                      type: string
+                      example: invoice_april.xlsx
+        '400':
+          description: Bad Request – invalid input or file
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Invalid customer_identifier format. Expected a valid GUID.
+        '500':
+          description: Internal Server Error – ADLS Gen2 operation failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Failed to create directory
+                  response:
+                    type: string
+                    example: <Azure error details>
+  /start-invoice-extraction:
+    post:
+      summary: Start invoice extraction pipeline
+      description: 'Starts the Invoice Extraction pipeline for the given customer.   Prevents duplicate runs by checking if a pipeline is already running for the same `customer_id`.
+
+        '
+      tags:
+      - Invoices
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: string
+                  description: username
+                  example: username
+                password:
+                  type: string
+                  description: password
+                  example: password
+                customer_id:
+                  type: string
+                  description: Customer ID.
+                  example: 43d027ff-e6cc-4f77-ab7a-1a8f34259035
+              required:
+              - user
+              - password
+              - customer_id
+      responses:
+        '200':
+          description: Pipeline triggered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Invoice extraction pipeline triggered successfully
+        '400':
+          description: Missing required parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Missing required parameters user, password, customer_id
+        '409':
+          description: Pipeline already running for this customer
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: A pipeline is already running for customer_id '43d027ff-e6cc-4f77-ab7a-1a8f34259035'.
+        '500':
+          description: Internal server error or pipeline trigger failure
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Pipeline trigger failed
+                  status_code:
+                    type: integer
+                    example: 500
+                  response_text:
+                    type: string
+                    example: '{"error": "ADF pipeline not found"}'
+  /invoice-kpis/customer/{customer_id}:
+    get:
+      tags:
+      - Invoices
+      summary: Get invoice KPIs by customer_id
+      description: Get invoice KPIs by customer_id
+      parameters:
+      - in: path
+        name: customer_id
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The customer GUID.
+      - in: query
+        name: user
+        required: false
+        schema:
+          type: string
+        description: username
+      - in: query
+        name: password
+        required: false
+        schema:
+          type: string
+        description: password
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InvoiceKpi'
+              examples:
+                sample:
+                  value:
+                  - category: Revenue
+                    kpi: Monthly revenue
+                    value: 123456.78
+                    year: 2025
+                    month: 9
+                  - category: Expenses
+                    kpi: Monthly expenses
+                    value: 65432.1
+                    year: 2025
+                    month: 9
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /invoice-risk_assessment/customer/{customer_id}:
+    get:
+      tags:
+      - Invoices
+      summary: Get invoice risk assessments by customer_id
+      description: Get invoice risk assessments by customer_id
+      parameters:
+      - in: path
+        name: customer_id
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The customer GUID.
+      - in: query
+        name: user
+        required: false
+        schema:
+          type: string
+        description: username
+      - in: query
+        name: password
+        required: false
+        schema:
+          type: string
+        description: password
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InvoiceRiskAssessment'
+              examples:
+                sample:
+                  value:
+                  - category: Revenue & Income
+                    rule: Revenue consistency above threshold
+                    value: 0.87
+                    assessment: Pass
+                    customer_id: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+                  - category: Expenses & Profitability
+                    rule: Expense ratio below 70%
+                    value: 0.68
+                    assessment: Pass
+                    customer_id: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /invoice-band_classification/customer/{customer_id}:
+    get:
+      tags:
+      - Invoices
+      summary: Get invoice band classification by customer_id
+      description: Get invoice band classification by customer_id
+      parameters:
+      - in: path
+        name: customer_id
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The customer GUID.
+      - in: query
+        name: user
+        required: false
+        schema:
+          type: string
+        description: username
+      - in: query
+        name: password
+        required: false
+        schema:
+          type: string
+        description: password
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InvoiceBandClassification'
+              examples:
+                sample:
+                  value:
+                  - baseline_eligibility_score: 4
+                    business_stability_and_risk_score: 3
+                    invoicing_and_seasonal_trends_score: 5
+                    payment_processing_and_liquidity_score: 4
+                    revenue_performance_score: 5
+                    baseline_eligibility_score_value: 0.72
+                    business_stability_and_risk_score_value: 0.61
+                    invoicing_and_seasonal_trends_score_value: 0.88
+                    payment_processing_and_liquidity_score_value: 0.76
+                    revenue_performance_score_value: 0.9
+                    total_score: 3.77
+                    band: A
+                    customer_id: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /invoice-company-kpis/customer/{customer_id}:
+    get:
+      tags:
+      - Invoices
+      summary: Get invoice KPIs by company for a customer
+      description: Get invoice KPIs by company for a customer
+      parameters:
+      - in: path
+        name: customer_id
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The customer GUID.
+      - in: query
+        name: user
+        required: false
+        schema:
+          type: string
+        description: username
+      - in: query
+        name: password
+        required: false
+        schema:
+          type: string
+        description: password
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InvoiceCompanyKpi'
+              examples:
+                sample:
+                  value:
+                  - company: Acme Trading LLC
+                    category: Revenue
+                    kpi: Monthly revenue
+                    value: 128450.55
+                  - company: Beta Logistics FZ-LLC
+                    category: Expenses
+                    kpi: Monthly expenses
+                    value: 66420.1
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /invoice-company-risk_assessment/customer/{customer_id}:
+    get:
+      tags:
+      - Invoices
+      summary: Get invoice risk assessments by company for a customer
+      description: Get invoice risk assessments by company for a customer
+      parameters:
+      - in: path
+        name: customer_id
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The customer GUID.
+      - in: query
+        name: user
+        required: false
+        schema:
+          type: string
+        description: username
+      - in: query
+        name: password
+        required: false
+        schema:
+          type: string
+        description: password
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InvoiceCompanyRiskAssessment'
+              examples:
+                sample:
+                  value:
+                  - company: Acme Trading LLC
+                    category: Revenue & Income
+                    rule: Revenue consistency above threshold
+                    value: 0.87
+                    assessment: Pass
+                    customer_id: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+                  - company: Beta Logistics FZ-LLC
+                    category: Expenses & Profitability
+                    rule: Expense ratio below 70%
+                    value: 0.68
+                    assessment: Pass
+                    customer_id: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /invoice-company-band_classification/customer/{customer_id}:
+    get:
+      tags:
+      - Invoices
+      summary: Get invoice band classifications by company for a customer
+      description: Get invoice band classifications by company for a customer
+      parameters:
+      - in: path
+        name: customer_id
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The customer GUID.
+      - in: query
+        name: user
+        required: false
+        schema:
+          type: string
+        description: username
+      - in: query
+        name: password
+        required: false
+        schema:
+          type: string
+        description: password
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InvoiceCompanyBandClassification'
+              examples:
+                sample:
+                  value:
+                  - company: Acme Trading LLC
+                    activity_and_relationship_score: 4
+                    spend_and_concentration_score: 3
+                    payment_behaviour_score: 5
+                    activity_and_relationship_score_value: 0.78
+                    spend_and_concentration_score_value: 0.65
+                    payment_behaviour_score_value: 0.92
+                    total_score: 3.98
+                    band: A
+                    customer_id: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+                  - company: Beta Logistics FZ-LLC
+                    activity_and_relationship_score: 3
+                    spend_and_concentration_score: 4
+                    payment_behaviour_score: 4
+                    activity_and_relationship_score_value: 0.61
+                    spend_and_concentration_score_value: 0.72
+                    payment_behaviour_score_value: 0.8
+                    total_score: 3.45
+                    band: B
+                    customer_id: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /invoice-suggested-loan/customer/{customer_id}:
+    get:
+      tags:
+      - Invoices
+      summary: Get invoice suggested loan by customer_id
+      description: Get invoice suggested loan by customer_id.
+      parameters:
+      - in: path
+        name: customer_id
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The customer GUID.
+      - in: query
+        name: user
+        required: false
+        schema:
+          type: string
+        description: username
+      - in: query
+        name: password
+        required: false
+        schema:
+          type: string
+        description: password
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InvoiceSuggestedLoan'
+              examples:
+                sample:
+                  value:
+                  - customer_id: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+                    band: A
+                    annual_revenue: 1250000.0
+                    multiplier: 0.35
+                    suggested_loan: 437500.0
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /invoice-suggested-loan-allocation/customer/{customer_id}:
+    get:
+      tags:
+      - Invoices
+      summary: Get suggested loan allocation by company for a customer
+      description: Get suggested loan allocation by company for a customer.
+      parameters:
+      - in: path
+        name: customer_id
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The customer GUID.
+      - in: query
+        name: user
+        required: false
+        schema:
+          type: string
+        description: username
+      - in: query
+        name: password
+        required: false
+        schema:
+          type: string
+        description: password
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InvoiceSuggestedLoanAllocation'
+              examples:
+                sample:
+                  value:
+                  - customer_id: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+                    company: Acme Trading LLC
+                    band: A
+                    total_score: 3.98
+                    due_amount: 150000.0
+                    multiplier: 0.35
+                    company_cap: 120000.0
+                    allocated_amount: 120000.0
+                    rank_by_score: 1
+                  - customer_id: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+                    company: Beta Logistics FZ-LLC
+                    band: B
+                    total_score: 3.45
+                    due_amount: 80000.0
+                    multiplier: 0.3
+                    company_cap: 70000.0
+                    allocated_amount: 65000.0
+                    rank_by_score: 2
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /invoice-suggested-loan-summary/customer/{customer_id}:
+    get:
+      tags:
+      - Invoices
+      summary: Get suggested-loan summary for a customer
+      description: 'Returns a single summary row containing:
+
+        - **SuggestedLoan** (from `Reporting.inv_SuggestedLoan_by_creditor`)
+
+        - **TotalCompanyCaps** (sum of `CompanyCap`)
+
+        - **TotalAllocated** (sum of `AllocatedAmt`)
+
+        - **UnallocatedRemainder** (`SuggestedLoan - TotalAllocated`)
+
+        computed for the specified `customer_id`.
+
+        '
+      parameters:
+      - in: path
+        name: customer_id
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The customer GUID.
+      - in: query
+        name: user
+        required: false
+        schema:
+          type: string
+        description: username
+      - in: query
+        name: password
+        required: false
+        schema:
+          type: string
+        description: password
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InvoiceSuggestedLoanSummary'
+              examples:
+                sample:
+                  value:
+                  - suggested_loan: 437500.0
+                    total_company_caps: 190000.0
+                    total_allocated: 185000.0
+                    unallocated_remainder: 252500.0
+                    customer_id: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    InvoiceSuggestedLoan:
+      type: object
+      properties:
+        customer_id:
+          type: string
+          format: uuid
+          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+        band:
+          type: string
+          example: A
+        annual_revenue:
+          type: number
+          format: float
+          nullable: true
+          example: 1250000.0
+        multiplier:
+          type: number
+          format: float
+          nullable: true
+          example: 0.35
+        suggested_loan:
+          type: number
+          format: float
+          nullable: true
+          example: 437500.0
+    InvoiceRiskAssessment:
+      type: object
+      properties:
+        category:
+          type: string
+          example: Revenue & Income
+        rule:
+          type: string
+          example: Revenue consistency above threshold
+        value:
+          type: number
+          format: float
+          nullable: true
+          example: 0.87
+        assessment:
+          type: string
+          example: Pass
+        customer_id:
+          type: string
+          format: uuid
+          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+    InvoiceKpi:
+      type: object
+      properties:
+        category:
+          type: string
+          example: Revenue
+        kpi:
+          type: string
+          example: Monthly revenue
+        value:
+          type: number
+          format: float
+          nullable: true
+          example: 123456.78
+        year:
+          type: integer
+          example: 2025
+        month:
+          type: integer
+          minimum: 1
+          maximum: 12
+          example: 9
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'
+    InvoiceSuggestedLoanSummary:
+      type: object
+      properties:
+        suggested_loan:
+          type: number
+          format: float
+          nullable: true
+          example: 437500.0
+        total_company_caps:
+          type: number
+          format: float
+          nullable: true
+          example: 190000.0
+        total_allocated:
+          type: number
+          format: float
+          nullable: true
+          example: 185000.0
+        unallocated_remainder:
+          type: number
+          format: float
+          nullable: true
+          example: 252500.0
+        customer_id:
+          type: string
+          format: uuid
+          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+    InvoiceCompanyBandClassification:
+      type: object
+      properties:
+        company:
+          type: string
+          example: Acme Trading LLC
+        activity_and_relationship_score:
+          type: integer
+          example: 4
+        spend_and_concentration_score:
+          type: integer
+          example: 3
+        payment_behaviour_score:
+          type: integer
+          example: 5
+        activity_and_relationship_score_value:
+          type: number
+          format: float
+          nullable: true
+          example: 0.78
+        spend_and_concentration_score_value:
+          type: number
+          format: float
+          nullable: true
+          example: 0.65
+        payment_behaviour_score_value:
+          type: number
+          format: float
+          nullable: true
+          example: 0.92
+        total_score:
+          type: number
+          format: float
+          nullable: true
+          example: 3.98
+        band:
+          type: string
+          example: A
+        customer_id:
+          type: string
+          format: uuid
+          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+    InvoiceCompanyRiskAssessment:
+      type: object
+      properties:
+        company:
+          type: string
+          example: Acme Trading LLC
+        category:
+          type: string
+          example: Revenue & Income
+        rule:
+          type: string
+          example: Revenue consistency above threshold
+        value:
+          type: number
+          format: float
+          nullable: true
+          example: 0.87
+        assessment:
+          type: string
+          example: Pass
+        customer_id:
+          type: string
+          format: uuid
+          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+    InvoiceSuggestedLoanAllocation:
+      type: object
+      properties:
+        customer_id:
+          type: string
+          format: uuid
+          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+        company:
+          type: string
+          example: Acme Trading LLC
+        band:
+          type: string
+          example: A
+        total_score:
+          type: number
+          format: float
+          nullable: true
+          example: 3.98
+        due_amount:
+          type: number
+          format: float
+          nullable: true
+          example: 150000.0
+        multiplier:
+          type: number
+          format: float
+          nullable: true
+          example: 0.35
+        company_cap:
+          type: number
+          format: float
+          nullable: true
+          example: 120000.0
+        allocated_amount:
+          type: number
+          format: float
+          nullable: true
+          example: 120000.0
+        rank_by_score:
+          type: integer
+          nullable: true
+          example: 1
+    InvoiceBandClassification:
+      type: object
+      properties:
+        baseline_eligibility_score:
+          type: integer
+          example: 4
+        business_stability_and_risk_score:
+          type: integer
+          example: 3
+        invoicing_and_seasonal_trends_score:
+          type: integer
+          example: 5
+        payment_processing_and_liquidity_score:
+          type: integer
+          example: 4
+        revenue_performance_score:
+          type: integer
+          example: 5
+        baseline_eligibility_score_value:
+          type: number
+          format: float
+          nullable: true
+          example: 0.72
+        business_stability_and_risk_score_value:
+          type: number
+          format: float
+          nullable: true
+          example: 0.61
+        invoicing_and_seasonal_trends_score_value:
+          type: number
+          format: float
+          nullable: true
+          example: 0.88
+        payment_processing_and_liquidity_score_value:
+          type: number
+          format: float
+          nullable: true
+          example: 0.76
+        revenue_performance_score_value:
+          type: number
+          format: float
+          nullable: true
+          example: 0.9
+        total_score:
+          type: number
+          format: float
+          nullable: true
+          example: 3.77
+        band:
+          type: string
+          example: A
+        customer_id:
+          type: string
+          format: uuid
+          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+    InvoiceCompanyKpi:
+      type: object
+      properties:
+        company:
+          type: string
+          example: Acme Trading LLC
+        category:
+          type: string
+          example: Revenue
+        kpi:
+          type: string
+          example: Monthly revenue
+        value:
+          type: number
+          format: float
+          nullable: true
+          example: 128450.55

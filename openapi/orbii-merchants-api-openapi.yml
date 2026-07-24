@@ -1,0 +1,606 @@
+openapi: 3.0.0
+info:
+  title: Orbii KSA Business Category Assignment Merchants API
+  description: API for managing transactions, clients, and companies.
+  version: 1.0.3
+servers:
+- url: https://api.sa.orbii.ai/
+  description: Production server
+tags:
+- name: Merchants
+paths:
+  /transactions_with_merchant/customer/{customer_id}:
+    get:
+      summary: Get transactions with merchant details for a customer
+      description: 'Retrieves all transactions for a given customer, including merchant details.
+
+        If merchant extraction has not been performed, the API will trigger it before fetching transactions.
+
+        '
+      tags:
+      - Merchants
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The customer ID (GUID format).
+      - name: user
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Database username (optional, uses environment variables by default).
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Database password (optional, uses environment variables by default).
+      responses:
+        '200':
+          description: A list of transactions with merchant details.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    client_id:
+                      type: string
+                    borrower_id:
+                      type: string
+                    date:
+                      type: string
+                      format: date
+                    description:
+                      type: string
+                    merchant:
+                      type: string
+                    credit_debit_indicator:
+                      type: string
+                    amount:
+                      type: number
+                    currency:
+                      type: string
+                    balance:
+                      type: number
+                    category:
+                      type: string
+                    subcategory:
+                      type: string
+                    risk level:
+                      type: string
+                    bank name:
+                      type: string
+                    iban:
+                      type: string
+                    cost type:
+                      type: string
+                    interaction_type:
+                      type: string
+                    customer_id:
+                      type: string
+        '404':
+          description: Customer ID not found.
+        '500':
+          description: Server error.
+  /paged-transactions_with_merchant/customer/{customer_id}:
+    get:
+      summary: Get paginated transactions with merchant info by customer ID
+      tags:
+      - Merchants
+      description: 'Retrieves transactions for the specified customer ID, including merchant details, using pagination.
+
+        Default page size is 1000, but you can adjust it with query parameters.
+
+        '
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        description: The customer ID to filter transactions.
+        schema:
+          type: string
+      - name: user
+        in: query
+        required: false
+        description: Database username (optional if using default from environment).
+        schema:
+          type: string
+      - name: password
+        in: query
+        required: false
+        description: Database password (optional if using default from environment).
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        description: Page number (default 1).
+        schema:
+          type: integer
+          default: 1
+      - name: page_size
+        in: query
+        required: false
+        description: Number of records per page (default 1000).
+        schema:
+          type: integer
+          default: 1000
+      responses:
+        '200':
+          description: Successful response with paginated transactions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_records:
+                    type: integer
+                    example: 2500
+                  page:
+                    type: integer
+                    example: 1
+                  page_size:
+                    type: integer
+                    example: 1000
+                  total_pages:
+                    type: integer
+                    example: 3
+                  transactions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ClientID:
+                          type: string
+                          example: '123'
+                        BorrowerID:
+                          type: string
+                          example: '456'
+                        date:
+                          type: string
+                          format: date
+                          example: '2024-05-01'
+                        description:
+                          type: string
+                          example: Payment to supplier
+                        credit_debit_indicator:
+                          type: string
+                          example: Debit
+                        amount:
+                          type: number
+                          example: 1500.0
+                        currency:
+                          type: string
+                          example: USD
+                        balance:
+                          type: number
+                          example: 5000.0
+                        category:
+                          type: string
+                          example: Utilities
+                        subcategory:
+                          type: string
+                          example: Electricity
+                        risk level:
+                          type: string
+                          example: Medium
+                        bank name:
+                          type: string
+                          example: Bank A
+                        iban:
+                          type: string
+                          example: AE070331234567890123456
+                        cost type:
+                          type: string
+                          example: Fixed
+                        merchant:
+                          type: string
+                          example: ACME Corp
+                        interaction_type:
+                          type: string
+                          example: Supplier
+                        customer_id:
+                          type: string
+                          example: c12345
+        '400':
+          description: Bad request (e.g., missing or invalid parameters).
+        '500':
+          description: Internal server error.
+  /top_buyers/customer/{customer_id}:
+    get:
+      summary: Get top buyers for a customer
+      description: 'Retrieves the top buyers for a given customer, ranked by total transaction amount.
+
+        '
+      tags:
+      - Merchants
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The customer ID (GUID format).
+      - name: user
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Database username (optional, uses environment variables by default).
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Database password (optional, uses environment variables by default).
+      responses:
+        '200':
+          description: A list of top buyers sorted by total amount transacted.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    merchant:
+                      type: string
+                      description: The merchant name.
+                    total_transacted:
+                      type: number
+                      description: The total transaction amount with the merchant.
+                    number_of_interactions:
+                      type: integer
+                      description: The number of transactions or interactions with the merchant.
+        '404':
+          description: Customer ID not found.
+        '500':
+          description: Server error.
+  /top_sellers/customer/{customer_id}:
+    get:
+      summary: Get top sellers for a customer
+      description: 'Retrieves the top sellers (suppliers or service providers) for a given customer,
+
+        ranked by total transaction amount.
+
+        '
+      tags:
+      - Merchants
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The customer ID (GUID format).
+      - name: user
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Database username (optional, uses environment variables by default).
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Database password (optional, uses environment variables by default).
+      responses:
+        '200':
+          description: A list of top sellers sorted by total amount transacted.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    merchant:
+                      type: string
+                      description: The seller, supplier, or service provider name.
+                    total_transacted:
+                      type: number
+                      description: The total transaction amount with the seller.
+                    number_of_interactions:
+                      type: integer
+                      description: The number of transactions or interactions with the seller.
+        '404':
+          description: Customer ID not found.
+        '500':
+          description: Server error.
+  /top_buyers_recent/customer/{customer_id}:
+    get:
+      summary: Get top buyers for a customer in the last X months
+      description: 'Returns the top buyer-type merchants for a customer over the last `months` months,  where the time window is anchored to the customer''s most recent transaction date.
+
+        '
+      tags:
+      - Merchants
+      parameters:
+      - in: path
+        name: customer_id
+        required: true
+        schema:
+          type: string
+        description: The unique customer ID (GUID).
+      - in: query
+        name: months
+        required: false
+        schema:
+          type: integer
+          default: 6
+          minimum: 1
+        description: Number of months to look back from the last transaction date.
+      - in: query
+        name: user
+        required: false
+        schema:
+          type: string
+        description: username.
+      - in: query
+        name: password
+        required: false
+        schema:
+          type: string
+        description: password.
+      responses:
+        '200':
+          description: A list of top buyer merchants
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    merchant:
+                      type: string
+                      example: Merchant A
+                    total_transacted:
+                      type: number
+                      format: float
+                      example: 12500.75
+                    number_of_interactions:
+                      type: integer
+                      example: 23
+        '400':
+          description: Invalid request (e.g., bad parameters)
+        '500':
+          description: Server error
+  /top_sellers_recent/customer/{customer_id}:
+    get:
+      summary: Get top sellers for a customer in the last X months
+      description: 'Returns the top seller-type merchants for a customer over the last `months` months,  where the time window is anchored to the customer''s most recent transaction date. Seller interaction types include: `Seller`, `Supplier`, `Service provider`, and `Agency`.
+
+        '
+      tags:
+      - Merchants
+      parameters:
+      - in: path
+        name: customer_id
+        required: true
+        schema:
+          type: string
+        description: The unique customer ID (GUID).
+      - in: query
+        name: months
+        required: false
+        schema:
+          type: integer
+          default: 6
+          minimum: 1
+        description: Number of months to look back from the last transaction date.
+      - in: query
+        name: user
+        required: false
+        schema:
+          type: string
+        description: username.
+      - in: query
+        name: password
+        required: false
+        schema:
+          type: string
+        description: password.
+      responses:
+        '200':
+          description: A list of top seller merchants
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    merchant:
+                      type: string
+                      example: Supplier X
+                    total_transacted:
+                      type: number
+                      format: float
+                      example: 98750.5
+                    number_of_interactions:
+                      type: integer
+                      example: 12
+        '400':
+          description: Invalid request (e.g., bad parameters)
+        '500':
+          description: Server error
+  /transactions_with_merchant/customer/{customer_id}/range:
+    get:
+      summary: Get transactions-with-merchant for a customer within a date range
+      tags:
+      - Merchants
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: start_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: user
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Array of transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionWithMerchant'
+        '400':
+          description: Missing or invalid parameters
+        '500':
+          description: Server error
+  /paged-transactions_with_merchant/customer/{customer_id}/range:
+    get:
+      summary: Get paginated transactions-with-merchant for a customer within a date range
+      tags:
+      - Merchants
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: start_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+        description: Page number (1-based)
+      - name: page_size
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1000
+        description: Page size
+      - name: user
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Paginated transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedTransactionsWithMerchant'
+        '400':
+          description: Missing or invalid parameters
+        '500':
+          description: Server error
+components:
+  schemas:
+    TransactionWithMerchant:
+      type: object
+      properties:
+        ClientID:
+          type: integer
+        BorrowerID:
+          type: integer
+        date:
+          type: string
+          format: date
+        description:
+          type: string
+        credit_debit_indicator:
+          type: string
+          enum:
+          - credit
+          - debit
+        amount:
+          type: number
+          format: float
+        currency:
+          type: string
+        balance:
+          type: number
+          format: float
+        category:
+          type: string
+        subcategory:
+          type: string
+        risk level:
+          type: string
+          description: Risk level label (note the space in the key)
+        bank name:
+          type: string
+          description: Bank name (note the space in the key)
+        iban:
+          type: string
+        cost type:
+          type: string
+          description: Fixed | Variable | '' (note the space in the key)
+        merchant:
+          type: string
+        interaction_type:
+          type: string
+          description: e.g., buyer, customer, Seller, Supplier, Service provider, Agency
+        customer_id:
+          type: string
+          format: uuid
+    PagedTransactionsWithMerchant:
+      type: object
+      properties:
+        total_records:
+          type: integer
+        page:
+          type: integer
+        page_size:
+          type: integer
+        total_pages:
+          type: integer
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionWithMerchant'

@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  title: Orbii KSA Business Category Assignment Lending Actions API
+  description: API for managing transactions, clients, and companies.
+  version: 1.0.3
+servers:
+- url: https://api.sa.orbii.ai/
+  description: Production server
+tags:
+- name: Lending Actions
+paths:
+  /log-lending:
+    post:
+      tags:
+      - Lending Actions
+      summary: Log a lending decision from email
+      description: Logs a client’s lending decision via a POST request.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - user
+              - password
+              - customer_id
+              - decision
+              properties:
+                user:
+                  type: string
+                  description: Client name.
+                password:
+                  type: string
+                  description: Authentication (if applicable).
+                customer_id:
+                  type: string
+                  description: Customer identifier.
+                decision:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: Lending decision (1 = Yes, 0 = No).
+      responses:
+        '200':
+          description: Logged successfully.
+        '400':
+          description: Missing parameters.
+        '500':
+          description: Server error.

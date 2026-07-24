@@ -1,0 +1,334 @@
+openapi: 3.0.0
+info:
+  title: Orbii KSA Business Category Assignment Risk Assessment API
+  description: API for managing transactions, clients, and companies.
+  version: 1.0.3
+servers:
+- url: https://api.sa.orbii.ai/
+  description: Production server
+tags:
+- name: Risk Assessment
+paths:
+  /risk_assessment/customer/{customer_id}:
+    get:
+      summary: Get risk assessment for a specific customer
+      description: Returns a list of risk assessment rules and scores for the specified customer.
+      tags:
+      - Risk Assessment
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        description: The unique customer identifier (GUID).
+        schema:
+          type: string
+      - name: user
+        in: query
+        required: false
+        description: Database username (optional if set via environment variables).
+        schema:
+          type: string
+      - name: password
+        in: query
+        required: false
+        description: Database password (optional if set via environment variables).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with risk assessment results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    category:
+                      type: string
+                    rule:
+                      type: string
+                    value:
+                      type: string
+                    assessment:
+                      type: string
+                    customer_id:
+                      type: string
+        '500':
+          description: Internal server error
+  /band_classification/customer/{customer_id}:
+    get:
+      summary: Get band classification for a specific customer
+      description: Returns the band classification, component scores, score values, total score, and red flag reason for the specified customer.
+      tags:
+      - Risk Assessment
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        description: The unique customer identifier (GUID).
+        schema:
+          type: string
+      - name: user
+        in: query
+        required: false
+        description: Database username (optional if set via environment variables).
+        schema:
+          type: string
+      - name: password
+        in: query
+        required: false
+        description: Database password (optional if set via environment variables).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with band classification results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    baseline_eligibility_score:
+                      type: number
+                    revenue_and_income_score:
+                      type: number
+                    expenses_and_profitability_score:
+                      type: number
+                    loan_and_debt_management_score:
+                      type: number
+                    cash_flow_and_liquidity_score:
+                      type: number
+                    business_liquidity_and_stability_score:
+                      type: number
+                    bank_account_balance_score:
+                      type: number
+                    baseline_eligibility_score_value:
+                      type: number
+                    revenue_and_income_score_value:
+                      type: number
+                    expenses_and_profitability_score_value:
+                      type: number
+                    loan_and_debt_management_score_value:
+                      type: number
+                    cash_flow_and_liquidity_score_value:
+                      type: number
+                    business_liquidity_and_stability_score_value:
+                      type: number
+                    bank_account_balance_score_value:
+                      type: number
+                    total_score:
+                      type: number
+                    band:
+                      type: string
+                    red_flag_reason:
+                      type: string
+                      nullable: true
+        '500':
+          description: Internal server error
+  /update-kpi-rule:
+    post:
+      summary: Update a KPI rule threshold
+      description: Updates a KPI rule threshold.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - category
+              - rule
+              - new_threshold
+              properties:
+                category:
+                  type: string
+                rule:
+                  type: string
+                new_threshold:
+                  type: integer
+                user:
+                  type: string
+                password:
+                  type: string
+      tags:
+      - Risk Assessment
+      responses:
+        '200':
+          description: KPI rule updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: KPI rule updated successfully
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: 'Missing required parameters: category, rule, new_threshold'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Something went wrong
+  /rerun-assessment:
+    post:
+      summary: Reruns Assessment
+      tags:
+      - Risk Assessment
+      description: Triggers the pipeline to rerun the assessment.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: string
+                  example: user
+                password:
+                  type: string
+                  example: password
+              required:
+              - user
+              - password
+      responses:
+        '200':
+          description: Successfully triggered Assessment pipeline
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Assessment pipeline triggered successfully
+        '400':
+          description: Missing required parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: 'Missing required parameters: user and password'
+        '500':
+          description: Failed to trigger pipeline
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Pipeline trigger failed
+                  response_text:
+                    type: string
+                    example: Error details
+  /band_classification:
+    get:
+      summary: Get band classification for all customers
+      description: 'Returns band classification scores, values, total score, band, and red flag reasons  for all customer IDs.
+
+        '
+      tags:
+      - Risk Assessment
+      parameters:
+      - in: query
+        name: user
+        schema:
+          type: string
+        required: true
+        description: Database username.
+      - in: query
+        name: password
+        schema:
+          type: string
+        required: true
+        description: Database password.
+      responses:
+        '200':
+          description: A list of band classifications for all customers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    customer_id:
+                      type: string
+                      example: 43d027ff-e6cc-4f77-ab7a-1a8f34259035
+                    baseline_eligibility_score:
+                      type: number
+                      example: 85
+                    revenue_and_income_score:
+                      type: number
+                      example: 90
+                    expenses_and_profitability_score:
+                      type: number
+                      example: 70
+                    loan_and_debt_management_score:
+                      type: number
+                      example: 80
+                    cash_flow_and_liquidity_score:
+                      type: number
+                      example: 75
+                    business_liquidity_and_stability_score:
+                      type: number
+                      example: 88
+                    bank_account_balance_score:
+                      type: number
+                      example: 82
+                    baseline_eligibility_score_value:
+                      type: integer
+                      example: 1
+                    revenue_and_income_score_value:
+                      type: integer
+                      example: 1
+                    expenses_and_profitability_score_value:
+                      type: integer
+                      example: 0
+                    loan_and_debt_management_score_value:
+                      type: integer
+                      example: 1
+                    cash_flow_and_liquidity_score_value:
+                      type: integer
+                      example: 0
+                    business_liquidity_and_stability_score_value:
+                      type: integer
+                      example: 1
+                    bank_account_balance_score_value:
+                      type: integer
+                      example: 1
+                    total_score:
+                      type: number
+                      example: 497
+                    band:
+                      type: string
+                      example: A
+                    red_flag_reason:
+                      type: string
+                      nullable: true
+                      example: High loan default risk
+        '400':
+          description: Missing or invalid parameters
+        '500':
+          description: Internal server error

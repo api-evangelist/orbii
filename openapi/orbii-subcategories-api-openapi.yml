@@ -1,0 +1,40 @@
+openapi: 3.0.0
+info:
+  title: Orbii KSA Business Category Assignment Subcategories API
+  description: API for managing transactions, clients, and companies.
+  version: 1.0.3
+servers:
+- url: https://api.sa.orbii.ai/
+  description: Production server
+tags:
+- name: Subcategories
+paths:
+  /subcategories/{clientname}:
+    get:
+      summary: Get distinct subcategories for a client
+      description: Fetches distinct subcategories for a given client.
+      tags:
+      - Subcategories
+      parameters:
+      - name: clientname
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: user
+        in: query
+        schema:
+          type: string
+      - name: password
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of distinct subcategories for the client.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string

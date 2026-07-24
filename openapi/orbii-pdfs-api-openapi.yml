@@ -1,0 +1,319 @@
+openapi: 3.0.0
+info:
+  title: Orbii KSA Business Category Assignment PDFs API
+  description: API for managing transactions, clients, and companies.
+  version: 1.0.3
+servers:
+- url: https://api.sa.orbii.ai/
+  description: Production server
+tags:
+- name: PDFs
+paths:
+  /pdf-list:
+    get:
+      summary: Retrieve the list of PDFs with metadata and client details
+      description: 'Fetches the list of PDFs along with their metadata and client details.
+
+        '
+      tags:
+      - PDFs
+      parameters:
+      - name: user
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Database username for authentication
+      - name: password
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Database password for authentication
+      responses:
+        '200':
+          description: A JSON array of PDF records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    client_name:
+                      type: string
+                      example: Orbii Corp
+                    customer_id:
+                      type: string
+                      example: '123456'
+                    foldername:
+                      type: string
+                      example: reports_2024
+                    filename:
+                      type: string
+                      example: financial_report.pdf
+                    extraction_date:
+                      type: string
+                      format: date-time
+                      example: '2024-01-20T15:30:00Z'
+                    pdf_producer:
+                      type: string
+                      example: Adobe Acrobat
+                    content_creator:
+                      type: string
+                      example: Finance Team
+                    creation_date:
+                      type: string
+                      format: date-time
+                      example: '2023-12-15T10:00:00Z'
+                    modification_date:
+                      type: string
+                      format: date-time
+                      example: '2024-01-10T14:00:00Z'
+                    modified:
+                      type: boolean
+                      example: true
+        '400':
+          description: Invalid request, missing parameters
+        '500':
+          description: Internal server error, database connection issue
+  /pdf-list-from-date:
+    get:
+      summary: Retrieve PDFs extracted on or after a specific datetime
+      description: 'Returns the list of PDFs and their metadata where the extraction date is greater than or equal  to the given datetime. If no datetime is provided, it defaults to 2025-05-01 00:00:00.000.
+
+        '
+      tags:
+      - PDFs
+      parameters:
+      - name: datetime
+        in: query
+        description: 'The datetime filter (format: YYYY-MM-DD HH:MM:SS.sss). Defaults to 2025-05-01 00:00:00.000 if not provided.
+
+          '
+        required: false
+        schema:
+          type: string
+          example: '2025-05-01 00:00:00.000'
+      - name: user
+        in: query
+        description: Database username (optional; defaults to environment variable)
+        required: false
+        schema:
+          type: string
+      - name: password
+        in: query
+        description: Database password (optional; defaults to environment variable)
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A JSON array of PDF records extracted on or after the specified datetime
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    client_name:
+                      type: string
+                      example: Orbii Corp
+                    customer_id:
+                      type: string
+                      example: '123456'
+                    foldername:
+                      type: string
+                      example: reports_2025
+                    filename:
+                      type: string
+                      example: financial_report.pdf
+                    extraction_date:
+                      type: string
+                      format: date-time
+                      example: '2025-05-01T00:00:00Z'
+                    pdf_producer:
+                      type: string
+                      example: Adobe Acrobat
+                    content_creator:
+                      type: string
+                      example: Finance Team
+                    creation_date:
+                      type: string
+                      format: date-time
+                      example: '2025-04-30T10:00:00Z'
+                    modification_date:
+                      type: string
+                      format: date-time
+                      example: '2025-05-01T14:00:00Z'
+                    modified:
+                      type: boolean
+                      example: true
+        '400':
+          description: Invalid datetime format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'
+        '500':
+          description: Internal server error, e.g., database connection issue
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /pdf-upload:
+    post:
+      summary: Upload multiple PDFs
+      description: "Allows users to upload multiple PDF files.\nThe uploaded files are stored in a dynamically generated directory with the format: \n`{customer_identifier}-{bank name}-{YYYYMMDD}` inside the container `{user}`.\nIf `bank name` is not provided, it defaults to `\"unspecified_bank\"`.\nIf `date` is not provided, it defaults to the current date in `YYYYMMDD` format.\n"
+      tags:
+      - PDFs
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  description: List of PDF files to upload
+                user:
+                  type: string
+                  example: user
+                  description: The user, which is also used as the Azure container name
+                customer_identifier:
+                  type: string
+                  example: customer
+                  description: Must be a valid Unique identifier, GUID (UUID)
+                bank name:
+                  type: string
+                  example: bank name
+                  description: Name of the bank (defaults to `"unspecified_bank"` if not provided)
+                date:
+                  type: string
+                  example: '20241117'
+                  description: Date in `YYYYMMDD` format (defaults to today's date if not provided)
+      responses:
+        '200':
+          description: PDFs uploaded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Files uploaded successfully
+                  folder:
+                    type: string
+                    example: customer-wio-20241117
+                  container:
+                    type: string
+                    example: user
+                  uploaded_files:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - file1.pdf
+                    - file2.pdf
+        '400':
+          description: Invalid request, missing parameters or incorrect date format
+        '500':
+          description: Internal server error, failed to upload files
+  /start-pdf-extraction:
+    post:
+      summary: Trigger PDF extraction pipeline
+      description: 'Starts the pipeline to process PDF data for the specified customer. An optional `mode` parameter allows specifying whether to override or append to existing data (defaults to `Override`).
+
+        If a pipeline is already running for the same customer_id, this endpoint will return a 409 Conflict response.
+
+        '
+      tags:
+      - PDFs
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - user
+              - password
+              - customer_id
+              properties:
+                user:
+                  type: string
+                  example: dbuser
+                password:
+                  type: string
+                  example: mysecurepassword
+                customer_id:
+                  type: string
+                  format: uuid
+                  example: 43d027ff-e6cc-4f77-ab7a-1a8f34259035
+                mode:
+                  type: string
+                  description: 'Optional. Determines how PDF data is processed in the pipeline.   Allowed values are `Override` (default) and `Append`.
+
+                    '
+                  enum:
+                  - Override
+                  - Append
+                  default: Override
+                  example: Override
+      responses:
+        '200':
+          description: Pipeline triggered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: PDF extraction pipeline triggered successfully
+        '400':
+          description: Missing or invalid parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: 'Missing required parameters: user, password, and customer_id'
+        '409':
+          description: A pipeline is already running for this customer_id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: A pipeline is already running for customer_id '43d027ff-e6cc-4f77-ab7a-1a8f34259035'.
+        '500':
+          description: Pipeline trigger failed or server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Pipeline trigger failed
+                  response_text:
+                    type: string
+                    example: <Azure error message here>

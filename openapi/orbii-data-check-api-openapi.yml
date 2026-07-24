@@ -1,0 +1,40 @@
+openapi: 3.0.0
+info:
+  title: Orbii KSA Business Category Assignment Data Check API
+  description: API for managing transactions, clients, and companies.
+  version: 1.0.3
+servers:
+- url: https://api.sa.orbii.ai/
+  description: Production server
+tags:
+- name: Data Check
+paths:
+  /Check-for-new-data-received:
+    get:
+      summary: Check for new data received
+      description: Fetches company name and email for recent data.
+      tags:
+      - Data Check
+      parameters:
+      - name: user
+        in: query
+        schema:
+          type: string
+      - name: password
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Recent data received.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    company_name:
+                      type: string

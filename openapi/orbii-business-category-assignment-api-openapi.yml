@@ -1,0 +1,103 @@
+openapi: 3.0.0
+info:
+  title: Orbii KSA Business Category Assignment API
+  description: API for managing transactions, clients, and companies.
+  version: 1.0.3
+servers:
+- url: https://api.sa.orbii.ai/
+  description: Production server
+tags:
+- name: Business Category Assignment
+paths:
+  /assign-category:
+    get:
+      summary: Get business categories with their subcategories
+      description: Returns a JSON object mapping each business category to a list of its subcategories.
+      tags:
+      - Business Category Assignment
+      parameters:
+      - name: user
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Username for SQL authentication
+      - name: password
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Password for SQL authentication
+      responses:
+        '200':
+          description: A JSON object containing categories and their subcategories
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    type: string
+              example:
+                Accommodation:
+                - Hotels and Resorts
+                - Bed and Breakfasts
+                - Campgrounds
+                Agriculture:
+                - Crop Production
+                - Animal Farming
+                - Aquaculture
+        '400':
+          description: Missing required parameters
+        '500':
+          description: Server error or database access error
+    post:
+      summary: Submit customer business category
+      description: 'Stores or updates the selected business category and subcategory for the specified customer ID in the [Reporting].[CustomerBusinessCategory] table. Requires SQL credentials as form fields.
+
+        '
+      tags:
+      - Business Category Assignment
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - user
+              - password
+              - customer_id
+              - category_name
+              properties:
+                user:
+                  type: string
+                  description: Database username
+                password:
+                  type: string
+                  description: Database password
+                customer_id:
+                  type: string
+                  description: Unique identifier for the customer
+                  example: 43d027ff-e6cc-4f77-ab7a-1a8f34259035
+                category_name:
+                  type: string
+                  description: Business category (from the `business_categories` table)
+                  example: Automotive
+                subcategory_name:
+                  type: string
+                  description: Business subcategory (from the `business_subcategories` table)
+                  example: Auto Dealerships
+      responses:
+        '200':
+          description: Category saved or updated successfully
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Business category saved for customer 43d027ff-e6cc-4f77-ab7a-1a8f34259035
+        '400':
+          description: Missing required form fields
+        '500':
+          description: Database connection or execution error

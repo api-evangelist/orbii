@@ -1,0 +1,1186 @@
+openapi: 3.0.0
+info:
+  title: Orbii KSA Business Category Assignment Transactions API
+  description: API for managing transactions, clients, and companies.
+  version: 1.0.3
+servers:
+- url: https://api.sa.orbii.ai/
+  description: Production server
+tags:
+- name: Transactions
+paths:
+  /transactions:
+    get:
+      summary: Retrieve all transactions
+      description: Returns a list of all transactions.
+      tags:
+      - Transactions
+      parameters:
+      - name: user
+        in: query
+        description: Database user name
+        required: false
+        schema:
+          type: string
+          default: DB_USER
+      - name: password
+        in: query
+        description: Database user password
+        required: false
+        schema:
+          type: string
+          default: DB_PASSWORD
+      responses:
+        '200':
+          description: A list of transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      format: date
+                    description:
+                      type: string
+                    credit_debit_indicator:
+                      type: string
+                    amount:
+                      type: number
+                      format: float
+                    currency:
+                      type: string
+                    balance:
+                      type: number
+                      format: float
+                    category:
+                      type: string
+                    subcategory:
+                      type: string
+                    risk level:
+                      type: string
+                    bank name:
+                      type: string
+                    iban:
+                      type: string
+                    borrowername:
+                      type: string
+                    cost type:
+                      type: string
+                    customer_id:
+                      type: string
+  /transactions/customer/{customer_id}:
+    get:
+      summary: Retrieve transactions for a specific customer ID
+      description: Returns a list of transactions associated with a given customer ID.
+      tags:
+      - Transactions
+      parameters:
+      - name: customer_id
+        in: path
+        description: The unique identifier of the customer
+        required: true
+        schema:
+          type: string
+      - name: user
+        in: query
+        description: Database user name
+        required: false
+        schema:
+          type: string
+          default: DB_USER
+      - name: password
+        in: query
+        description: Database user password
+        required: false
+        schema:
+          type: string
+          default: DB_PASSWORD
+      responses:
+        '200':
+          description: A list of transactions for the specified customer ID
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      format: date
+                    description:
+                      type: string
+                    credit_debit_indicator:
+                      type: string
+                    amount:
+                      type: number
+                      format: float
+                    currency:
+                      type: string
+                    balance:
+                      type: number
+                      format: float
+                    category:
+                      type: string
+                    subcategory:
+                      type: string
+                    risk level:
+                      type: string
+                    bank name:
+                      type: string
+                    iban:
+                      type: string
+                    borrowername:
+                      type: string
+                    cost type:
+                      type: string
+                    customer_id:
+                      type: string
+        '400':
+          description: Bad request - missing or invalid parameters
+        '500':
+          description: Internal server error
+  /transactions/date/{date}:
+    get:
+      summary: Retrieve transactions for a specific date
+      description: Returns a list of transactions for a given date.
+      tags:
+      - Transactions
+      parameters:
+      - name: date
+        in: path
+        description: The date to retrieve transactions for (YYYY-MM-DD)
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: user
+        in: query
+        description: Database user name
+        required: false
+        schema:
+          type: string
+          default: DB_USER
+      - name: password
+        in: query
+        description: Database user password
+        required: false
+        schema:
+          type: string
+          default: DB_PASSWORD
+      responses:
+        '200':
+          description: A list of transactions for the specified date
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      format: date
+                    description:
+                      type: string
+                    credit_debit_indicator:
+                      type: string
+                    amount:
+                      type: number
+                      format: float
+                    currency:
+                      type: string
+                    balance:
+                      type: number
+                      format: float
+                    category:
+                      type: string
+                    subcategory:
+                      type: string
+                    risk level:
+                      type: string
+                    bank name:
+                      type: string
+                    iban:
+                      type: string
+                    borrowername:
+                      type: string
+                    cost type:
+                      type: string
+                    customer_id:
+                      type: string
+  /transactions/daterange:
+    get:
+      summary: Get transaction date range
+      description: Fetches the minimum and maximum transaction dates.
+      tags:
+      - Transactions
+      parameters:
+      - name: user
+        in: query
+        description: Database user name
+        required: false
+        schema:
+          type: string
+          default: DB_USER
+      - name: password
+        in: query
+        description: Database user password
+        required: false
+        schema:
+          type: string
+          default: DB_PASSWORD
+      responses:
+        '200':
+          description: The date range for transactions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  start_date:
+                    type: string
+                    format: date
+                  end_date:
+                    type: string
+                    format: date
+  /transactions/range:
+    get:
+      summary: Get transactions between a date range
+      description: Fetches transactions between a date range.
+      tags:
+      - Transactions
+      parameters:
+      - name: start_date
+        in: query
+        description: The start date of the range (YYYY-MM-DD)
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        description: The end date of the range (YYYY-MM-DD)
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: user
+        in: query
+        description: Database user name
+        required: false
+        schema:
+          type: string
+          default: DB_USER
+      - name: password
+        in: query
+        description: Database user password
+        required: false
+        schema:
+          type: string
+          default: DB_PASSWORD
+      responses:
+        '200':
+          description: A list of transactions in the specified date range.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      format: date
+                    description:
+                      type: string
+                    credit_debit_indicator:
+                      type: string
+                    amount:
+                      type: number
+                      format: float
+                    currency:
+                      type: string
+                    balance:
+                      type: number
+                      format: float
+                    category:
+                      type: string
+                    subcategory:
+                      type: string
+                    risk level:
+                      type: string
+                    bank name:
+                      type: string
+                    iban:
+                      type: string
+                    borrowername:
+                      type: string
+                    cost type:
+                      type: string
+                    customer_id:
+                      type: string
+  /transactions/{clientname}:
+    get:
+      summary: Retrieve transactions for a specific client
+      description: Returns a list of transactions for a given client.
+      tags:
+      - Transactions
+      parameters:
+      - name: clientname
+        in: path
+        description: The name of the client to retrieve transactions for
+        required: true
+        schema:
+          type: string
+      - name: user
+        in: query
+        description: Database user name
+        required: false
+        schema:
+          type: string
+          default: DB_USER
+      - name: password
+        in: query
+        description: Database user password
+        required: false
+        schema:
+          type: string
+          default: DB_PASSWORD
+      responses:
+        '200':
+          description: A list of transactions for the specified client
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      format: date
+                    description:
+                      type: string
+                    credit_debit_indicator:
+                      type: string
+                    amount:
+                      type: number
+                      format: float
+                    currency:
+                      type: string
+                    balance:
+                      type: number
+                      format: float
+                    category:
+                      type: string
+                    subcategory:
+                      type: string
+                    risk level:
+                      type: string
+                    bank name:
+                      type: string
+                    iban:
+                      type: string
+                    borrowername:
+                      type: string
+                    cost type:
+                      type: string
+                    customer_id:
+                      type: string
+  /transactions/{clientname}/date/{date}:
+    get:
+      summary: Get transactions for a client on a specific date
+      description: Fetches transactions for a client on a specific date.
+      tags:
+      - Transactions
+      parameters:
+      - name: clientname
+        in: path
+        description: The name of the client to retrieve transactions for
+        required: true
+        schema:
+          type: string
+      - name: date
+        in: path
+        description: The date to retrieve transactions for (YYYY-MM-DD)
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: user
+        in: query
+        description: Database user name
+        required: false
+        schema:
+          type: string
+          default: DB_USER
+      - name: password
+        in: query
+        description: Database user password
+        required: false
+        schema:
+          type: string
+          default: DB_PASSWORD
+      responses:
+        '200':
+          description: A list of transactions for the client on the specified date.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      format: date
+                    description:
+                      type: string
+                    credit_debit_indicator:
+                      type: string
+                    amount:
+                      type: number
+                      format: float
+                    currency:
+                      type: string
+                    balance:
+                      type: number
+                      format: float
+                    category:
+                      type: string
+                    subcategory:
+                      type: string
+                    risk level:
+                      type: string
+                    bank name:
+                      type: string
+                    iban:
+                      type: string
+                    borrowername:
+                      type: string
+                    cost type:
+                      type: string
+                    customer_id:
+                      type: string
+  /transactions/{clientname}/daterange:
+    get:
+      summary: Get transaction date range for a specific client
+      description: Fetches the minimum and maximum transaction dates for a specific client.
+      tags:
+      - Transactions
+      parameters:
+      - name: clientname
+        in: path
+        description: The name of the client to retrieve the date range for
+        required: true
+        schema:
+          type: string
+      - name: user
+        in: query
+        description: Database user name
+        required: false
+        schema:
+          type: string
+          default: DB_USER
+      - name: password
+        in: query
+        description: Database user password
+        required: false
+        schema:
+          type: string
+          default: DB_PASSWORD
+      responses:
+        '200':
+          description: The date range for transactions of the specified client.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  start_date:
+                    type: string
+                    format: date
+                  end_date:
+                    type: string
+                    format: date
+  /transactions/{clientname}/range:
+    get:
+      summary: Get transactions for a client between a date range
+      description: Fetches transactions for a client between a date range.
+      tags:
+      - Transactions
+      parameters:
+      - name: clientname
+        in: path
+        description: The name of the client to retrieve transactions for
+        required: true
+        schema:
+          type: string
+      - name: start_date
+        in: query
+        description: The start date of the range (YYYY-MM-DD)
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        description: The end date of the range (YYYY-MM-DD)
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: user
+        in: query
+        description: Database user name
+        required: false
+        schema:
+          type: string
+          default: DB_USER
+      - name: password
+        in: query
+        description: Database user password
+        required: false
+        schema:
+          type: string
+          default: DB_PASSWORD
+      responses:
+        '200':
+          description: A list of transactions for the client in the specified date range.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      format: date
+                    description:
+                      type: string
+                    credit_debit_indicator:
+                      type: string
+                    amount:
+                      type: number
+                      format: float
+                    currency:
+                      type: string
+                    balance:
+                      type: number
+                      format: float
+                    category:
+                      type: string
+                    subcategory:
+                      type: string
+                    risk level:
+                      type: string
+                    bank name:
+                      type: string
+                    iban:
+                      type: string
+                    borrowername:
+                      type: string
+                    cost type:
+                      type: string
+                    customer_id:
+                      type: string
+  /transactions/iban/{iban}:
+    get:
+      summary: Get transactions for a specific IBAN
+      description: Fetches transactions for a specific IBAN.
+      tags:
+      - Transactions
+      parameters:
+      - name: iban
+        in: path
+        description: The IBAN to retrieve transactions for
+        required: true
+        schema:
+          type: string
+      - name: user
+        in: query
+        description: Database user name
+        required: false
+        schema:
+          type: string
+          default: DB_USER
+      - name: password
+        in: query
+        description: Database user password
+        required: false
+        schema:
+          type: string
+          default: DB_PASSWORD
+      responses:
+        '200':
+          description: A list of transactions for the given IBAN.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      format: date
+                    description:
+                      type: string
+                    credit_debit_indicator:
+                      type: string
+                    amount:
+                      type: number
+                      format: float
+                    currency:
+                      type: string
+                    balance:
+                      type: number
+                      format: float
+                    category:
+                      type: string
+                    subcategory:
+                      type: string
+                    risk level:
+                      type: string
+                    bank name:
+                      type: string
+                    iban:
+                      type: string
+                    borrowername:
+                      type: string
+                    cost type:
+                      type: string
+                    customer_id:
+                      type: string
+  /paged-transactions/customer/{customer_id}:
+    get:
+      summary: Retrieve paginated transactions for a specific customer
+      description: Returns a paginated list of transactions for a given customer ID.
+      tags:
+      - Transactions
+      parameters:
+      - name: customer_id
+        in: path
+        description: The unique customer ID to retrieve transactions for
+        required: true
+        schema:
+          type: string
+      - name: user
+        in: query
+        description: Database user name
+        required: false
+        schema:
+          type: string
+          default: DB_USER
+      - name: password
+        in: query
+        description: Database user password
+        required: false
+        schema:
+          type: string
+          default: DB_PASSWORD
+      - name: page
+        in: query
+        description: Page number for pagination (default is 1)
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: page_size
+        in: query
+        description: Number of transactions per page (default is 1000)
+        required: false
+        schema:
+          type: integer
+          default: 1000
+      responses:
+        '200':
+          description: A paginated list of transactions for the specified customer
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_records:
+                    type: integer
+                    description: Total number of transactions for the customer
+                  page:
+                    type: integer
+                    description: Current page number
+                  page_size:
+                    type: integer
+                    description: Number of transactions per page
+                  total_pages:
+                    type: integer
+                    description: Total number of pages available
+                  transactions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        date:
+                          type: string
+                          format: date
+                        description:
+                          type: string
+                        credit_debit_indicator:
+                          type: string
+                        amount:
+                          type: number
+                          format: float
+                        currency:
+                          type: string
+                        balance:
+                          type: number
+                          format: float
+                        category:
+                          type: string
+                        subcategory:
+                          type: string
+                        risk level:
+                          type: string
+                        bank name:
+                          type: string
+                        iban:
+                          type: string
+                        borrowername:
+                          type: string
+                        cost type:
+                          type: string
+                        customer_id:
+                          type: string
+  /paged-transactions/{clientname}:
+    get:
+      summary: Retrieve paginated transactions for a specific client
+      description: Returns a paginated list of transactions for a given client.
+      tags:
+      - Transactions
+      parameters:
+      - name: clientname
+        in: path
+        description: The name of the client to retrieve transactions for
+        required: true
+        schema:
+          type: string
+      - name: user
+        in: query
+        description: Database user name
+        required: false
+        schema:
+          type: string
+          default: DB_USER
+      - name: password
+        in: query
+        description: Database user password
+        required: false
+        schema:
+          type: string
+          default: DB_PASSWORD
+      - name: page
+        in: query
+        description: Page number for pagination (default is 1)
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: page_size
+        in: query
+        description: Number of transactions per page (default is 1000)
+        required: false
+        schema:
+          type: integer
+          default: 1000
+      responses:
+        '200':
+          description: A paginated list of transactions for the specified client
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_records:
+                    type: integer
+                    description: Total number of transactions for the client
+                  page:
+                    type: integer
+                    description: Current page number
+                  page_size:
+                    type: integer
+                    description: Number of transactions per page
+                  total_pages:
+                    type: integer
+                    description: Total number of pages available
+                  transactions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        date:
+                          type: string
+                          format: date
+                        description:
+                          type: string
+                        credit_debit_indicator:
+                          type: string
+                        amount:
+                          type: number
+                          format: float
+                        currency:
+                          type: string
+                        balance:
+                          type: number
+                          format: float
+                        category:
+                          type: string
+                        subcategory:
+                          type: string
+                        risk level:
+                          type: string
+                        bank name:
+                          type: string
+                        iban:
+                          type: string
+                        borrowername:
+                          type: string
+                        cost type:
+                          type: string
+                        customer_id:
+                          type: string
+  /categorise-cheque-deposits:
+    post:
+      summary: Categorise cheque deposits as Equity Transactions or Revenue
+      description: 'Starts a pipeline to reclassify cheque deposit transactions, recalculate KPIs and rerun the assessment for this customer_id.
+
+        '
+      tags:
+      - Transactions
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: string
+                  description: Database user, passed as container_name to the pipeline
+                  example: user
+                password:
+                  type: string
+                  description: Database password for authentication
+                  example: secretpassword
+                customer_id:
+                  type: string
+                  description: Customer ID for which cheque deposits will be recategorised
+                  example: 43d027ff-e6cc-4f77-ab7a-1a8f34259035
+                target_category:
+                  type: string
+                  description: Target category for cheque deposits
+                  enum:
+                  - Equity Transactions
+                  - Revenue
+                  example: Equity Transactions
+      responses:
+        '200':
+          description: Pipeline triggered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Pipeline triggered successfully
+        '400':
+          description: Bad request due to missing or invalid parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Missing required parameters user, password, customer_id, target_category
+        '500':
+          description: Internal server error or pipeline trigger failure
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Failed to trigger pipeline
+                  status_code:
+                    type: integer
+                    example: 500
+                  response_text:
+                    type: string
+                    example: Pipeline trigger failed due to authentication error
+  /categorise-partner-transactions:
+    post:
+      summary: Categorise partner transactions as Equity Transactions or Transfers
+      description: 'Starts a pipeline to recategorize transactions based on the partner name found in the transaction description.
+
+        '
+      tags:
+      - Transactions
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: string
+                  description: Database user
+                  example: user
+                password:
+                  type: string
+                  description: Database password (used for auth only)
+                  example: secretpassword
+                customer_id:
+                  type: string
+                  description: Customer ID whose transactions will be recategorized
+                  example: 43d027ff-e6cc-4f77-ab7a-1a8f34259035
+                partner_name:
+                  type: string
+                  description: Substring to match in transaction descriptions
+                  example: ACME LLC
+                target_category:
+                  type: string
+                  description: The new category to assign to matched transactions
+                  enum:
+                  - Equity Transactions
+                  - Transfers
+                  example: Transfers
+      responses:
+        '200':
+          description: Pipeline triggered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Pipeline triggered successfully
+        '400':
+          description: Bad request due to missing or invalid parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Missing required parameters user, password, customer_id, partner_name, target_category
+        '500':
+          description: Internal server error or pipeline trigger failure
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Failed to trigger pipeline
+                  status_code:
+                    type: integer
+                    example: 500
+                  response_text:
+                    type: string
+                    example: Pipeline trigger failed due to authentication error
+  /transactions/customer/{customer_id}/range:
+    get:
+      summary: Get transactions for a customer within a date range
+      tags:
+      - Transactions
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: Customer ID (GUID)
+      - name: start_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+        description: Start date (YYYY-MM-DD)
+      - name: end_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+        description: End date (YYYY-MM-DD)
+      - name: user
+        in: query
+        required: false
+        schema:
+          type: string
+        description: username
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+        description: password
+      responses:
+        '200':
+          description: Array of transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionCostType'
+              examples:
+                sample:
+                  value:
+                  - date: '2025-06-01'
+                    description: POS Purchase
+                    credit_debit_indicator: debit
+                    amount: 120.5
+                    currency: AED
+                    balance: 5400.75
+                    category: Expenses
+                    subcategory: Hospitality
+                    risk level: Low
+                    bank name: Mashreq
+                    iban: AE070331234567890123456
+                    borrowername: ACME LLC
+                    cost type: Variable
+                    customer_id: 43d027ff-e6cc-4f77-ab7a-1a8f34259035
+        '400':
+          description: Missing or invalid parameters
+        '500':
+          description: Server error
+  /paged-transactions/customer/{customer_id}/range:
+    get:
+      summary: Get paginated transactions for a customer within a date range
+      tags:
+      - Transactions
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: start_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: page_size
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1000
+      - name: user
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Paginated transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedTransactionsCostType'
+        '400':
+          description: Missing or invalid parameters
+        '500':
+          description: Server error
+components:
+  schemas:
+    PagedTransactionsCostType:
+      type: object
+      properties:
+        total_records:
+          type: integer
+        page:
+          type: integer
+        page_size:
+          type: integer
+        total_pages:
+          type: integer
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionCostType'
+    TransactionCostType:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        description:
+          type: string
+        credit_debit_indicator:
+          type: string
+          enum:
+          - credit
+          - debit
+        amount:
+          type: number
+          format: float
+        currency:
+          type: string
+          example: AED
+        balance:
+          type: number
+          format: float
+        category:
+          type: string
+        subcategory:
+          type: string
+        risk level:
+          type: string
+          description: Risk level label as returned by SQL (note the space in the key)
+        bank name:
+          type: string
+          description: Bank name (note the space in the key)
+        iban:
+          type: string
+        borrowername:
+          type: string
+        cost type:
+          type: string
+          description: One of "Fixed", "Variable", or "" (note the space in the key)
+        customer_id:
+          type: string
+          format: uuid

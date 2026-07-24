@@ -1,0 +1,312 @@
+openapi: 3.0.0
+info:
+  title: Orbii KSA Business Category Assignment KPIs API
+  description: API for managing transactions, clients, and companies.
+  version: 1.0.3
+servers:
+- url: https://api.sa.orbii.ai/
+  description: Production server
+tags:
+- name: KPIs
+paths:
+  /client-kpis/customer/{customer_id}:
+    get:
+      summary: Retrieve client KPIs for a specific customer ID
+      description: Returns the latest KPI values for the given customer ID.
+      tags:
+      - KPIs
+      parameters:
+      - name: customer_id
+        in: path
+        description: The unique identifier of the customer
+        required: true
+        schema:
+          type: string
+      - name: user
+        in: query
+        description: Database user name
+        required: false
+        schema:
+          type: string
+          default: DB_USER
+      - name: password
+        in: query
+        description: Database user password
+        required: false
+        schema:
+          type: string
+          default: DB_PASSWORD
+      responses:
+        '200':
+          description: A list of KPIs for the specified customer ID
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    borrower_name:
+                      type: string
+                    customer_id:
+                      type: string
+                    kpi:
+                      type: string
+                    value:
+                      type: number
+                      format: float
+                    year:
+                      type: integer
+                    month:
+                      type: integer
+        '400':
+          description: Bad request - missing or invalid parameters
+        '500':
+          description: Internal server error
+  /predictive-kpis/customer/{customer_id}:
+    get:
+      summary: Retrieve predictive KPIs for a specific customer ID
+      description: Returns the latest predictive KPI values for the given customer ID.
+      tags:
+      - KPIs
+      parameters:
+      - name: customer_id
+        in: path
+        description: The unique identifier of the customer
+        required: true
+        schema:
+          type: string
+      - name: user
+        in: query
+        description: Database user name
+        required: false
+        schema:
+          type: string
+          default: DB_USER
+      - name: password
+        in: query
+        description: Database user password
+        required: false
+        schema:
+          type: string
+          default: DB_PASSWORD
+      responses:
+        '200':
+          description: A list of predictive KPIs for the specified customer ID
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    borrower_name:
+                      type: string
+                    customer_id:
+                      type: string
+                    year:
+                      type: integer
+                    month:
+                      type: integer
+                    predicted_revenue:
+                      type: number
+                      format: float
+                    predicted_expenses:
+                      type: number
+                      format: float
+                    predicted_transfers:
+                      type: number
+                      format: float
+                    predicted_essentials:
+                      type: number
+                      format: float
+                    predicted_non_essentials:
+                      type: number
+                      format: float
+                    predicted_profit:
+                      type: number
+                      format: float
+        '400':
+          description: Bad request - missing or invalid parameters
+        '500':
+          description: Internal server error
+  /client-kpis:
+    get:
+      summary: Get KPIs for all clients
+      description: Retrieves KPIs and their values for all clients, along with the year and month.
+      tags:
+      - KPIs
+      parameters:
+      - name: user
+        in: query
+        description: Database user name
+        required: false
+        schema:
+          type: string
+          default: DB_USER
+      - name: password
+        in: query
+        description: Database user password
+        required: false
+        schema:
+          type: string
+          default: DB_PASSWORD
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    client_name:
+                      type: string
+                      description: The name of the client
+                    kpi:
+                      type: string
+                      description: The KPI being measured
+                    value:
+                      type: number
+                      description: The value of the KPI
+                      format: float
+                    year:
+                      type: integer
+                      description: The year associated with the KPI
+                    month:
+                      type: integer
+                      description: The month associated with the KPI
+  /client-kpis/{clientname}:
+    get:
+      summary: Get KPIs for a specific client
+      description: Retrieves KPIs for a specific client, along with the year and month information.
+      tags:
+      - KPIs
+      parameters:
+      - name: clientname
+        in: path
+        description: The name of the client to retrieve KPIs for
+        required: true
+        schema:
+          type: string
+      - name: user
+        in: query
+        description: Database user name
+        required: false
+        schema:
+          type: string
+          default: DB_USER
+      - name: password
+        in: query
+        description: Database user password
+        required: false
+        schema:
+          type: string
+          default: DB_PASSWORD
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    client_name:
+                      type: string
+                      description: The name of the client
+                    kpi:
+                      type: string
+                      description: The KPI being measured
+                    value:
+                      type: number
+                      description: The value of the KPI
+                      format: float
+                    year:
+                      type: integer
+                      description: The year associated with the KPI
+                    month:
+                      type: integer
+                      description: The month associated with the KPI
+  /predictive-kpis:
+    get:
+      summary: Get predictive KPIs for all clients
+      description: Retrieves predictive KPIs for all clients.
+      tags:
+      - KPIs
+      parameters:
+      - name: user
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PredictiveKPI'
+  /predictive-kpis/{clientname}:
+    get:
+      summary: Get predictive KPIs for a specific client
+      description: Retrieves predictive KPIs for a specific client.
+      tags:
+      - KPIs
+      parameters:
+      - name: clientname
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: user
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PredictiveKPI'
+components:
+  schemas:
+    PredictiveKPI:
+      type: object
+      properties:
+        client_name:
+          type: string
+        year:
+          type: integer
+        month:
+          type: integer
+        predicted_revenue:
+          type: number
+        predicted_expenses:
+          type: number
+        predicted_transfers:
+          type: number
+        predicted_essentials:
+          type: number
+        predicted_non_essentials:
+          type: number
+        predicted_profit:
+          type: number
