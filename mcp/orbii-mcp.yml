@@ -1,0 +1,196 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/orbii-uae-openapi-original.json
+note: >-
+  No official hosted Orbii MCP server was found. This is a CANDIDATE tool list
+  derived one-tool-per-operation from the UAE OpenAPI (the richest regional spec).
+  Operation names are synthesized (method+path) because the spec declares no
+  operationIds.
+server:
+  name: orbii
+  transport: http
+tools:
+  - name: get_root
+    description: "Welcome message"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /"
+  - name: get_clients
+    description: "Get all clients"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /clients"
+  - name: get_transactions
+    description: "Retrieve all transactions"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /transactions"
+  - name: get_transactions_customer_by_customer_id
+    description: "Retrieve transactions for a specific customer ID"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /transactions/customer/{customer_id}"
+  - name: get_transactions_date_by_date
+    description: "Retrieve transactions for a specific date"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /transactions/date/{date}"
+  - name: get_transactions_daterange
+    description: "Get transaction date range"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /transactions/daterange"
+  - name: get_transactions_range
+    description: "Get transactions between a date range"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /transactions/range"
+  - name: get_transactions_by_clientname
+    description: "Retrieve transactions for a specific client"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /transactions/{clientname}"
+  - name: get_transactions_by_clientname_date_by_date
+    description: "Get transactions for a client on a specific date"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /transactions/{clientname}/date/{date}"
+  - name: get_transactions_by_clientname_daterange
+    description: "Get transaction date range for a specific client"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /transactions/{clientname}/daterange"
+  - name: get_transactions_by_clientname_range
+    description: "Get transactions for a client between a date range"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /transactions/{clientname}/range"
+  - name: get_ibans
+    description: "Get distinct IBANs"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /ibans"
+  - name: get_transactions_iban_by_iban
+    description: "Get transactions for a specific IBAN"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /transactions/iban/{iban}"
+  - name: get_categories_by_clientname
+    description: "Get distinct categories for a client"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /categories/{clientname}"
+  - name: get_subcategories_by_clientname
+    description: "Get distinct subcategories for a client"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /subcategories/{clientname}"
+  - name: get_client_kpis_customer_by_customer_id
+    description: "Retrieve client KPIs for a specific customer ID"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /client-kpis/customer/{customer_id}"
+  - name: get_predictive_kpis_customer_by_customer_id
+    description: "Retrieve predictive KPIs for a specific customer ID"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /predictive-kpis/customer/{customer_id}"
+  - name: get_client_kpis
+    description: "Get KPIs for all clients"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /client-kpis"
+  - name: get_client_kpis_by_clientname
+    description: "Get KPIs for a specific client"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /client-kpis/{clientname}"
+  - name: get_predictive_kpis
+    description: "Get predictive KPIs for all clients"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /predictive-kpis"
+  - name: get_predictive_kpis_by_clientname
+    description: "Get predictive KPIs for a specific client"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /predictive-kpis/{clientname}"
+  - name: get_Check_for_new_data_received
+    description: "Check for new data received"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /Check-for-new-data-received"
+  - name: post_add_company
+    description: "Add a new company"
+    source_operation: "openapi/orbii-uae-openapi-original.json#POST /add-company"
+  - name: get_pdf_list
+    description: "Retrieve the list of PDFs with metadata and client details"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /pdf-list"
+  - name: get_pdf_list_from_date
+    description: "Retrieve PDFs extracted on or after a specific datetime"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /pdf-list-from-date"
+  - name: post_pdf_upload
+    description: "Upload multiple PDFs"
+    source_operation: "openapi/orbii-uae-openapi-original.json#POST /pdf-upload"
+  - name: get_paged_transactions_customer_by_customer_id
+    description: "Retrieve paged transactions for a specific customer ID"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /paged-transactions/customer/{customer_id}"
+  - name: get_paged_transactions_by_clientname
+    description: "Retrieve paginated transactions for a specific client"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /paged-transactions/{clientname}"
+  - name: get_transactions_with_merchant_customer_by_customer_id
+    description: "Retrieve transactions with merchant info for a specific customer ID"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /transactions_with_merchant/customer/{customer_id}"
+  - name: get_paged_transactions_with_merchant_customer_by_customer_id
+    description: "Retrieve paged transactions with merchant info for a specific customer ID"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /paged-transactions_with_merchant/customer/{customer_id}"
+  - name: get_top_buyers_customer_by_customer_id
+    description: "Get top buyers for a customer"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /top_buyers/customer/{customer_id}"
+  - name: get_top_sellers_customer_by_customer_id
+    description: "Get top sellers for a customer"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /top_sellers/customer/{customer_id}"
+  - name: get_risk_assessment_customer_by_customer_id
+    description: "Get risk assessment for a specific customer"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /risk_assessment/customer/{customer_id}"
+  - name: get_band_classification_customer_by_customer_id
+    description: "Get band classification for a specific customer"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /band_classification/customer/{customer_id}"
+  - name: post_update_kpi_rule
+    description: "Update a KPI rule threshold"
+    source_operation: "openapi/orbii-uae-openapi-original.json#POST /update-kpi-rule"
+  - name: post_rerun_assessment
+    description: "Reruns Assessment"
+    source_operation: "openapi/orbii-uae-openapi-original.json#POST /rerun-assessment"
+  - name: post_start_pdf_extraction
+    description: "Trigger PDF extraction pipeline"
+    source_operation: "openapi/orbii-uae-openapi-original.json#POST /start-pdf-extraction"
+  - name: post_categorise_cheque_deposits
+    description: "Categorise cheque deposits as Equity Transactions or Revenue"
+    source_operation: "openapi/orbii-uae-openapi-original.json#POST /categorise-cheque-deposits"
+  - name: post_categorise_partner_transactions
+    description: "Categorise partner transactions as Equity Transactions or Transfers"
+    source_operation: "openapi/orbii-uae-openapi-original.json#POST /categorise-partner-transactions"
+  - name: get_assign_category
+    description: "Get business categories with their subcategories"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /assign-category"
+  - name: post_assign_category
+    description: "Submit customer business category"
+    source_operation: "openapi/orbii-uae-openapi-original.json#POST /assign-category"
+  - name: post_log_lending
+    description: "Log a lending decision from email"
+    source_operation: "openapi/orbii-uae-openapi-original.json#POST /log-lending"
+  - name: get_top_buyers_recent_customer_by_customer_id
+    description: "Get top buyers for a customer in the last X months"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /top_buyers_recent/customer/{customer_id}"
+  - name: get_top_sellers_recent_customer_by_customer_id
+    description: "Get top sellers for a customer in the last X months"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /top_sellers_recent/customer/{customer_id}"
+  - name: post_invoice_extract_upload
+    description: "Upload Excel invoice extract"
+    source_operation: "openapi/orbii-uae-openapi-original.json#POST /invoice-extract-upload"
+  - name: get_band_classification
+    description: "Get band classification for all customers"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /band_classification"
+  - name: post_start_invoice_extraction
+    description: "Start invoice extraction pipeline"
+    source_operation: "openapi/orbii-uae-openapi-original.json#POST /start-invoice-extraction"
+  - name: get_invoice_kpis_customer_by_customer_id
+    description: "Get invoice KPIs by customer_id"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /invoice-kpis/customer/{customer_id}"
+  - name: get_invoice_risk_assessment_customer_by_customer_id
+    description: "Get invoice risk assessments by customer_id"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /invoice-risk_assessment/customer/{customer_id}"
+  - name: get_invoice_band_classification_customer_by_customer_id
+    description: "Get invoice band classification by customer_id"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /invoice-band_classification/customer/{customer_id}"
+  - name: get_invoice_company_kpis_customer_by_customer_id
+    description: "Get invoice KPIs by company for a customer"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /invoice-company-kpis/customer/{customer_id}"
+  - name: get_invoice_company_risk_assessment_customer_by_customer_id
+    description: "Get invoice risk assessments by company for a customer"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /invoice-company-risk_assessment/customer/{customer_id}"
+  - name: get_invoice_company_band_classification_customer_by_customer_id
+    description: "Get invoice band classifications by company for a customer"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /invoice-company-band_classification/customer/{customer_id}"
+  - name: get_invoice_suggested_loan_customer_by_customer_id
+    description: "Get invoice suggested loan by customer_id"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /invoice-suggested-loan/customer/{customer_id}"
+  - name: get_invoice_suggested_loan_allocation_customer_by_customer_id
+    description: "Get suggested loan allocation by company for a customer"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /invoice-suggested-loan-allocation/customer/{customer_id}"
+  - name: get_invoice_suggested_loan_summary_customer_by_customer_id
+    description: "Get suggested-loan summary for a customer"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /invoice-suggested-loan-summary/customer/{customer_id}"
+  - name: get_transactions_customer_by_customer_id_range
+    description: "Retrieve transactions for a specific customer ID within a date range"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /transactions/customer/{customer_id}/range"
+  - name: get_paged_transactions_customer_by_customer_id_range
+    description: "Retrieve paged transactions for a specific customer ID within a date range"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /paged-transactions/customer/{customer_id}/range"
+  - name: get_transactions_with_merchant_customer_by_customer_id_range
+    description: "Retrieve transactions with merchant info for a specific customer ID within a date range"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /transactions_with_merchant/customer/{customer_id}/range"
+  - name: get_paged_transactions_with_merchant_customer_by_customer_id_range
+    description: "Retrieve paged transactions with merchant info for a specific customer ID within a date range"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /paged-transactions_with_merchant/customer/{customer_id}/range"
+  - name: get_clients_range
+    description: "Get clients added within a date range"
+    source_operation: "openapi/orbii-uae-openapi-original.json#GET /clients/range"

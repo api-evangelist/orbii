@@ -1,0 +1,64 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/orbii-uae-openapi-original.json
+note: >-
+  Derived from OpenAPI component schemas and id-reference fields. Orbii models a
+  lender's borrower graph: Clients (customers) own Transactions and PDF bank
+  statements, from which KPIs, predictive KPIs, risk assessments, band
+  classifications and invoice-based suggested loans are computed.
+entities:
+  - name: Transaction
+    fields: [date, description, credit_debit_indicator, amount, currency, balance, iban, category, subcategory, risk level, borrowername]
+  - name: Client
+    fields: [clientname, date_added]
+  - name: KPI
+    fields: [client_name, kpi, value]
+  - name: PredictiveKPI
+    fields: [client_name, year, month, predicted_revenue, predicted_expenses, predicted_transfers, predicted_essentials, predicted_non_essentials, predicted_profit]
+  - name: CorporateData
+    fields: [company_name, email, bank name]
+  - name: InvoiceKpi
+    fields: [category, kpi, value, year, month]
+  - name: InvoiceRiskAssessment
+    fields: [category, rule, value, assessment, customer_id]
+  - name: InvoiceBandClassification
+    fields: [baseline_eligibility_score, business_stability_and_risk_score, invoicing_and_seasonal_trends_score, payment_processing_and_liquidity_score, revenue_performance_score, baseline_eligibility_score_value, business_stability_and_risk_score_value, invoicing_and_seasonal_trends_score_value, payment_processing_and_liquidity_score_value, revenue_performance_score_value, total_score, band, customer_id]
+  - name: InvoiceCompanyKpi
+    fields: [company, category, kpi, value]
+  - name: InvoiceCompanyRiskAssessment
+    fields: [company, category, rule, value, assessment, customer_id]
+  - name: InvoiceCompanyBandClassification
+    fields: [company, activity_and_relationship_score, spend_and_concentration_score, payment_behaviour_score, activity_and_relationship_score_value, spend_and_concentration_score_value, payment_behaviour_score_value, total_score, band, customer_id]
+  - name: InvoiceSuggestedLoan
+    fields: [customer_id, band, annual_revenue, multiplier, suggested_loan]
+  - name: InvoiceSuggestedLoanAllocation
+    fields: [customer_id, company, band, total_score, due_amount, multiplier, company_cap, allocated_amount, rank_by_score]
+  - name: InvoiceSuggestedLoanSummary
+    fields: [suggested_loan, total_company_caps, total_allocated, unallocated_remainder, customer_id]
+  - name: TransactionCostType
+    fields: [date, description, credit_debit_indicator, amount, currency, balance, category, subcategory, risk level, bank name, iban, borrowername, cost type, customer_id]
+  - name: TransactionWithMerchant
+    fields: [ClientID, BorrowerID, date, description, credit_debit_indicator, amount, currency, balance, category, subcategory, risk level, bank name, iban, cost type, merchant, interaction_type, customer_id]
+  - name: PagedTransactionsCostType
+    fields: [total_records, page, page_size, total_pages, transactions]
+  - name: PagedTransactionsWithMerchant
+    fields: [total_records, page, page_size, total_pages, transactions]
+  - name: Error
+    fields: [error]
+relationships:
+  - {from: Transaction, type: belongs_to, to: Client, via: customer_id}
+  - {from: KPI, type: belongs_to, to: Client, via: customer_id}
+  - {from: PredictiveKPI, type: belongs_to, to: Client, via: customer_id}
+  - {from: TransactionWithMerchant, type: belongs_to, to: Client, via: customer_id}
+  - {from: InvoiceKpi, type: belongs_to, to: Client, via: customer_id}
+  - {from: InvoiceRiskAssessment, type: belongs_to, to: Client, via: customer_id}
+  - {from: InvoiceBandClassification, type: belongs_to, to: Client, via: customer_id}
+  - {from: InvoiceSuggestedLoan, type: belongs_to, to: Client, via: customer_id}
+  - {from: Client, type: has_many, to: Transaction, via: customer_id}
+  - {from: Client, type: has_many, to: KPI, via: customer_id}
+  - {from: CorporateData, type: has_one, to: Client, via: company_id}
+identifiers:
+  - {field: customer_id, domain: Client}
+  - {field: clientname, domain: Client}
+  - {field: company_id, domain: CorporateData}
+  - {field: iban, domain: bank account}

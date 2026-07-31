@@ -1,0 +1,42 @@
+{
+  "provider": "orbii",
+  "sources": [
+    "orbii-business-category-assignment-api-openapi.yml",
+    "orbii-categories-api-openapi.yml",
+    "orbii-clients-api-openapi.yml",
+    "orbii-company-management-api-openapi.yml",
+    "orbii-data-check-api-openapi.yml",
+    "orbii-general-api-openapi.yml",
+    "orbii-ibans-api-openapi.yml",
+    "orbii-invoices-api-openapi.yml",
+    "orbii-kpis-api-openapi.yml",
+    "orbii-lending-actions-api-openapi.yml",
+    "orbii-merchants-api-openapi.yml",
+    "orbii-pdfs-api-openapi.yml",
+    "orbii-risk-assessment-api-openapi.yml",
+    "orbii-subcategories-api-openapi.yml",
+    "orbii-transactions-api-openapi.yml"
+  ],
+  "outputs": [
+    "orbii-business-category-assignment-api-openapi.yml",
+    "orbii-categories-api-openapi.yml",
+    "orbii-clients-api-openapi.yml",
+    "orbii-company-management-api-openapi.yml",
+    "orbii-data-check-api-openapi.yml",
+    "orbii-general-api-openapi.yml",
+    "orbii-ibans-api-openapi.yml",
+    "orbii-invoices-api-openapi.yml",
+    "orbii-kpis-api-openapi.yml",
+    "orbii-lending-actions-api-openapi.yml",
+    "orbii-merchants-api-openapi.yml",
+    "orbii-pdfs-api-openapi.yml",
+    "orbii-risk-assessment-api-openapi.yml",
+    "orbii-subcategories-api-openapi.yml",
+    "orbii-transactions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

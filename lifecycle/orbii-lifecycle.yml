@@ -1,0 +1,20 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.docs.orbii.ai/
+versioning:
+  scheme: registry-version (SwaggerHub) per region
+  current: {uae: '1.0.5-oas3', ksa: '1.0.3', omn: '1.0.3'}
+  docs: https://api.docs.orbii.ai/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No published deprecation policy or RFC 8594 Sunset/Deprecation header support found.
+status_page: null
+sla:
+  url: null
+  note: No public SLA or status page found.
+deprecated_operations: []
+note: >-
+  Orbii distributes region-specific API versions through its SwaggerHub portal
+  (api.docs.orbii.ai). No dated changelog, status page, or deprecation policy is
+  publicly documented as of the enrichment date.

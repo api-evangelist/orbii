@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/orbii-uae-openapi-original.json
+standards:
+  - id: openapi-3.0
+    conforms: true
+    evidence: three OpenAPI 3.0.0 specifications published on SwaggerHub
+  - id: oauth2
+    conforms: false
+    evidence: no oauth2 securityScheme declared
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: errors use a flat {error:string} JSON object, not application/problem+json
+  - id: pagination
+    conforms: true
+    evidence: page/page_size query parameters on paged-transactions endpoints
+  - id: idempotency
+    conforms: false
+    evidence: no Idempotency-Key header documented
+  - id: json-api
+    conforms: false
+  - id: fapi
+    conforms: false

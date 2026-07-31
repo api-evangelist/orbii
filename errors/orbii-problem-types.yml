@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/orbii-uae-openapi-original.json
+format: json-error-object   # {"error": "<message>"} — not RFC 9457
+envelope:
+  field: error
+  media_type: application/json
+  schema: '#/components/schemas/Error'
+note: >-
+  Orbii returns a flat JSON object with a single string 'error' field on 4xx/5xx.
+  It does not use RFC 9457 application/problem+json. Status codes are consistent
+  across the KSA, UAE, and OMN regional APIs.
+problems:
+  - status: 400
+    title: "Bad request"
+    description: "Bad request - missing or invalid parameters"
+    remediation: "Check required query parameters, date formats (YYYY-MM-DD HH:MM:SS.sss) and body fields."
+    example_operation: "GET /transactions/customer/{customer_id}"
+  - status: 404
+    title: "Not found"
+    description: "Customer ID not found."
+    remediation: "Verify the customer_id / clientname / resource path exists."
+    example_operation: "GET /top_buyers/customer/{customer_id}"
+  - status: 409
+    title: "Conflict"
+    description: "A pipeline is already running for this customer_id"
+    remediation: "The resource already exists or conflicts with current state; fetch and reconcile before retrying."
+    example_operation: "POST /start-pdf-extraction"
+  - status: 500
+    title: "Internal server error"
+    description: "Internal server error"
+    remediation: "Transient server error; retry with backoff and contact Orbii support if it persists."
+    example_operation: "GET /transactions/customer/{customer_id}"

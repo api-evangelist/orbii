@@ -1,8 +1,16 @@
 aid: orbii
 name: Orbii
-description: 'Orbii is a company surfaced as a portfolio company of prosus-ventures and added to the API
-  Evangelist network as a stub for enrichment. Sector: ai. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Orbii is a Riyadh-based credit infrastructure company providing AI-powered
+  underwriting and lending infrastructure for banks, fintechs, neobanks, and B2B
+  platforms across the MENA region. Its APIs ingest and enrich transaction and
+  invoice data to produce borrower intelligence — client and predictive KPIs,
+  risk assessments, band classifications, and suggested loan allocations — so
+  lenders can launch SME lending products (salary advance, merchant financing,
+  working capital, BNPL, embedded lending) without building an internal credit
+  function. Orbii exposes region-specific REST APIs for Saudi Arabia (KSA), the
+  United Arab Emirates (UAE), and Oman (OMN), documented on a SwaggerHub portal.
+  Backed by a $3.6M seed round led by Prosus Ventures.
 url: https://raw.githubusercontent.com/api-evangelist/orbii/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,18 +18,239 @@ x-backed-by:
 - prosus-ventures
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+image: https://cdn.prod.website-files.com/6894ac031d066c1f144fb082/68bdc4495f740a290c12b9c4_dark.webp
 tags:
 - Company
 - Ai
-apis: []
+- Lending
+- Credit
+- Fintech
+- Underwriting
+- Banking
+- SME
+- Embedded Finance
+- MENA
+- Risk
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: orbii:orbii-business-category-assignment-api
+  name: Orbii Business Category Assignment API
+  description: >-
+    The Business Category Assignment API from Orbii — 1 operation(s) for business category assignment.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Business Category Assignment
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-business-category-assignment-api-openapi.yml
+- aid: orbii:orbii-categories-api
+  name: Orbii Categories API
+  description: The Categories API from Orbii — 1 operation(s) for categories.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-categories-api-openapi.yml
+- aid: orbii:orbii-clients-api
+  name: Orbii Clients API
+  description: The Clients API from Orbii — 2 operation(s) for clients.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Clients
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-clients-api-openapi.yml
+- aid: orbii:orbii-company-management-api
+  name: Orbii Company Management API
+  description: The Company Management API from Orbii — 1 operation(s) for company management.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Company Management
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-company-management-api-openapi.yml
+- aid: orbii:orbii-data-check-api
+  name: Orbii Data Check API
+  description: The Data Check API from Orbii — 1 operation(s) for data check.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Data Check
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-data-check-api-openapi.yml
+- aid: orbii:orbii-general-api
+  name: Orbii General API
+  description: The General API from Orbii — 1 operation(s) for general.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - General
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-general-api-openapi.yml
+- aid: orbii:orbii-ibans-api
+  name: Orbii IBANs API
+  description: The IBANs API from Orbii — 1 operation(s) for ibans.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - IBANs
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-ibans-api-openapi.yml
+- aid: orbii:orbii-invoices-api
+  name: Orbii Invoices API
+  description: The Invoices API from Orbii — 11 operation(s) for invoices.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Invoices
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-invoices-api-openapi.yml
+- aid: orbii:orbii-kpis-api
+  name: Orbii KPIs API
+  description: The KPIs API from Orbii — 6 operation(s) for kpis.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - KPIs
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-kpis-api-openapi.yml
+- aid: orbii:orbii-lending-actions-api
+  name: Orbii Lending Actions API
+  description: The Lending Actions API from Orbii — 1 operation(s) for lending actions.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Lending Actions
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-lending-actions-api-openapi.yml
+- aid: orbii:orbii-merchants-api
+  name: Orbii Merchants API
+  description: The Merchants API from Orbii — 8 operation(s) for merchants.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Merchants
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-merchants-api-openapi.yml
+- aid: orbii:orbii-pdfs-api
+  name: Orbii PDFs API
+  description: The PDFs API from Orbii — 4 operation(s) for pdfs.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - PDFs
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-pdfs-api-openapi.yml
+- aid: orbii:orbii-risk-assessment-api
+  name: Orbii Risk Assessment API
+  description: The Risk Assessment API from Orbii — 5 operation(s) for risk assessment.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Risk Assessment
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-risk-assessment-api-openapi.yml
+- aid: orbii:orbii-subcategories-api
+  name: Orbii Subcategories API
+  description: The Subcategories API from Orbii — 1 operation(s) for subcategories.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Subcategories
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-subcategories-api-openapi.yml
+- aid: orbii:orbii-transactions-api
+  name: Orbii Transactions API
+  description: The Transactions API from Orbii — 16 operation(s) for transactions.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-transactions-api-openapi.yml
 common:
 - type: Website
   url: https://orbii.ai
+- type: DeveloperPortal
+  url: https://api.docs.orbii.ai/
+- type: Documentation
+  url: https://api.docs.orbii.ai/
+- type: APIReference
+  url: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+- type: Blog
+  url: https://www.orbii.ai/news
+- type: Support
+  url: https://join.slack.com/t/orbii/shared_invite/zt-3dyey2n3l-6E880uPZ33_TsUPW3XMgkQ
+- type: LinkedIn
+  url: https://www.linkedin.com/company/orbiiai
+- type: Authentication
+  url: authentication/orbii-authentication.yml
+- type: Conventions
+  url: conventions/orbii-conventions.yml
+- type: ErrorCatalog
+  url: errors/orbii-problem-types.yml
+- type: DataModel
+  url: data-model/orbii-data-model.yml
+- type: Conformance
+  url: conformance/orbii-conformance.yml
+- type: Lifecycle
+  url: lifecycle/orbii-lifecycle.yml
+- type: MCPServer
+  url: mcp/orbii-mcp.yml
+- type: LLMsTxt
+  url: llms/orbii-llms.txt
+- type: AgenticAccess
+  url: agentic-access/orbii-agentic-access.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Overlay
+  name: Orbii UAE overlay
+  url: overlays/orbii-uae-overlay.yaml
+- type: Overlay
+  name: Orbii KSA overlay
+  url: overlays/orbii-ksa-overlay.yaml
+- type: Overlay
+  name: Orbii OMN overlay
+  url: overlays/orbii-omn-overlay.yaml
+- type: DomainSecurity
+  url: security/orbii-domain-security.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 19
+  pass: local-v1

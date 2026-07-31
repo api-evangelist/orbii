@@ -1,0 +1,33 @@
+# Orbii
+
+> Orbii is a Riyadh-based AI credit-infrastructure company. Its region-specific REST APIs
+> (KSA, UAE, Oman) ingest and enrich transaction and invoice data to produce borrower
+> intelligence — KPIs, predictive KPIs, risk assessments, band classifications, and
+> invoice-based suggested loans — so banks, fintechs and platforms can launch SME lending
+> without building an internal credit function. Backed by a $3.6M Prosus-led seed round.
+
+## APIs
+- [Orbii API (UAE)](https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3): base https://api.orbii.ai — 60 operations
+- [Orbii KSA API](https://api.docs.orbii.ai/ksa/docs/orbii-ksa-api-v-1-0-3): base https://api.sa.orbii.ai — 49 operations
+- [Orbii OMN API](https://api.docs.orbii.ai/omn/docs/orbii-omn-api-v-1-0-3): base https://api.om.orbii.ai — 49 operations
+
+## Specs
+- openapi/orbii-uae-openapi-original.json (OpenAPI 3.0.0)
+- openapi/orbii-ksa-openapi-original.json (OpenAPI 3.0.0)
+- openapi/orbii-omn-openapi-original.json (OpenAPI 3.0.0)
+
+## Artifacts
+- authentication/orbii-authentication.yml — auth model (query-parameter credentials)
+- conventions/orbii-conventions.yml — pagination, error envelope, versioning
+- errors/orbii-problem-types.yml — 4xx/5xx error catalog
+- data-model/orbii-data-model.yml — entity graph (Client, Transaction, KPI, Invoice*)
+- conformance/orbii-conformance.yml — standards conformance
+- lifecycle/orbii-lifecycle.yml — versioning / lifecycle
+- mcp/orbii-mcp.yml — candidate MCP tool list
+- agentic-access/orbii-agentic-access.yml — recommended agent-access contracts
+- skills/ — packaged agent skills for marquee flows
+
+## Docs
+- [API Documentation portal](https://api.docs.orbii.ai/)
+- [Orbii website](https://www.orbii.ai/)
+- [News](https://www.orbii.ai/news)

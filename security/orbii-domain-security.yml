@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: orbii.ai
+  https: false
+- host: api.docs.orbii.ai
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  4 17:53:09 2026 GMT
+  hsts: false
+- host: api.orbii.ai
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 14 23:37:21 2026 GMT
+  hsts: false
+domains:
+- domain: orbii.ai
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: false

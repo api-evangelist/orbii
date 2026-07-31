@@ -1,0 +1,22 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Orbii OMN API
+  version: 1.0.0
+extends: openapi/orbii-omn-openapi-original.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enrichment: '2026-07-20'
+      x-apievangelist-notes: >-
+        Harvested verbatim from Orbii's SwaggerHub portal (api.docs.orbii.ai).
+        Enhancements captured as an overlay only; the original spec is unmodified.
+      x-apievangelist-gaps:
+        - No operationIds declared (operations are anonymous)
+        - No tags declared (operations ungrouped)
+        - No components.securitySchemes declared (auth via query params)
+        - Errors use flat {error:string}, not RFC 9457 problem+json
+        - No response examples in-spec
+  - target: $.components
+    update:
+      x-apievangelist-recommended-security:
+        note: Declare an apiKey (header) or OAuth2 scheme; stop passing credentials in query strings.

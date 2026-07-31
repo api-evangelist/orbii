@@ -1,0 +1,20 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/orbii-uae-openapi-original.json + api.docs.orbii.ai
+summary:
+  types: [query-credentials]
+  declared_security_schemes: none
+  note: >-
+    The published OpenAPI specs declare no components.securitySchemes. Auth is
+    handled out-of-band / via credentials passed as query parameters on selected
+    endpoints (user, password) with a 'client' parameter scoping the lender.
+schemes:
+  - name: query-credentials
+    type: custom
+    location: query
+    parameters: [user, password, client]
+    applies_to: subset of endpoints (e.g. GET /clients)
+    documented_in: openapi/orbii-uae-openapi-original.json
+recommendation: >-
+  Orbii should declare an apiKey or OAuth2 securityScheme and stop accepting
+  credentials in query strings (they leak into logs and browser history).

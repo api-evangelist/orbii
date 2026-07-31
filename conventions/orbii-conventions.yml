@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/orbii-uae-openapi-original.json + api.docs.orbii.ai
+authentication:
+  style: query-parameter credentials
+  detail: >-
+    Several endpoints accept 'user' and 'password' query parameters; 'client'
+    scopes requests to a lender. No OAuth2/OIDC or apiKey security scheme is
+    declared in the OpenAPI. See authentication/orbii-authentication.yml.
+  cross_ref: authentication/orbii-authentication.yml
+pagination:
+  supported: true
+  style: page-number
+  params: [page, page_size]
+  applies_to: paged-transactions endpoints
+idempotency:
+  supported: false
+  note: >-
+    No Idempotency-Key header or idempotent-write contract is documented. Write
+    operations (uploads, extractions, category assignment) are not declared
+    idempotent; 409 Conflict is returned when a resource already exists.
+versioning:
+  style: registry-version (SwaggerHub); region-specific specs
+  current: {uae: '1.0.5', ksa: '1.0.3', omn: '1.0.3'}
+  cross_ref: lifecycle/orbii-lifecycle.yml
+error_envelope:
+  shape: '{"error": "<message>"}'
+  format: flat JSON (not RFC 9457)
+  cross_ref: errors/orbii-problem-types.yml
+rate_limiting:
+  signaled: false
+  note: No rate-limit headers or policy documented in the OpenAPI or portal.
+request_bodies:
+  media_types: [application/x-www-form-urlencoded, multipart/form-data]
+  note: File uploads (bank-statement PDFs, invoice Excel extracts) use multipart/form-data.
+regions:
+  - {code: UAE, host: api.orbii.ai}
+  - {code: KSA, host: api.sa.orbii.ai}
+  - {code: OMN, host: api.om.orbii.ai}

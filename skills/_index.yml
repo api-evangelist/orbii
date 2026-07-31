@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/orbii-uae-openapi-original.json
+note: >-
+  Packaged agent skills for Orbii's marquee credit-intelligence flows. Steps are
+  grounded in real UAE-spec paths (the spec declares no operationIds, so
+  operations are referenced by METHOD + path).
+skills:
+  - file: orbii-assess-borrower.md
+    name: Assess an SME borrower from bank statements
+    api: openapi/orbii-uae-openapi-original.json
+    operations:
+      - POST /add-company
+      - POST /pdf-upload
+      - POST /start-pdf-extraction
+      - GET /client-kpis/customer/{customer_id}
+      - GET /risk_assessment/customer/{customer_id}
+      - GET /band_classification/customer/{customer_id}
+  - file: orbii-invoice-lending.md
+    name: Size an invoice-financing loan
+    api: openapi/orbii-uae-openapi-original.json
+    operations:
+      - POST /invoice-extract-upload
+      - POST /start-invoice-extraction
+      - GET /invoice-kpis/customer/{customer_id}
+      - GET /invoice-suggested-loan/customer/{customer_id}
