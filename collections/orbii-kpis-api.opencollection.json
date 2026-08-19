@@ -1,0 +1,187 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Orbii KSA Business Category Assignment KPIs API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "KPIs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve client KPIs for a specific customer ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/client-kpis/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the customer"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database user name"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database user password"
+              }
+            ]
+          },
+          "docs": "Returns the latest KPI values for the given customer ID."
+        },
+        {
+          "info": {
+            "name": "Retrieve predictive KPIs for a specific customer ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/predictive-kpis/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the customer"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database user name"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database user password"
+              }
+            ]
+          },
+          "docs": "Returns the latest predictive KPI values for the given customer ID."
+        },
+        {
+          "info": {
+            "name": "Get KPIs for all clients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/client-kpis",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database user name"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database user password"
+              }
+            ]
+          },
+          "docs": "Retrieves KPIs and their values for all clients, along with the year and month."
+        },
+        {
+          "info": {
+            "name": "Get KPIs for a specific client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/client-kpis/:clientname",
+            "params": [
+              {
+                "name": "clientname",
+                "value": "",
+                "type": "path",
+                "description": "The name of the client to retrieve KPIs for"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database user name"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database user password"
+              }
+            ]
+          },
+          "docs": "Retrieves KPIs for a specific client, along with the year and month information."
+        },
+        {
+          "info": {
+            "name": "Get predictive KPIs for all clients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/predictive-kpis",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves predictive KPIs for all clients."
+        },
+        {
+          "info": {
+            "name": "Get predictive KPIs for a specific client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/predictive-kpis/:clientname",
+            "params": [
+              {
+                "name": "clientname",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves predictive KPIs for a specific client."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

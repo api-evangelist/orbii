@@ -1,0 +1,122 @@
+{
+  "item": [
+    {
+      "id": "1c01064f-f8a7-4c7f-86f5-6c74b4484644",
+      "name": "Data Check",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dd2a0ddd-f5b5-4b88-ae29-368a6dadc976",
+          "name": "Check for new data received",
+          "request": {
+            "name": "Check for new data received",
+            "description": {
+              "content": "Fetches company name and email for recent data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Check-for-new-data-received"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "967c5b57-2071-47c7-a45b-abef8ddf35e0",
+              "name": "Recent data received.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Check-for-new-data-received"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"email\": \"string\",\n    \"company_name\": \"string\"\n  },\n  {\n    \"email\": \"string\",\n    \"company_name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sa.orbii.ai/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a49ea66a-e26c-4a48-b11a-290c127e093b",
+    "name": "Orbii KSA Business Category Assignment Data Check API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing transactions, clients, and companies.",
+      "type": "text/plain"
+    }
+  }
+}

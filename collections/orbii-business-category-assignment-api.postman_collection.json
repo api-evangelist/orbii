@@ -1,0 +1,514 @@
+{
+  "item": [
+    {
+      "id": "1ab09cd2-1b32-470e-8021-34bbcfbeadfd",
+      "name": "Business Category Assignment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "936127e4-24e2-43e3-b525-11d9d294b746",
+          "name": "Get business categories with their subcategories",
+          "request": {
+            "name": "Get business categories with their subcategories",
+            "description": {
+              "content": "Returns a JSON object mapping each business category to a list of its subcategories.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assign-category"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "(Required) Username for SQL authentication"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "(Required) Password for SQL authentication"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a831d3dc-76b4-48a2-b9f9-277ebd1f179b",
+              "name": "A JSON object containing categories and their subcategories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assign-category"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Accommodation\": [\n    \"Hotels and Resorts\",\n    \"Bed and Breakfasts\",\n    \"Campgrounds\"\n  ],\n  \"Agriculture\": [\n    \"Crop Production\",\n    \"Animal Farming\",\n    \"Aquaculture\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9950e3a7-9b70-4ccb-8690-304c657d3aec",
+              "name": "Missing required parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assign-category"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f04844e-2a55-41de-82d2-eac1aa574d10",
+              "name": "Server error or database access error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assign-category"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1389e130-c99b-42d9-9f4f-51ee5f07b279",
+          "name": "Submit customer business category",
+          "request": {
+            "name": "Submit customer business category",
+            "description": {
+              "content": "Stores or updates the selected business category and subcategory for the specified customer ID in the [Reporting].[CustomerBusinessCategory] table. Requires SQL credentials as form fields.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assign-category"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "(Required) Database username"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "(Required) Database password"
+                },
+                {
+                  "disabled": false,
+                  "key": "customer_id",
+                  "value": "<string>",
+                  "description": "(Required) Unique identifier for the customer"
+                },
+                {
+                  "disabled": false,
+                  "key": "category_name",
+                  "value": "<string>",
+                  "description": "(Required) Business category (from the `business_categories` table)"
+                },
+                {
+                  "disabled": false,
+                  "key": "subcategory_name",
+                  "value": "<string>",
+                  "description": "Business subcategory (from the `business_subcategories` table)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f2e41a09-76a5-48a9-b097-b1e20120f3e2",
+              "name": "Category saved or updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assign-category"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Database username",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Database password",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Unique identifier for the customer",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Business category (from the `business_categories` table)",
+                        "type": "text/plain"
+                      },
+                      "key": "category_name",
+                      "value": "Automotive"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Business subcategory (from the `business_subcategories` table)",
+                        "type": "text/plain"
+                      },
+                      "key": "subcategory_name",
+                      "value": "Auto Dealerships"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "Business category saved for customer 43d027ff-e6cc-4f77-ab7a-1a8f34259035",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dcd58331-531e-445a-8b23-9e5efa4a246f",
+              "name": "Missing required form fields",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assign-category"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Database username",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Database password",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Unique identifier for the customer",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Business category (from the `business_categories` table)",
+                        "type": "text/plain"
+                      },
+                      "key": "category_name",
+                      "value": "Automotive"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Business subcategory (from the `business_subcategories` table)",
+                        "type": "text/plain"
+                      },
+                      "key": "subcategory_name",
+                      "value": "Auto Dealerships"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4389c42c-3c60-405a-8f1d-f8e74cbcc0a7",
+              "name": "Database connection or execution error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assign-category"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Database username",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Database password",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Unique identifier for the customer",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Business category (from the `business_categories` table)",
+                        "type": "text/plain"
+                      },
+                      "key": "category_name",
+                      "value": "Automotive"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Business subcategory (from the `business_subcategories` table)",
+                        "type": "text/plain"
+                      },
+                      "key": "subcategory_name",
+                      "value": "Auto Dealerships"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sa.orbii.ai/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "812739ca-1cbd-4c49-b699-202ec0a58b5b",
+    "name": "Orbii KSA Business Category Assignment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing transactions, clients, and companies.",
+      "type": "text/plain"
+    }
+  }
+}

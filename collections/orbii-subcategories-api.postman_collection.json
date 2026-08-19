@@ -1,0 +1,140 @@
+{
+  "item": [
+    {
+      "id": "34074d93-b88d-45c5-afd6-3d20f3a112d4",
+      "name": "Subcategories",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9eac3b95-a727-45c4-9f4c-057c480f18b8",
+          "name": "Get distinct subcategories for a client",
+          "request": {
+            "name": "Get distinct subcategories for a client",
+            "description": {
+              "content": "Fetches distinct subcategories for a given client.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subcategories",
+                ":clientname"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientname",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f4ea86b-5b60-479a-8e43-412c0c6ed0e6",
+              "name": "A list of distinct subcategories for the client.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subcategories",
+                    ":clientname"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientname",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sa.orbii.ai/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "87cbe36a-f8f0-4d82-a80a-6aeacbc10fef",
+    "name": "Orbii KSA Business Category Assignment Subcategories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing transactions, clients, and companies.",
+      "type": "text/plain"
+    }
+  }
+}

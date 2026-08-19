@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Orbii KSA Business Category Assignment Data Check API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Check",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check for new data received",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/Check-for-new-data-received",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetches company name and email for recent data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

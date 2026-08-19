@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Orbii KSA Business Category Assignment PDFs API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PDFs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve the list of PDFs with metadata and client details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/pdf-list",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database username for authentication"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database password for authentication"
+              }
+            ]
+          },
+          "docs": "Fetches the list of PDFs along with their metadata and client details.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve PDFs extracted on or after a specific datetime",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/pdf-list-from-date",
+            "params": [
+              {
+                "name": "datetime",
+                "value": "",
+                "type": "query",
+                "description": "The datetime filter (format: YYYY-MM-DD HH:MM:SS.sss). Defaults to 2025-05-01 00:00:00.000 if not provided.\n"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database username (optional; defaults to environment variable)"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database password (optional; defaults to environment variable)"
+              }
+            ]
+          },
+          "docs": "Returns the list of PDFs and their metadata where the extraction date is greater than or equal  to the given datetime. If no datetime is provided, it defaults to 2025-05-01 00:00:00.000.\n"
+        },
+        {
+          "info": {
+            "name": "Upload multiple PDFs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sa.orbii.ai/pdf-upload",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "files",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "user",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "customer_identifier",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "bank name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "date",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Allows users to upload multiple PDF files.\nThe uploaded files are stored in a dynamically generated directory with the format: \n`{customer_identifier}-{bank name}-{YYYYMMDD}` inside the container `{user}`.\nIf `bank name` is not provided, it defaults to `\"unspecified_bank\"`.\nIf `date` is not provided, it defaults to the current date in `YYYYMMDD` format.\n"
+        },
+        {
+          "info": {
+            "name": "Trigger PDF extraction pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sa.orbii.ai/start-pdf-extraction",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "user",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "customer_id",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "mode",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Starts the pipeline to process PDF data for the specified customer. An optional `mode` parameter allows specifying whether to override or append to existing data (defaults to `Override`).\nIf a pipeline is already running for the same customer_id, this endpoint will return a 409 Conflict response.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

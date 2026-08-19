@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Orbii KSA Business Category Assignment Clients API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all clients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/clients",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetches all clients."
+        },
+        {
+          "info": {
+            "name": "Get clients added within a date range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/clients/range",
+            "params": [
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start date (YYYY-MM-DD)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYY-MM-DD)"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "username"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "password"
+              }
+            ]
+          },
+          "docs": "Get clients added within a date range"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1874 @@
+{
+  "item": [
+    {
+      "id": "936937f9-4294-4278-be18-107957d65fec",
+      "name": "Merchants",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b6d91aaf-09ee-4878-857d-c2ca34c7adfb",
+          "name": "Get transactions with merchant details for a customer",
+          "request": {
+            "name": "Get transactions with merchant details for a customer",
+            "description": {
+              "content": "Retrieves all transactions for a given customer, including merchant details.\nIf merchant extraction has not been performed, the API will trigger it before fetching transactions.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions_with_merchant",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "Database username (optional, uses environment variables by default)."
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "Database password (optional, uses environment variables by default)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) The customer ID (GUID format)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11e4d6b8-6226-475c-a6f7-93b559473fba",
+              "name": "A list of transactions with merchant details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions_with_merchant",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer ID (GUID format)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"client_id\": \"string\",\n    \"borrower_id\": \"string\",\n    \"date\": \"1992-01-09\",\n    \"description\": \"string\",\n    \"merchant\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 7176.3917431299815,\n    \"currency\": \"string\",\n    \"balance\": 3556.19861301955,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"cost type\": \"string\",\n    \"interaction_type\": \"string\",\n    \"customer_id\": \"string\"\n  },\n  {\n    \"client_id\": \"string\",\n    \"borrower_id\": \"string\",\n    \"date\": \"2014-04-18\",\n    \"description\": \"string\",\n    \"merchant\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 8612.165967243693,\n    \"currency\": \"string\",\n    \"balance\": 8850.69061039473,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"cost type\": \"string\",\n    \"interaction_type\": \"string\",\n    \"customer_id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55ee56bc-f8a2-4fe1-891b-26f261df2e2c",
+              "name": "Customer ID not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions_with_merchant",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer ID (GUID format)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "050366ca-2fc9-497f-97c4-878c5d36f8f3",
+              "name": "Server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions_with_merchant",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer ID (GUID format)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24b8b1f1-b11b-4189-b06c-c18d39530922",
+          "name": "Get paginated transactions with merchant info by customer ID",
+          "request": {
+            "name": "Get paginated transactions with merchant info by customer ID",
+            "description": {
+              "content": "Retrieves transactions for the specified customer ID, including merchant details, using pagination.\nDefault page size is 1000, but you can adjust it with query parameters.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "paged-transactions_with_merchant",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "Database username (optional if using default from environment)."
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "Database password (optional if using default from environment)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (default 1)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "1000",
+                  "description": "Number of records per page (default 1000)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) The customer ID to filter transactions."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "322ac289-9517-4e2c-ac0f-2e26fe4fd22c",
+              "name": "Successful response with paginated transactions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paged-transactions_with_merchant",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer ID to filter transactions."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total_records\": 2500,\n  \"page\": 1,\n  \"page_size\": 1000,\n  \"total_pages\": 3,\n  \"transactions\": [\n    {\n      \"ClientID\": \"123\",\n      \"BorrowerID\": \"456\",\n      \"date\": \"2024-05-01\",\n      \"description\": \"Payment to supplier\",\n      \"credit_debit_indicator\": \"Debit\",\n      \"amount\": 1500,\n      \"currency\": \"USD\",\n      \"balance\": 5000,\n      \"category\": \"Utilities\",\n      \"subcategory\": \"Electricity\",\n      \"risk level\": \"Medium\",\n      \"bank name\": \"Bank A\",\n      \"iban\": \"AE070331234567890123456\",\n      \"cost type\": \"Fixed\",\n      \"merchant\": \"ACME Corp\",\n      \"interaction_type\": \"Supplier\",\n      \"customer_id\": \"c12345\"\n    },\n    {\n      \"ClientID\": \"123\",\n      \"BorrowerID\": \"456\",\n      \"date\": \"2024-05-01\",\n      \"description\": \"Payment to supplier\",\n      \"credit_debit_indicator\": \"Debit\",\n      \"amount\": 1500,\n      \"currency\": \"USD\",\n      \"balance\": 5000,\n      \"category\": \"Utilities\",\n      \"subcategory\": \"Electricity\",\n      \"risk level\": \"Medium\",\n      \"bank name\": \"Bank A\",\n      \"iban\": \"AE070331234567890123456\",\n      \"cost type\": \"Fixed\",\n      \"merchant\": \"ACME Corp\",\n      \"interaction_type\": \"Supplier\",\n      \"customer_id\": \"c12345\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c493a739-155c-41ce-87e4-f74e54051eae",
+              "name": "Bad request (e.g., missing or invalid parameters).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paged-transactions_with_merchant",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer ID to filter transactions."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d63ca41-30ff-4e45-9342-392fc71ecbb3",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paged-transactions_with_merchant",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer ID to filter transactions."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4651527c-a872-490b-b00c-9365debc0f91",
+          "name": "Get top buyers for a customer",
+          "request": {
+            "name": "Get top buyers for a customer",
+            "description": {
+              "content": "Retrieves the top buyers for a given customer, ranked by total transaction amount.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "top_buyers",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "Database username (optional, uses environment variables by default)."
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "Database password (optional, uses environment variables by default)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) The customer ID (GUID format)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f96bbf43-ac41-4b7f-b0d1-3d91a6ed66ee",
+              "name": "A list of top buyers sorted by total amount transacted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "top_buyers",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer ID (GUID format)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"merchant\": \"string\",\n    \"total_transacted\": 4378.852561953853,\n    \"number_of_interactions\": 8336\n  },\n  {\n    \"merchant\": \"string\",\n    \"total_transacted\": 7943.99451041179,\n    \"number_of_interactions\": 6943\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "363ad8c4-55d9-48c1-b3ee-a0c0fa6a2df4",
+              "name": "Customer ID not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "top_buyers",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer ID (GUID format)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "16a5dc23-3078-4d39-ad08-acfa1fea7f14",
+              "name": "Server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "top_buyers",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer ID (GUID format)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b02c9d6-0bc5-42e3-a2df-7f5f8e0a73f1",
+          "name": "Get top sellers for a customer",
+          "request": {
+            "name": "Get top sellers for a customer",
+            "description": {
+              "content": "Retrieves the top sellers (suppliers or service providers) for a given customer,\nranked by total transaction amount.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "top_sellers",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "Database username (optional, uses environment variables by default)."
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "Database password (optional, uses environment variables by default)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) The customer ID (GUID format)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ef72453-f33b-430c-b7be-6eca55353bb4",
+              "name": "A list of top sellers sorted by total amount transacted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "top_sellers",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer ID (GUID format)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"merchant\": \"string\",\n    \"total_transacted\": 1501.8292563253888,\n    \"number_of_interactions\": 3271\n  },\n  {\n    \"merchant\": \"string\",\n    \"total_transacted\": 1948.0453277081479,\n    \"number_of_interactions\": 8832\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8cc3b2f-7f7d-463b-acf3-cbadd460210b",
+              "name": "Customer ID not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "top_sellers",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer ID (GUID format)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c5bcd14-7a4b-487a-b857-73867a0a2f80",
+              "name": "Server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "top_sellers",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer ID (GUID format)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "493fa697-492c-4255-b1c7-5d8c926c7ec2",
+          "name": "Get top buyers for a customer in the last X months",
+          "request": {
+            "name": "Get top buyers for a customer in the last X months",
+            "description": {
+              "content": "Returns the top buyer-type merchants for a customer over the last `months` months,  where the time window is anchored to the customer's most recent transaction date.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "top_buyers_recent",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "months",
+                  "value": "6",
+                  "description": "Number of months to look back from the last transaction date."
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "username."
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "password."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) The unique customer ID (GUID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "70c03a69-1248-48d4-81cd-1a7269bb78e6",
+              "name": "A list of top buyer merchants",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "top_buyers_recent",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "months",
+                      "value": "6"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique customer ID (GUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"merchant\": \"Merchant A\",\n    \"total_transacted\": 12500.75,\n    \"number_of_interactions\": 23\n  },\n  {\n    \"merchant\": \"Merchant A\",\n    \"total_transacted\": 12500.75,\n    \"number_of_interactions\": 23\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ace87be7-94e8-4c46-9b84-f1dda60f9f6c",
+              "name": "Invalid request (e.g., bad parameters)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "top_buyers_recent",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "months",
+                      "value": "6"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique customer ID (GUID)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ded41cff-20dc-40f9-a37c-a6fd2139862b",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "top_buyers_recent",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "months",
+                      "value": "6"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique customer ID (GUID)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f8a79be-0da4-4452-ac29-14fe15b594c9",
+          "name": "Get top sellers for a customer in the last X months",
+          "request": {
+            "name": "Get top sellers for a customer in the last X months",
+            "description": {
+              "content": "Returns the top seller-type merchants for a customer over the last `months` months,  where the time window is anchored to the customer's most recent transaction date. Seller interaction types include: `Seller`, `Supplier`, `Service provider`, and `Agency`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "top_sellers_recent",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "months",
+                  "value": "6",
+                  "description": "Number of months to look back from the last transaction date."
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "username."
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "password."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) The unique customer ID (GUID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c4c847f-57ad-4a58-89c1-1a56b977f661",
+              "name": "A list of top seller merchants",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "top_sellers_recent",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "months",
+                      "value": "6"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique customer ID (GUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"merchant\": \"Supplier X\",\n    \"total_transacted\": 98750.5,\n    \"number_of_interactions\": 12\n  },\n  {\n    \"merchant\": \"Supplier X\",\n    \"total_transacted\": 98750.5,\n    \"number_of_interactions\": 12\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ace8328b-2cbd-4fcb-8ef7-96ef8de2fbf0",
+              "name": "Invalid request (e.g., bad parameters)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "top_sellers_recent",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "months",
+                      "value": "6"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique customer ID (GUID)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb65abed-13a0-42e4-90e6-9e19916911ce",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "top_sellers_recent",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "months",
+                      "value": "6"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique customer ID (GUID)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "460ad059-195b-4796-be67-236a934a33c1",
+          "name": "Get transactions-with-merchant for a customer within a date range",
+          "request": {
+            "name": "Get transactions-with-merchant for a customer within a date range",
+            "description": {},
+            "url": {
+              "path": [
+                "transactions_with_merchant",
+                "customer",
+                ":customer_id",
+                "range"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "418cb708-b9a2-4ae3-bd2c-147d20272ffa",
+              "name": "Array of transactions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions_with_merchant",
+                    "customer",
+                    ":customer_id",
+                    "range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ClientID\": 7525,\n    \"BorrowerID\": 6984,\n    \"date\": \"1999-02-12\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"debit\",\n    \"amount\": 9226.241490290355,\n    \"currency\": \"string\",\n    \"balance\": 6610.870617872619,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"cost type\": \"string\",\n    \"merchant\": \"string\",\n    \"interaction_type\": \"string\",\n    \"customer_id\": \"a07b5dc8-efc9-afbc-d1fa-98937493d2c6\"\n  },\n  {\n    \"ClientID\": 8520,\n    \"BorrowerID\": 2516,\n    \"date\": \"2005-06-17\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"credit\",\n    \"amount\": 9419.211657069078,\n    \"currency\": \"string\",\n    \"balance\": 9417.149228041488,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"cost type\": \"string\",\n    \"merchant\": \"string\",\n    \"interaction_type\": \"string\",\n    \"customer_id\": \"3a837f73-a065-88fd-d4ad-f8a70ad73b78\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e72fef6-ece4-418b-95ce-4057cbe9fa97",
+              "name": "Missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions_with_merchant",
+                    "customer",
+                    ":customer_id",
+                    "range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d7f7add-6607-487d-a0b9-51288cef74c6",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions_with_merchant",
+                    "customer",
+                    ":customer_id",
+                    "range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55ccf23a-8975-4f19-ba6b-d7315a80a25d",
+          "name": "Get paginated transactions-with-merchant for a customer within a date range",
+          "request": {
+            "name": "Get paginated transactions-with-merchant for a customer within a date range",
+            "description": {},
+            "url": {
+              "path": [
+                "paged-transactions_with_merchant",
+                "customer",
+                ":customer_id",
+                "range"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (1-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "1000",
+                  "description": "Page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "149afff4-97d7-479d-a866-b15b8e9a9c3d",
+              "name": "Paginated transactions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paged-transactions_with_merchant",
+                    "customer",
+                    ":customer_id",
+                    "range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total_records\": 8784,\n  \"page\": 9681,\n  \"page_size\": 3363,\n  \"total_pages\": 2416,\n  \"transactions\": [\n    {\n      \"ClientID\": 7359,\n      \"BorrowerID\": 9465,\n      \"date\": \"1983-01-06\",\n      \"description\": \"string\",\n      \"credit_debit_indicator\": \"credit\",\n      \"amount\": 6832.28089364048,\n      \"currency\": \"string\",\n      \"balance\": 2493.599232022987,\n      \"category\": \"string\",\n      \"subcategory\": \"string\",\n      \"risk level\": \"string\",\n      \"bank name\": \"string\",\n      \"iban\": \"string\",\n      \"cost type\": \"string\",\n      \"merchant\": \"string\",\n      \"interaction_type\": \"string\",\n      \"customer_id\": \"bbbe3ec5-f9de-f344-c811-b3a8ee9a5ff0\"\n    },\n    {\n      \"ClientID\": 1499,\n      \"BorrowerID\": 3459,\n      \"date\": \"1964-09-19\",\n      \"description\": \"string\",\n      \"credit_debit_indicator\": \"credit\",\n      \"amount\": 4227.67969352166,\n      \"currency\": \"string\",\n      \"balance\": 5049.3894766832145,\n      \"category\": \"string\",\n      \"subcategory\": \"string\",\n      \"risk level\": \"string\",\n      \"bank name\": \"string\",\n      \"iban\": \"string\",\n      \"cost type\": \"string\",\n      \"merchant\": \"string\",\n      \"interaction_type\": \"string\",\n      \"customer_id\": \"99917d48-7bb8-fe44-9725-fca4cd1f0d54\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7e5f018-5f29-4cce-a30d-0252a9ae2daf",
+              "name": "Missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paged-transactions_with_merchant",
+                    "customer",
+                    ":customer_id",
+                    "range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f8acc0b-70fb-40fe-96fc-d25f234a98e1",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paged-transactions_with_merchant",
+                    "customer",
+                    ":customer_id",
+                    "range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sa.orbii.ai/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a78c8a7b-085b-419b-b552-00dcb459a5e8",
+    "name": "Orbii KSA Business Category Assignment Merchants API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing transactions, clients, and companies.",
+      "type": "text/plain"
+    }
+  }
+}

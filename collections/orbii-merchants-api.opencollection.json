@@ -1,0 +1,316 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Orbii KSA Business Category Assignment Merchants API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Merchants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get transactions with merchant details for a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/transactions_with_merchant/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The customer ID (GUID format)."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database username (optional, uses environment variables by default)."
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database password (optional, uses environment variables by default)."
+              }
+            ]
+          },
+          "docs": "Retrieves all transactions for a given customer, including merchant details.\nIf merchant extraction has not been performed, the API will trigger it before fetching transactions.\n"
+        },
+        {
+          "info": {
+            "name": "Get paginated transactions with merchant info by customer ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/paged-transactions_with_merchant/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The customer ID to filter transactions."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database username (optional if using default from environment)."
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database password (optional if using default from environment)."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (default 1)."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page (default 1000)."
+              }
+            ]
+          },
+          "docs": "Retrieves transactions for the specified customer ID, including merchant details, using pagination.\nDefault page size is 1000, but you can adjust it with query parameters.\n"
+        },
+        {
+          "info": {
+            "name": "Get top buyers for a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/top_buyers/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The customer ID (GUID format)."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database username (optional, uses environment variables by default)."
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database password (optional, uses environment variables by default)."
+              }
+            ]
+          },
+          "docs": "Retrieves the top buyers for a given customer, ranked by total transaction amount.\n"
+        },
+        {
+          "info": {
+            "name": "Get top sellers for a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/top_sellers/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The customer ID (GUID format)."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database username (optional, uses environment variables by default)."
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database password (optional, uses environment variables by default)."
+              }
+            ]
+          },
+          "docs": "Retrieves the top sellers (suppliers or service providers) for a given customer,\nranked by total transaction amount.\n"
+        },
+        {
+          "info": {
+            "name": "Get top buyers for a customer in the last X months",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/top_buyers_recent/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique customer ID (GUID)."
+              },
+              {
+                "name": "months",
+                "value": "",
+                "type": "query",
+                "description": "Number of months to look back from the last transaction date."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "username."
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "password."
+              }
+            ]
+          },
+          "docs": "Returns the top buyer-type merchants for a customer over the last `months` months,  where the time window is anchored to the customer's most recent transaction date.\n"
+        },
+        {
+          "info": {
+            "name": "Get top sellers for a customer in the last X months",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/top_sellers_recent/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique customer ID (GUID)."
+              },
+              {
+                "name": "months",
+                "value": "",
+                "type": "query",
+                "description": "Number of months to look back from the last transaction date."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "username."
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "password."
+              }
+            ]
+          },
+          "docs": "Returns the top seller-type merchants for a customer over the last `months` months,  where the time window is anchored to the customer's most recent transaction date. Seller interaction types include: `Seller`, `Supplier`, `Service provider`, and `Agency`.\n"
+        },
+        {
+          "info": {
+            "name": "Get transactions-with-merchant for a customer within a date range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/transactions_with_merchant/customer/:customer_id/range",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get transactions-with-merchant for a customer within a date range"
+        },
+        {
+          "info": {
+            "name": "Get paginated transactions-with-merchant for a customer within a date range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/paged-transactions_with_merchant/customer/:customer_id/range",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (1-based)"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Page size"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get paginated transactions-with-merchant for a customer within a date range"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

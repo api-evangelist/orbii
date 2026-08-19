@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Orbii KSA Business Category Assignment Lending Actions API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lending Actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Log a lending decision from email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sa.orbii.ai/log-lending",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "user",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                },
+                {
+                  "name": "customer_id",
+                  "value": ""
+                },
+                {
+                  "name": "decision",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Logs a client’s lending decision via a POST request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

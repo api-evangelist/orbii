@@ -1,0 +1,361 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Orbii KSA Business Category Assignment Invoices API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload Excel invoice extract",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sa.orbii.ai/invoice-extract-upload",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "user",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "customer_identifier",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "date",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "files",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload Excel files (.xlsx, .xls, .xlsm).\n"
+        },
+        {
+          "info": {
+            "name": "Start invoice extraction pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sa.orbii.ai/start-invoice-extraction",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "user",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                },
+                {
+                  "name": "customer_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Starts the Invoice Extraction pipeline for the given customer.   Prevents duplicate runs by checking if a pipeline is already running for the same `customer_id`.\n"
+        },
+        {
+          "info": {
+            "name": "Get invoice KPIs by customer_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/invoice-kpis/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The customer GUID."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "username"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "password"
+              }
+            ]
+          },
+          "docs": "Get invoice KPIs by customer_id"
+        },
+        {
+          "info": {
+            "name": "Get invoice risk assessments by customer_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/invoice-risk_assessment/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The customer GUID."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "username"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "password"
+              }
+            ]
+          },
+          "docs": "Get invoice risk assessments by customer_id"
+        },
+        {
+          "info": {
+            "name": "Get invoice band classification by customer_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/invoice-band_classification/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The customer GUID."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "username"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "password"
+              }
+            ]
+          },
+          "docs": "Get invoice band classification by customer_id"
+        },
+        {
+          "info": {
+            "name": "Get invoice KPIs by company for a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/invoice-company-kpis/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The customer GUID."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "username"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "password"
+              }
+            ]
+          },
+          "docs": "Get invoice KPIs by company for a customer"
+        },
+        {
+          "info": {
+            "name": "Get invoice risk assessments by company for a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/invoice-company-risk_assessment/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The customer GUID."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "username"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "password"
+              }
+            ]
+          },
+          "docs": "Get invoice risk assessments by company for a customer"
+        },
+        {
+          "info": {
+            "name": "Get invoice band classifications by company for a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/invoice-company-band_classification/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The customer GUID."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "username"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "password"
+              }
+            ]
+          },
+          "docs": "Get invoice band classifications by company for a customer"
+        },
+        {
+          "info": {
+            "name": "Get invoice suggested loan by customer_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/invoice-suggested-loan/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The customer GUID."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "username"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "password"
+              }
+            ]
+          },
+          "docs": "Get invoice suggested loan by customer_id."
+        },
+        {
+          "info": {
+            "name": "Get suggested loan allocation by company for a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/invoice-suggested-loan-allocation/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The customer GUID."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "username"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "password"
+              }
+            ]
+          },
+          "docs": "Get suggested loan allocation by company for a customer."
+        },
+        {
+          "info": {
+            "name": "Get suggested-loan summary for a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/invoice-suggested-loan-summary/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The customer GUID."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "username"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "password"
+              }
+            ]
+          },
+          "docs": "Returns a single summary row containing:\n- **SuggestedLoan** (from `Reporting.inv_SuggestedLoan_by_creditor`)\n- **TotalCompanyCaps** (sum of `CompanyCap`)\n- **TotalAllocated** (sum of `AllocatedAmt`)\n- **UnallocatedRemainder** (`SuggestedLoan - TotalAllocated`)\ncomputed for the specified `customer_id`.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

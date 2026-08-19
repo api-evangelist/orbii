@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Orbii KSA Business Category Assignment Risk Assessment API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Risk Assessment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get risk assessment for a specific customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/risk_assessment/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique customer identifier (GUID)."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database username (optional if set via environment variables)."
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database password (optional if set via environment variables)."
+              }
+            ]
+          },
+          "docs": "Returns a list of risk assessment rules and scores for the specified customer."
+        },
+        {
+          "info": {
+            "name": "Get band classification for a specific customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/band_classification/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique customer identifier (GUID)."
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database username (optional if set via environment variables)."
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database password (optional if set via environment variables)."
+              }
+            ]
+          },
+          "docs": "Returns the band classification, component scores, score values, total score, and red flag reason for the specified customer."
+        },
+        {
+          "info": {
+            "name": "Update a KPI rule threshold",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sa.orbii.ai/update-kpi-rule",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "category",
+                  "value": ""
+                },
+                {
+                  "name": "rule",
+                  "value": ""
+                },
+                {
+                  "name": "new_threshold",
+                  "value": ""
+                },
+                {
+                  "name": "user",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Updates a KPI rule threshold."
+        },
+        {
+          "info": {
+            "name": "Reruns Assessment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sa.orbii.ai/rerun-assessment",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "user",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Triggers the pipeline to rerun the assessment."
+        },
+        {
+          "info": {
+            "name": "Get band classification for all customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/band_classification",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database username."
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database password."
+              }
+            ]
+          },
+          "docs": "Returns band classification scores, values, total score, band, and red flag reasons  for all customer IDs.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

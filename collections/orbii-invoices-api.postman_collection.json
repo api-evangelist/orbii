@@ -1,0 +1,2631 @@
+{
+  "item": [
+    {
+      "id": "0a9cc8e1-fb1e-4154-b822-279226d6889b",
+      "name": "Invoices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1869b30-a232-4381-8ee8-b1680fa759bb",
+          "name": "Upload Excel invoice extract",
+          "request": {
+            "name": "Upload Excel invoice extract",
+            "description": {
+              "content": "Upload Excel files (.xlsx, .xls, .xlsm).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoice-extract-upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Username.\n"
+                },
+                {
+                  "key": "customer_identifier",
+                  "value": "<uuid>",
+                  "type": "text",
+                  "description": "(Required) Customer GUID identifier. Must be a valid GUID (e.g., `43d027ff-e6cc-4f77-ab7a-1a8f34259035`).\n"
+                },
+                {
+                  "key": "files",
+                  "value": "[\"<binary>\",\"<binary>\"]",
+                  "type": "text",
+                  "description": "(Required) One or more Excel files to upload. Only `.xlsx`, `.xls`, and `.xlsm` are accepted.\n"
+                },
+                {
+                  "key": "date",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional date in format `YYYYMMDD`. Defaults to current date if not provided.\n"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6b5a8c87-7607-4bff-a394-2fc02e0e514c",
+              "name": "Files uploaded successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-extract-upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Username.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "client123",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Customer GUID identifier. Must be a valid GUID (e.g., `43d027ff-e6cc-4f77-ab7a-1a8f34259035`).\n",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_identifier",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) One or more Excel files to upload. Only `.xlsx`, `.xls`, and `.xlsm` are accepted.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional date in format `YYYYMMDD`. Defaults to current date if not provided.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "date",
+                      "value": "20250923",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Files uploaded successfully\",\n  \"folder\": \"43d027ff-e6cc-4f77-ab7a-1a8f34259035\",\n  \"container\": \"client123_inv\",\n  \"uploaded_files\": [\n    \"invoice_april.xlsx\",\n    \"invoice_april.xlsx\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0b69b56-d998-45c3-8128-20b359833338",
+              "name": "Bad Request – invalid input or file",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-extract-upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Username.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "client123",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Customer GUID identifier. Must be a valid GUID (e.g., `43d027ff-e6cc-4f77-ab7a-1a8f34259035`).\n",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_identifier",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) One or more Excel files to upload. Only `.xlsx`, `.xls`, and `.xlsm` are accepted.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional date in format `YYYYMMDD`. Defaults to current date if not provided.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "date",
+                      "value": "20250923",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid customer_identifier format. Expected a valid GUID.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b72aa9dc-5301-403f-b201-f1b12638e18b",
+              "name": "Internal Server Error – ADLS Gen2 operation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-extract-upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Username.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "client123",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Customer GUID identifier. Must be a valid GUID (e.g., `43d027ff-e6cc-4f77-ab7a-1a8f34259035`).\n",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_identifier",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) One or more Excel files to upload. Only `.xlsx`, `.xls`, and `.xlsm` are accepted.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional date in format `YYYYMMDD`. Defaults to current date if not provided.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "date",
+                      "value": "20250923",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Failed to create directory\",\n  \"response\": \"<Azure error details>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2c4b660-02c0-4977-924c-545483317812",
+          "name": "Start invoice extraction pipeline",
+          "request": {
+            "name": "Start invoice extraction pipeline",
+            "description": {
+              "content": "Starts the Invoice Extraction pipeline for the given customer.   Prevents duplicate runs by checking if a pipeline is already running for the same `customer_id`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "start-invoice-extraction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "(Required) username"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "(Required) password"
+                },
+                {
+                  "disabled": false,
+                  "key": "customer_id",
+                  "value": "<string>",
+                  "description": "(Required) Customer ID."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0e7e5b6f-536a-43f5-8bb2-7b24147a780d",
+              "name": "Pipeline triggered successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "start-invoice-extraction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) username",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "username"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) password",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "password"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Customer ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invoice extraction pipeline triggered successfully\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8e34272-d0e6-4ba8-bf81-ce6110ed49ec",
+              "name": "Missing required parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "start-invoice-extraction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) username",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "username"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) password",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "password"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Customer ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Missing required parameters user, password, customer_id\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "106ec9f1-af54-4ca2-9f75-7556b360c9f4",
+              "name": "Pipeline already running for this customer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "start-invoice-extraction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) username",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "username"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) password",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "password"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Customer ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"A pipeline is already running for customer_id '43d027ff-e6cc-4f77-ab7a-1a8f34259035'.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07b108dd-5ec2-42d0-a2ff-ab680ea77c17",
+              "name": "Internal server error or pipeline trigger failure",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "start-invoice-extraction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) username",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "username"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) password",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "password"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Customer ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Pipeline trigger failed\",\n  \"status_code\": 500,\n  \"response_text\": \"{\\\"error\\\": \\\"ADF pipeline not found\\\"}\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20e078c5-3287-4d2f-82f2-af7d7173377a",
+          "name": "Get invoice KPIs by customer_id",
+          "request": {
+            "name": "Get invoice KPIs by customer_id",
+            "description": {
+              "content": "Get invoice KPIs by customer_id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoice-kpis",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "username"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) The customer GUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7500da9c-9fc4-4336-8046-248f6444b95d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-kpis",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"category\": \"Revenue\",\n    \"kpi\": \"Monthly revenue\",\n    \"value\": 123456.78,\n    \"year\": 2025,\n    \"month\": 9\n  },\n  {\n    \"category\": \"Expenses\",\n    \"kpi\": \"Monthly expenses\",\n    \"value\": 65432.1,\n    \"year\": 2025,\n    \"month\": 9\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e1225bb-48f4-4a78-ac33-ee825221a150",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-kpis",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "913ae90a-acf4-4ebd-b098-5fc2fd0cdd0c",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-kpis",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ccae57f9-325e-4733-9f9e-b2331d1a6631",
+          "name": "Get invoice risk assessments by customer_id",
+          "request": {
+            "name": "Get invoice risk assessments by customer_id",
+            "description": {
+              "content": "Get invoice risk assessments by customer_id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoice-risk_assessment",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "username"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) The customer GUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b50fe3a-c960-41c6-b08f-66f3deb0eba8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-risk_assessment",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"category\": \"Revenue & Income\",\n    \"rule\": \"Revenue consistency above threshold\",\n    \"value\": 0.87,\n    \"assessment\": \"Pass\",\n    \"customer_id\": \"03789f7f-6b22-4319-aee8-c4d76dc93fd1\"\n  },\n  {\n    \"category\": \"Expenses & Profitability\",\n    \"rule\": \"Expense ratio below 70%\",\n    \"value\": 0.68,\n    \"assessment\": \"Pass\",\n    \"customer_id\": \"03789f7f-6b22-4319-aee8-c4d76dc93fd1\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "781f0438-4971-4203-a425-517dc91b0628",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-risk_assessment",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58f869fc-9a6e-4998-89c3-f1991a4e0fca",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-risk_assessment",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "481b13b8-90d5-47a8-9b62-a4dc71493b88",
+          "name": "Get invoice band classification by customer_id",
+          "request": {
+            "name": "Get invoice band classification by customer_id",
+            "description": {
+              "content": "Get invoice band classification by customer_id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoice-band_classification",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "username"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) The customer GUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7354a93f-0f8d-427c-91a3-c31994b765eb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-band_classification",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"baseline_eligibility_score\": 4,\n    \"business_stability_and_risk_score\": 3,\n    \"invoicing_and_seasonal_trends_score\": 5,\n    \"payment_processing_and_liquidity_score\": 4,\n    \"revenue_performance_score\": 5,\n    \"baseline_eligibility_score_value\": 0.72,\n    \"business_stability_and_risk_score_value\": 0.61,\n    \"invoicing_and_seasonal_trends_score_value\": 0.88,\n    \"payment_processing_and_liquidity_score_value\": 0.76,\n    \"revenue_performance_score_value\": 0.9,\n    \"total_score\": 3.77,\n    \"band\": \"A\",\n    \"customer_id\": \"03789f7f-6b22-4319-aee8-c4d76dc93fd1\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b264eea4-6e54-4fa9-97ad-29afb0afba8c",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-band_classification",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9672de74-133c-4a91-aa85-6dfe29abaf75",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-band_classification",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3a2df93-5c16-465c-8265-43f0cb209c3c",
+          "name": "Get invoice KPIs by company for a customer",
+          "request": {
+            "name": "Get invoice KPIs by company for a customer",
+            "description": {
+              "content": "Get invoice KPIs by company for a customer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoice-company-kpis",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "username"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) The customer GUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "43d17ac4-5d66-4ce2-b379-ec2931c072d9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-company-kpis",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company\": \"Acme Trading LLC\",\n    \"category\": \"Revenue\",\n    \"kpi\": \"Monthly revenue\",\n    \"value\": 128450.55\n  },\n  {\n    \"company\": \"Beta Logistics FZ-LLC\",\n    \"category\": \"Expenses\",\n    \"kpi\": \"Monthly expenses\",\n    \"value\": 66420.1\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f430c528-3c60-4398-b6fa-dcf67e7a50e2",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-company-kpis",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f70ad739-82ab-4e3e-918e-7ede514a02ed",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-company-kpis",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5584b3c6-cb8b-46a7-bba9-34ce56d4a76f",
+          "name": "Get invoice risk assessments by company for a customer",
+          "request": {
+            "name": "Get invoice risk assessments by company for a customer",
+            "description": {
+              "content": "Get invoice risk assessments by company for a customer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoice-company-risk_assessment",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "username"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) The customer GUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ddc992b-8960-44fc-a858-2695491dd697",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-company-risk_assessment",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company\": \"Acme Trading LLC\",\n    \"category\": \"Revenue & Income\",\n    \"rule\": \"Revenue consistency above threshold\",\n    \"value\": 0.87,\n    \"assessment\": \"Pass\",\n    \"customer_id\": \"03789f7f-6b22-4319-aee8-c4d76dc93fd1\"\n  },\n  {\n    \"company\": \"Beta Logistics FZ-LLC\",\n    \"category\": \"Expenses & Profitability\",\n    \"rule\": \"Expense ratio below 70%\",\n    \"value\": 0.68,\n    \"assessment\": \"Pass\",\n    \"customer_id\": \"03789f7f-6b22-4319-aee8-c4d76dc93fd1\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "164fb927-c436-45b0-94e5-d2c4727053af",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-company-risk_assessment",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2bfeffd7-a2a7-4f91-a71b-860c82708459",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-company-risk_assessment",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a699c1e3-ae3c-4f91-86c6-2fb9df1c3d0c",
+          "name": "Get invoice band classifications by company for a customer",
+          "request": {
+            "name": "Get invoice band classifications by company for a customer",
+            "description": {
+              "content": "Get invoice band classifications by company for a customer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoice-company-band_classification",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "username"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) The customer GUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2719a39e-d297-481d-b506-a5f0519bba76",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-company-band_classification",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company\": \"Acme Trading LLC\",\n    \"activity_and_relationship_score\": 4,\n    \"spend_and_concentration_score\": 3,\n    \"payment_behaviour_score\": 5,\n    \"activity_and_relationship_score_value\": 0.78,\n    \"spend_and_concentration_score_value\": 0.65,\n    \"payment_behaviour_score_value\": 0.92,\n    \"total_score\": 3.98,\n    \"band\": \"A\",\n    \"customer_id\": \"03789f7f-6b22-4319-aee8-c4d76dc93fd1\"\n  },\n  {\n    \"company\": \"Beta Logistics FZ-LLC\",\n    \"activity_and_relationship_score\": 3,\n    \"spend_and_concentration_score\": 4,\n    \"payment_behaviour_score\": 4,\n    \"activity_and_relationship_score_value\": 0.61,\n    \"spend_and_concentration_score_value\": 0.72,\n    \"payment_behaviour_score_value\": 0.8,\n    \"total_score\": 3.45,\n    \"band\": \"B\",\n    \"customer_id\": \"03789f7f-6b22-4319-aee8-c4d76dc93fd1\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e7eaa3e-8515-4855-9d98-6e0c93a096bb",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-company-band_classification",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "caec03fe-9604-426c-a086-bd6c2e38bc11",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-company-band_classification",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38b38c9e-410a-40af-9e52-805b1981742c",
+          "name": "Get invoice suggested loan by customer_id",
+          "request": {
+            "name": "Get invoice suggested loan by customer_id",
+            "description": {
+              "content": "Get invoice suggested loan by customer_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoice-suggested-loan",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "username"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) The customer GUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c49c97fc-69cc-44a8-a810-396893cfd1d2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-suggested-loan",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"customer_id\": \"03789f7f-6b22-4319-aee8-c4d76dc93fd1\",\n    \"band\": \"A\",\n    \"annual_revenue\": 1250000,\n    \"multiplier\": 0.35,\n    \"suggested_loan\": 437500\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d42dcdbf-1002-493c-a187-e46dee0497ca",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-suggested-loan",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17134e26-051c-4281-a528-40d7bbb95f38",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-suggested-loan",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95c41be0-6b20-4811-a720-680b1c120327",
+          "name": "Get suggested loan allocation by company for a customer",
+          "request": {
+            "name": "Get suggested loan allocation by company for a customer",
+            "description": {
+              "content": "Get suggested loan allocation by company for a customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoice-suggested-loan-allocation",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "username"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) The customer GUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5262749a-80a5-4513-9a2c-db5f210b42cd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-suggested-loan-allocation",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"customer_id\": \"03789f7f-6b22-4319-aee8-c4d76dc93fd1\",\n    \"company\": \"Acme Trading LLC\",\n    \"band\": \"A\",\n    \"total_score\": 3.98,\n    \"due_amount\": 150000,\n    \"multiplier\": 0.35,\n    \"company_cap\": 120000,\n    \"allocated_amount\": 120000,\n    \"rank_by_score\": 1\n  },\n  {\n    \"customer_id\": \"03789f7f-6b22-4319-aee8-c4d76dc93fd1\",\n    \"company\": \"Beta Logistics FZ-LLC\",\n    \"band\": \"B\",\n    \"total_score\": 3.45,\n    \"due_amount\": 80000,\n    \"multiplier\": 0.3,\n    \"company_cap\": 70000,\n    \"allocated_amount\": 65000,\n    \"rank_by_score\": 2\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ed0db23-a2f6-4b4d-a5e4-16907dd873fb",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-suggested-loan-allocation",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1759a10-365b-40a5-aea3-82b329a47b8a",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-suggested-loan-allocation",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7f00f3e-c95f-40f0-8819-b1a2be595bfc",
+          "name": "Get suggested-loan summary for a customer",
+          "request": {
+            "name": "Get suggested-loan summary for a customer",
+            "description": {
+              "content": "Returns a single summary row containing:\n- **SuggestedLoan** (from `Reporting.inv_SuggestedLoan_by_creditor`)\n- **TotalCompanyCaps** (sum of `CompanyCap`)\n- **TotalAllocated** (sum of `AllocatedAmt`)\n- **UnallocatedRemainder** (`SuggestedLoan - TotalAllocated`)\ncomputed for the specified `customer_id`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoice-suggested-loan-summary",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "username"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) The customer GUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1710083-a94c-4563-811f-2ee397285e25",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-suggested-loan-summary",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"suggested_loan\": 437500,\n    \"total_company_caps\": 190000,\n    \"total_allocated\": 185000,\n    \"unallocated_remainder\": 252500,\n    \"customer_id\": \"03789f7f-6b22-4319-aee8-c4d76dc93fd1\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba5646b5-7171-45a8-ad9b-969852192d31",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-suggested-loan-summary",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5091a9c-0384-43ea-9e1b-4e3d8f03c036",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoice-suggested-loan-summary",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) The customer GUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sa.orbii.ai/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7999e911-d4ee-4175-a7aa-7613e54e6ae8",
+    "name": "Orbii KSA Business Category Assignment Invoices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing transactions, clients, and companies.",
+      "type": "text/plain"
+    }
+  }
+}

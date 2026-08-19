@@ -1,0 +1,1080 @@
+{
+  "item": [
+    {
+      "id": "7239a74b-910e-4fd8-922f-bfc081fe911f",
+      "name": "PDFs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d8ed60b4-e8ce-4585-ba20-22632aa2d60c",
+          "name": "Retrieve the list of PDFs with metadata and client details",
+          "request": {
+            "name": "Retrieve the list of PDFs with metadata and client details",
+            "description": {
+              "content": "Fetches the list of PDFs along with their metadata and client details.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pdf-list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "(Required) Database username for authentication"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "(Required) Database password for authentication"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b11ab77-88b3-427c-a6d2-695874089052",
+              "name": "A JSON array of PDF records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdf-list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"client_name\": \"Orbii Corp\",\n    \"customer_id\": \"123456\",\n    \"foldername\": \"reports_2024\",\n    \"filename\": \"financial_report.pdf\",\n    \"extraction_date\": \"2024-01-20T15:30:00Z\",\n    \"pdf_producer\": \"Adobe Acrobat\",\n    \"content_creator\": \"Finance Team\",\n    \"creation_date\": \"2023-12-15T10:00:00Z\",\n    \"modification_date\": \"2024-01-10T14:00:00Z\",\n    \"modified\": true\n  },\n  {\n    \"client_name\": \"Orbii Corp\",\n    \"customer_id\": \"123456\",\n    \"foldername\": \"reports_2024\",\n    \"filename\": \"financial_report.pdf\",\n    \"extraction_date\": \"2024-01-20T15:30:00Z\",\n    \"pdf_producer\": \"Adobe Acrobat\",\n    \"content_creator\": \"Finance Team\",\n    \"creation_date\": \"2023-12-15T10:00:00Z\",\n    \"modification_date\": \"2024-01-10T14:00:00Z\",\n    \"modified\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11d75313-f6bc-4de2-aaf6-874c9b529b76",
+              "name": "Invalid request, missing parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdf-list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5bd8cf89-761e-4a5d-acf6-dba8e5036e80",
+              "name": "Internal server error, database connection issue",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdf-list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac1e37df-e015-4017-8bd7-63b928298beb",
+          "name": "Retrieve PDFs extracted on or after a specific datetime",
+          "request": {
+            "name": "Retrieve PDFs extracted on or after a specific datetime",
+            "description": {
+              "content": "Returns the list of PDFs and their metadata where the extraction date is greater than or equal  to the given datetime. If no datetime is provided, it defaults to 2025-05-01 00:00:00.000.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pdf-list-from-date"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "datetime",
+                  "value": "<string>",
+                  "description": "The datetime filter (format: YYYY-MM-DD HH:MM:SS.sss). Defaults to 2025-05-01 00:00:00.000 if not provided.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "Database username (optional; defaults to environment variable)"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "Database password (optional; defaults to environment variable)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dae45c98-1aa4-4fc8-98d6-ba392d982488",
+              "name": "A JSON array of PDF records extracted on or after the specified datetime",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdf-list-from-date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "datetime",
+                      "value": "2025-05-01 00:00:00.000"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"client_name\": \"Orbii Corp\",\n    \"customer_id\": \"123456\",\n    \"foldername\": \"reports_2025\",\n    \"filename\": \"financial_report.pdf\",\n    \"extraction_date\": \"2025-05-01T00:00:00Z\",\n    \"pdf_producer\": \"Adobe Acrobat\",\n    \"content_creator\": \"Finance Team\",\n    \"creation_date\": \"2025-04-30T10:00:00Z\",\n    \"modification_date\": \"2025-05-01T14:00:00Z\",\n    \"modified\": true\n  },\n  {\n    \"client_name\": \"Orbii Corp\",\n    \"customer_id\": \"123456\",\n    \"foldername\": \"reports_2025\",\n    \"filename\": \"financial_report.pdf\",\n    \"extraction_date\": \"2025-05-01T00:00:00Z\",\n    \"pdf_producer\": \"Adobe Acrobat\",\n    \"content_creator\": \"Finance Team\",\n    \"creation_date\": \"2025-04-30T10:00:00Z\",\n    \"modification_date\": \"2025-05-01T14:00:00Z\",\n    \"modified\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc7f4a08-5a12-4a01-a6ef-6879911b0e62",
+              "name": "Invalid datetime format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdf-list-from-date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "datetime",
+                      "value": "2025-05-01 00:00:00.000"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d9e45e0-be53-442a-b2bc-b1c8d67a5933",
+              "name": "Internal server error, e.g., database connection issue",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdf-list-from-date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "datetime",
+                      "value": "2025-05-01 00:00:00.000"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f4d6cfb-464f-44b8-89cc-2541343ef5da",
+          "name": "Upload multiple PDFs",
+          "request": {
+            "name": "Upload multiple PDFs",
+            "description": {
+              "content": "Allows users to upload multiple PDF files.\nThe uploaded files are stored in a dynamically generated directory with the format: \n`{customer_identifier}-{bank name}-{YYYYMMDD}` inside the container `{user}`.\nIf `bank name` is not provided, it defaults to `\"unspecified_bank\"`.\nIf `date` is not provided, it defaults to the current date in `YYYYMMDD` format.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pdf-upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "files",
+                  "value": "[\"<binary>\",\"<binary>\"]",
+                  "type": "text",
+                  "description": "List of PDF files to upload"
+                },
+                {
+                  "key": "user",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The user, which is also used as the Azure container name"
+                },
+                {
+                  "key": "customer_identifier",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Must be a valid Unique identifier, GUID (UUID)"
+                },
+                {
+                  "key": "bank name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Name of the bank (defaults to `\"unspecified_bank\"` if not provided)"
+                },
+                {
+                  "key": "date",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Date in `YYYYMMDD` format (defaults to today's date if not provided)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3742b986-2324-4a58-b465-cbd4d7e8be21",
+              "name": "PDFs uploaded successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdf-upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "List of PDF files to upload",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The user, which is also used as the Azure container name",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "user",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Must be a valid Unique identifier, GUID (UUID)",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_identifier",
+                      "value": "customer",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Name of the bank (defaults to `\"unspecified_bank\"` if not provided)",
+                        "type": "text/plain"
+                      },
+                      "key": "bank name",
+                      "value": "bank name",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Date in `YYYYMMDD` format (defaults to today's date if not provided)",
+                        "type": "text/plain"
+                      },
+                      "key": "date",
+                      "value": "20241117",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Files uploaded successfully\",\n  \"folder\": \"customer-wio-20241117\",\n  \"container\": \"user\",\n  \"uploaded_files\": [\n    \"file1.pdf\",\n    \"file2.pdf\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac2e6817-7be5-42fb-8ecd-721454186190",
+              "name": "Invalid request, missing parameters or incorrect date format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdf-upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "List of PDF files to upload",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The user, which is also used as the Azure container name",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "user",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Must be a valid Unique identifier, GUID (UUID)",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_identifier",
+                      "value": "customer",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Name of the bank (defaults to `\"unspecified_bank\"` if not provided)",
+                        "type": "text/plain"
+                      },
+                      "key": "bank name",
+                      "value": "bank name",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Date in `YYYYMMDD` format (defaults to today's date if not provided)",
+                        "type": "text/plain"
+                      },
+                      "key": "date",
+                      "value": "20241117",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "75899e2a-26a9-4f7d-8326-cf4ecded229c",
+              "name": "Internal server error, failed to upload files",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdf-upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "List of PDF files to upload",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The user, which is also used as the Azure container name",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "user",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Must be a valid Unique identifier, GUID (UUID)",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_identifier",
+                      "value": "customer",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Name of the bank (defaults to `\"unspecified_bank\"` if not provided)",
+                        "type": "text/plain"
+                      },
+                      "key": "bank name",
+                      "value": "bank name",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Date in `YYYYMMDD` format (defaults to today's date if not provided)",
+                        "type": "text/plain"
+                      },
+                      "key": "date",
+                      "value": "20241117",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b1d5570b-51da-4114-a741-d8bfced7798e",
+          "name": "Trigger PDF extraction pipeline",
+          "request": {
+            "name": "Trigger PDF extraction pipeline",
+            "description": {
+              "content": "Starts the pipeline to process PDF data for the specified customer. An optional `mode` parameter allows specifying whether to override or append to existing data (defaults to `Override`).\nIf a pipeline is already running for the same customer_id, this endpoint will return a 409 Conflict response.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "start-pdf-extraction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "password",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "customer_id",
+                  "value": "<uuid>",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "mode",
+                  "value": "Override",
+                  "type": "text",
+                  "description": "Optional. Determines how PDF data is processed in the pipeline.   Allowed values are `Override` (default) and `Append`.\n (This can only be one of Override,Append)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0649f337-c381-42c2-bd14-1939f2cab155",
+              "name": "Pipeline triggered successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "start-pdf-extraction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "dbuser",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "mysecurepassword",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional. Determines how PDF data is processed in the pipeline.   Allowed values are `Override` (default) and `Append`.\n (This can only be one of Override,Append)",
+                        "type": "text/plain"
+                      },
+                      "key": "mode",
+                      "value": "Override",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"PDF extraction pipeline triggered successfully\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eab623f0-6acb-4ba8-aba8-adb77d2779ec",
+              "name": "Missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "start-pdf-extraction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "dbuser",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "mysecurepassword",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional. Determines how PDF data is processed in the pipeline.   Allowed values are `Override` (default) and `Append`.\n (This can only be one of Override,Append)",
+                        "type": "text/plain"
+                      },
+                      "key": "mode",
+                      "value": "Override",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Missing required parameters: user, password, and customer_id\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "804c53a3-abbb-4421-8e19-683177372736",
+              "name": "A pipeline is already running for this customer_id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "start-pdf-extraction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "dbuser",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "mysecurepassword",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional. Determines how PDF data is processed in the pipeline.   Allowed values are `Override` (default) and `Append`.\n (This can only be one of Override,Append)",
+                        "type": "text/plain"
+                      },
+                      "key": "mode",
+                      "value": "Override",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"A pipeline is already running for customer_id '43d027ff-e6cc-4f77-ab7a-1a8f34259035'.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6697138d-ca0f-425f-afec-308f6bc18202",
+              "name": "Pipeline trigger failed or server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "start-pdf-extraction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "dbuser",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "mysecurepassword",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional. Determines how PDF data is processed in the pipeline.   Allowed values are `Override` (default) and `Append`.\n (This can only be one of Override,Append)",
+                        "type": "text/plain"
+                      },
+                      "key": "mode",
+                      "value": "Override",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Pipeline trigger failed\",\n  \"response_text\": \"<Azure error message here>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sa.orbii.ai/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6a6525c1-0f44-4117-ba3d-ad2309bc0fd8",
+    "name": "Orbii KSA Business Category Assignment PDFs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing transactions, clients, and companies.",
+      "type": "text/plain"
+    }
+  }
+}

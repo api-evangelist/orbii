@@ -1,0 +1,585 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Orbii KSA Business Category Assignment Transactions API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve all transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/transactions",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database user name"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database user password"
+              }
+            ]
+          },
+          "docs": "Returns a list of all transactions."
+        },
+        {
+          "info": {
+            "name": "Retrieve transactions for a specific customer ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/transactions/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the customer"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database user name"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database user password"
+              }
+            ]
+          },
+          "docs": "Returns a list of transactions associated with a given customer ID."
+        },
+        {
+          "info": {
+            "name": "Retrieve transactions for a specific date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/transactions/date/:date",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "The date to retrieve transactions for (YYYY-MM-DD)"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database user name"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database user password"
+              }
+            ]
+          },
+          "docs": "Returns a list of transactions for a given date."
+        },
+        {
+          "info": {
+            "name": "Get transaction date range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/transactions/daterange",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database user name"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database user password"
+              }
+            ]
+          },
+          "docs": "Fetches the minimum and maximum transaction dates."
+        },
+        {
+          "info": {
+            "name": "Get transactions between a date range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/transactions/range",
+            "params": [
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "The start date of the range (YYYY-MM-DD)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "The end date of the range (YYYY-MM-DD)"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database user name"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database user password"
+              }
+            ]
+          },
+          "docs": "Fetches transactions between a date range."
+        },
+        {
+          "info": {
+            "name": "Retrieve transactions for a specific client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/transactions/:clientname",
+            "params": [
+              {
+                "name": "clientname",
+                "value": "",
+                "type": "path",
+                "description": "The name of the client to retrieve transactions for"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database user name"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database user password"
+              }
+            ]
+          },
+          "docs": "Returns a list of transactions for a given client."
+        },
+        {
+          "info": {
+            "name": "Get transactions for a client on a specific date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/transactions/:clientname/date/:date",
+            "params": [
+              {
+                "name": "clientname",
+                "value": "",
+                "type": "path",
+                "description": "The name of the client to retrieve transactions for"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "The date to retrieve transactions for (YYYY-MM-DD)"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database user name"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database user password"
+              }
+            ]
+          },
+          "docs": "Fetches transactions for a client on a specific date."
+        },
+        {
+          "info": {
+            "name": "Get transaction date range for a specific client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/transactions/:clientname/daterange",
+            "params": [
+              {
+                "name": "clientname",
+                "value": "",
+                "type": "path",
+                "description": "The name of the client to retrieve the date range for"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database user name"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database user password"
+              }
+            ]
+          },
+          "docs": "Fetches the minimum and maximum transaction dates for a specific client."
+        },
+        {
+          "info": {
+            "name": "Get transactions for a client between a date range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/transactions/:clientname/range",
+            "params": [
+              {
+                "name": "clientname",
+                "value": "",
+                "type": "path",
+                "description": "The name of the client to retrieve transactions for"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "The start date of the range (YYYY-MM-DD)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "The end date of the range (YYYY-MM-DD)"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database user name"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database user password"
+              }
+            ]
+          },
+          "docs": "Fetches transactions for a client between a date range."
+        },
+        {
+          "info": {
+            "name": "Get transactions for a specific IBAN",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/transactions/iban/:iban",
+            "params": [
+              {
+                "name": "iban",
+                "value": "",
+                "type": "path",
+                "description": "The IBAN to retrieve transactions for"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database user name"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database user password"
+              }
+            ]
+          },
+          "docs": "Fetches transactions for a specific IBAN."
+        },
+        {
+          "info": {
+            "name": "Retrieve paginated transactions for a specific customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/paged-transactions/customer/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique customer ID to retrieve transactions for"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database user name"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database user password"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination (default is 1)"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of transactions per page (default is 1000)"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of transactions for a given customer ID."
+        },
+        {
+          "info": {
+            "name": "Retrieve paginated transactions for a specific client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/paged-transactions/:clientname",
+            "params": [
+              {
+                "name": "clientname",
+                "value": "",
+                "type": "path",
+                "description": "The name of the client to retrieve transactions for"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Database user name"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Database user password"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination (default is 1)"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of transactions per page (default is 1000)"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of transactions for a given client."
+        },
+        {
+          "info": {
+            "name": "Categorise cheque deposits as Equity Transactions or Revenue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sa.orbii.ai/categorise-cheque-deposits",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "user",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                },
+                {
+                  "name": "customer_id",
+                  "value": ""
+                },
+                {
+                  "name": "target_category",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Starts a pipeline to reclassify cheque deposit transactions, recalculate KPIs and rerun the assessment for this customer_id.\n"
+        },
+        {
+          "info": {
+            "name": "Categorise partner transactions as Equity Transactions or Transfers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sa.orbii.ai/categorise-partner-transactions",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "user",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                },
+                {
+                  "name": "customer_id",
+                  "value": ""
+                },
+                {
+                  "name": "partner_name",
+                  "value": ""
+                },
+                {
+                  "name": "target_category",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Starts a pipeline to recategorize transactions based on the partner name found in the transaction description.\n"
+        },
+        {
+          "info": {
+            "name": "Get transactions for a customer within a date range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/transactions/customer/:customer_id/range",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID (GUID)"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start date (YYYY-MM-DD)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYY-MM-DD)"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "username"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "password"
+              }
+            ]
+          },
+          "docs": "Get transactions for a customer within a date range"
+        },
+        {
+          "info": {
+            "name": "Get paginated transactions for a customer within a date range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/paged-transactions/customer/:customer_id/range",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get paginated transactions for a customer within a date range"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

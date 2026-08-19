@@ -1,0 +1,1047 @@
+{
+  "item": [
+    {
+      "id": "f5b665b2-6799-4489-ba29-73050c7ecbac",
+      "name": "Risk Assessment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "338104a0-d0c9-49e2-9a84-f075038526fd",
+          "name": "Get risk assessment for a specific customer",
+          "request": {
+            "name": "Get risk assessment for a specific customer",
+            "description": {
+              "content": "Returns a list of risk assessment rules and scores for the specified customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "risk_assessment",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "Database username (optional if set via environment variables)."
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "Database password (optional if set via environment variables)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) The unique customer identifier (GUID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "467debdc-ce7f-49f0-9356-17bd2245787f",
+              "name": "Successful response with risk assessment results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "risk_assessment",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique customer identifier (GUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"category\": \"string\",\n    \"rule\": \"string\",\n    \"value\": \"string\",\n    \"assessment\": \"string\",\n    \"customer_id\": \"string\"\n  },\n  {\n    \"category\": \"string\",\n    \"rule\": \"string\",\n    \"value\": \"string\",\n    \"assessment\": \"string\",\n    \"customer_id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c087789d-74d3-4cfc-bda6-c6d0a053a00c",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "risk_assessment",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique customer identifier (GUID)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2fe789e-686f-489c-b688-97f874f74759",
+          "name": "Get band classification for a specific customer",
+          "request": {
+            "name": "Get band classification for a specific customer",
+            "description": {
+              "content": "Returns the band classification, component scores, score values, total score, and red flag reason for the specified customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "band_classification",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "Database username (optional if set via environment variables)."
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "Database password (optional if set via environment variables)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) The unique customer identifier (GUID)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f3fd9a6-cb08-4b1d-9a1a-e8ef18f28838",
+              "name": "Successful response with band classification results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "band_classification",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique customer identifier (GUID)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"baseline_eligibility_score\": 7489.550476663125,\n    \"revenue_and_income_score\": 8394.427412043826,\n    \"expenses_and_profitability_score\": 57.55144026150738,\n    \"loan_and_debt_management_score\": 4418.4466925053475,\n    \"cash_flow_and_liquidity_score\": 4201.746352299751,\n    \"business_liquidity_and_stability_score\": 4811.738364712827,\n    \"bank_account_balance_score\": 6857.079573526354,\n    \"baseline_eligibility_score_value\": 6643.167631464394,\n    \"revenue_and_income_score_value\": 926.5853951313042,\n    \"expenses_and_profitability_score_value\": 6310.757663029898,\n    \"loan_and_debt_management_score_value\": 9074.432074642285,\n    \"cash_flow_and_liquidity_score_value\": 3094.0909973600506,\n    \"business_liquidity_and_stability_score_value\": 9212.29932837086,\n    \"bank_account_balance_score_value\": 7815.384861051021,\n    \"total_score\": 4695.063529485238,\n    \"band\": \"string\",\n    \"red_flag_reason\": \"string\"\n  },\n  {\n    \"baseline_eligibility_score\": 7706.693644136615,\n    \"revenue_and_income_score\": 1613.254688823308,\n    \"expenses_and_profitability_score\": 3672.7690908935697,\n    \"loan_and_debt_management_score\": 706.6277384734876,\n    \"cash_flow_and_liquidity_score\": 7694.568700556664,\n    \"business_liquidity_and_stability_score\": 4819.507391103966,\n    \"bank_account_balance_score\": 5501.837055599219,\n    \"baseline_eligibility_score_value\": 4586.406872936206,\n    \"revenue_and_income_score_value\": 5351.527228606335,\n    \"expenses_and_profitability_score_value\": 484.5113351244146,\n    \"loan_and_debt_management_score_value\": 7513.552986503689,\n    \"cash_flow_and_liquidity_score_value\": 6864.2758142124485,\n    \"business_liquidity_and_stability_score_value\": 4495.9521962350855,\n    \"bank_account_balance_score_value\": 9531.590078493919,\n    \"total_score\": 405.8636716658248,\n    \"band\": \"string\",\n    \"red_flag_reason\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c1feacf-921d-4478-94e2-6b7d59671db5",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "band_classification",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique customer identifier (GUID)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d9b5553-8896-4384-b96e-6e335d1742f2",
+          "name": "Update a KPI rule threshold",
+          "request": {
+            "name": "Update a KPI rule threshold",
+            "description": {
+              "content": "Updates a KPI rule threshold.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "update-kpi-rule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "rule",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "new_threshold",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7cb4838b-1b0d-49f4-bf63-e22abb1204d2",
+              "name": "KPI rule updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-kpi-rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "rule",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "new_threshold",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"KPI rule updated successfully\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e49fb470-306e-4aab-98a8-3a33544221ed",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-kpi-rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "rule",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "new_threshold",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Missing required parameters: category, rule, new_threshold\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "513cfc16-992b-448c-bdee-316a5810f005",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-kpi-rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "rule",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "new_threshold",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Something went wrong\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "26b471da-18e2-4c44-a478-21ba7662f1d0",
+          "name": "Reruns Assessment",
+          "request": {
+            "name": "Reruns Assessment",
+            "description": {
+              "content": "Triggers the pipeline to rerun the assessment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rerun-assessment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0d253d84-7822-46f9-a263-c6642d1e594c",
+              "name": "Successfully triggered Assessment pipeline",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rerun-assessment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "user"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "password"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Assessment pipeline triggered successfully\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e9049f6-1d7c-43cc-a3e1-432be45e5ecd",
+              "name": "Missing required parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rerun-assessment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "user"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "password"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Missing required parameters: user and password\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "691b15e6-8307-4bf7-b3b5-ffa78626bdbf",
+              "name": "Failed to trigger pipeline",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rerun-assessment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "user"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "password"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Pipeline trigger failed\",\n  \"response_text\": \"Error details\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb79c392-667e-47e7-be7f-a8b4c243b3c1",
+          "name": "Get band classification for all customers",
+          "request": {
+            "name": "Get band classification for all customers",
+            "description": {
+              "content": "Returns band classification scores, values, total score, band, and red flag reasons  for all customer IDs.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "band_classification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "(Required) Database username."
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "(Required) Database password."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "750d31af-df45-437e-bc03-5a72a3ce8a15",
+              "name": "A list of band classifications for all customers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "band_classification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"customer_id\": \"43d027ff-e6cc-4f77-ab7a-1a8f34259035\",\n    \"baseline_eligibility_score\": 85,\n    \"revenue_and_income_score\": 90,\n    \"expenses_and_profitability_score\": 70,\n    \"loan_and_debt_management_score\": 80,\n    \"cash_flow_and_liquidity_score\": 75,\n    \"business_liquidity_and_stability_score\": 88,\n    \"bank_account_balance_score\": 82,\n    \"baseline_eligibility_score_value\": 1,\n    \"revenue_and_income_score_value\": 1,\n    \"expenses_and_profitability_score_value\": 0,\n    \"loan_and_debt_management_score_value\": 1,\n    \"cash_flow_and_liquidity_score_value\": 0,\n    \"business_liquidity_and_stability_score_value\": 1,\n    \"bank_account_balance_score_value\": 1,\n    \"total_score\": 497,\n    \"band\": \"A\",\n    \"red_flag_reason\": \"High loan default risk\"\n  },\n  {\n    \"customer_id\": \"43d027ff-e6cc-4f77-ab7a-1a8f34259035\",\n    \"baseline_eligibility_score\": 85,\n    \"revenue_and_income_score\": 90,\n    \"expenses_and_profitability_score\": 70,\n    \"loan_and_debt_management_score\": 80,\n    \"cash_flow_and_liquidity_score\": 75,\n    \"business_liquidity_and_stability_score\": 88,\n    \"bank_account_balance_score\": 82,\n    \"baseline_eligibility_score_value\": 1,\n    \"revenue_and_income_score_value\": 1,\n    \"expenses_and_profitability_score_value\": 0,\n    \"loan_and_debt_management_score_value\": 1,\n    \"cash_flow_and_liquidity_score_value\": 0,\n    \"business_liquidity_and_stability_score_value\": 1,\n    \"bank_account_balance_score_value\": 1,\n    \"total_score\": 497,\n    \"band\": \"A\",\n    \"red_flag_reason\": \"High loan default risk\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e9fb509-d393-4850-b3bb-2f0e50385314",
+              "name": "Missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "band_classification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a8f533a6-1f72-42fa-a68a-de5f338cbb3a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "band_classification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sa.orbii.ai/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a4da5eaa-2248-4090-b3ae-2b41e7ebb959",
+    "name": "Orbii KSA Business Category Assignment Risk Assessment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing transactions, clients, and companies.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,848 @@
+{
+  "item": [
+    {
+      "id": "be7c9d3e-31d2-4e7e-99e7-ad7329ed0822",
+      "name": "KPIs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "deaa857b-9a48-41b9-ba8c-bed3b5c6a211",
+          "name": "Retrieve client KPIs for a specific customer ID",
+          "request": {
+            "name": "Retrieve client KPIs for a specific customer ID",
+            "description": {
+              "content": "Returns the latest KPI values for the given customer ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "client-kpis",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "DB_USER",
+                  "description": "Database user name"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "DB_PASSWORD",
+                  "description": "Database user password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) The unique identifier of the customer"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af8592ed-5ec6-4dab-a157-e78e2817d17b",
+              "name": "A list of KPIs for the specified customer ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client-kpis",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique identifier of the customer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"borrower_name\": \"string\",\n    \"customer_id\": \"string\",\n    \"kpi\": \"string\",\n    \"value\": 5902.327913221646,\n    \"year\": 6316,\n    \"month\": 6684\n  },\n  {\n    \"borrower_name\": \"string\",\n    \"customer_id\": \"string\",\n    \"kpi\": \"string\",\n    \"value\": 2752.993028826539,\n    \"year\": 4966,\n    \"month\": 3087\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55d08721-c071-4655-97a8-bfa96584fb6c",
+              "name": "Bad request - missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client-kpis",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique identifier of the customer"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "04b9a61d-f99b-441a-b11c-53faa8f62bb0",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client-kpis",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique identifier of the customer"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f6ee2c9-be24-43cb-8551-8f5c8d856b86",
+          "name": "Retrieve predictive KPIs for a specific customer ID",
+          "request": {
+            "name": "Retrieve predictive KPIs for a specific customer ID",
+            "description": {
+              "content": "Returns the latest predictive KPI values for the given customer ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "predictive-kpis",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "DB_USER",
+                  "description": "Database user name"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "DB_PASSWORD",
+                  "description": "Database user password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) The unique identifier of the customer"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4870281-1236-43f1-8aba-e598f7bf1864",
+              "name": "A list of predictive KPIs for the specified customer ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "predictive-kpis",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique identifier of the customer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"borrower_name\": \"string\",\n    \"customer_id\": \"string\",\n    \"year\": 991,\n    \"month\": 1013,\n    \"predicted_revenue\": 3770.8531763820743,\n    \"predicted_expenses\": 1975.9894640772957,\n    \"predicted_transfers\": 5362.64583723546,\n    \"predicted_essentials\": 7195.168189654997,\n    \"predicted_non_essentials\": 557.4735268572417,\n    \"predicted_profit\": 9123.691233202097\n  },\n  {\n    \"borrower_name\": \"string\",\n    \"customer_id\": \"string\",\n    \"year\": 648,\n    \"month\": 5482,\n    \"predicted_revenue\": 613.7547713802982,\n    \"predicted_expenses\": 9375.802918701216,\n    \"predicted_transfers\": 3669.025429265962,\n    \"predicted_essentials\": 1086.8080481957875,\n    \"predicted_non_essentials\": 5857.871166349785,\n    \"predicted_profit\": 4460.461349824829\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "657acd3f-a403-4161-be33-27d53beb12e5",
+              "name": "Bad request - missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "predictive-kpis",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique identifier of the customer"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7c3e9ab9-67bf-4b9d-a205-9fb93484d4d6",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "predictive-kpis",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique identifier of the customer"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6adcad22-ce5d-44f7-864a-faec6ee02827",
+          "name": "Get KPIs for all clients",
+          "request": {
+            "name": "Get KPIs for all clients",
+            "description": {
+              "content": "Retrieves KPIs and their values for all clients, along with the year and month.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "client-kpis"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "DB_USER",
+                  "description": "Database user name"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "DB_PASSWORD",
+                  "description": "Database user password"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "73e4282a-e11e-46b9-a20b-88af5aa7277e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client-kpis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"client_name\": \"string\",\n    \"kpi\": \"string\",\n    \"value\": 696.6045256339271,\n    \"year\": 3423,\n    \"month\": 3336\n  },\n  {\n    \"client_name\": \"string\",\n    \"kpi\": \"string\",\n    \"value\": 2804.2195822907647,\n    \"year\": 6956,\n    \"month\": 2523\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3f801b9-7973-4c69-82de-6e5ddbe17aeb",
+          "name": "Get KPIs for a specific client",
+          "request": {
+            "name": "Get KPIs for a specific client",
+            "description": {
+              "content": "Retrieves KPIs for a specific client, along with the year and month information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "client-kpis",
+                ":clientname"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "DB_USER",
+                  "description": "Database user name"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "DB_PASSWORD",
+                  "description": "Database user password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientname",
+                  "description": "(Required) The name of the client to retrieve KPIs for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "438f39b5-4d3a-4c4b-912c-0b8ddc60dcd3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client-kpis",
+                    ":clientname"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientname",
+                      "description": "(Required) The name of the client to retrieve KPIs for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"client_name\": \"string\",\n    \"kpi\": \"string\",\n    \"value\": 696.6045256339271,\n    \"year\": 3423,\n    \"month\": 3336\n  },\n  {\n    \"client_name\": \"string\",\n    \"kpi\": \"string\",\n    \"value\": 2804.2195822907647,\n    \"year\": 6956,\n    \"month\": 2523\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9008ec62-7e64-4885-8f65-fc98b2d3b665",
+          "name": "Get predictive KPIs for all clients",
+          "request": {
+            "name": "Get predictive KPIs for all clients",
+            "description": {
+              "content": "Retrieves predictive KPIs for all clients.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "predictive-kpis"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93532e3c-8bee-4bfe-a2ad-0f921a395aa7",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "predictive-kpis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"client_name\": \"string\",\n    \"year\": 1239,\n    \"month\": 8090,\n    \"predicted_revenue\": 8039.995025914419,\n    \"predicted_expenses\": 3983.0206232426804,\n    \"predicted_transfers\": 7245.979331609274,\n    \"predicted_essentials\": 3263.765025440356,\n    \"predicted_non_essentials\": 3266.814899509746,\n    \"predicted_profit\": 4688.991504773086\n  },\n  {\n    \"client_name\": \"string\",\n    \"year\": 2020,\n    \"month\": 2310,\n    \"predicted_revenue\": 2934.0261850663264,\n    \"predicted_expenses\": 820.3743269945785,\n    \"predicted_transfers\": 1810.6118828907304,\n    \"predicted_essentials\": 930.6211360717509,\n    \"predicted_non_essentials\": 533.6064796850249,\n    \"predicted_profit\": 1432.405451139277\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f843233-d0bd-4ad7-8f10-135edc167842",
+          "name": "Get predictive KPIs for a specific client",
+          "request": {
+            "name": "Get predictive KPIs for a specific client",
+            "description": {
+              "content": "Retrieves predictive KPIs for a specific client.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "predictive-kpis",
+                ":clientname"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientname",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b8509a08-4071-4cbf-aab2-9362bc1894d2",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "predictive-kpis",
+                    ":clientname"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientname",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"client_name\": \"string\",\n    \"year\": 1239,\n    \"month\": 8090,\n    \"predicted_revenue\": 8039.995025914419,\n    \"predicted_expenses\": 3983.0206232426804,\n    \"predicted_transfers\": 7245.979331609274,\n    \"predicted_essentials\": 3263.765025440356,\n    \"predicted_non_essentials\": 3266.814899509746,\n    \"predicted_profit\": 4688.991504773086\n  },\n  {\n    \"client_name\": \"string\",\n    \"year\": 2020,\n    \"month\": 2310,\n    \"predicted_revenue\": 2934.0261850663264,\n    \"predicted_expenses\": 820.3743269945785,\n    \"predicted_transfers\": 1810.6118828907304,\n    \"predicted_essentials\": 930.6211360717509,\n    \"predicted_non_essentials\": 533.6064796850249,\n    \"predicted_profit\": 1432.405451139277\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sa.orbii.ai/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "946b448c-6bc2-4b62-8cb7-eefdf96255b1",
+    "name": "Orbii KSA Business Category Assignment KPIs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing transactions, clients, and companies.",
+      "type": "text/plain"
+    }
+  }
+}

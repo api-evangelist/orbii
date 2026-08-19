@@ -1,0 +1,2649 @@
+{
+  "item": [
+    {
+      "id": "886e8125-f610-45c1-8202-a4ad73977c50",
+      "name": "Transactions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4da142b8-7d12-4eef-a53d-a2c2a93761ba",
+          "name": "Retrieve all transactions",
+          "request": {
+            "name": "Retrieve all transactions",
+            "description": {
+              "content": "Returns a list of all transactions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "DB_USER",
+                  "description": "Database user name"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "DB_PASSWORD",
+                  "description": "Database user password"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "25e81f9f-cf34-4b33-9387-9e29d979e135",
+              "name": "A list of transactions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"1956-04-09\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 2011.7480736289629,\n    \"currency\": \"string\",\n    \"balance\": 7857.992655057283,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"borrowername\": \"string\",\n    \"cost type\": \"string\",\n    \"customer_id\": \"string\"\n  },\n  {\n    \"date\": \"2018-12-28\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 7730.480423947794,\n    \"currency\": \"string\",\n    \"balance\": 9445.442865915033,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"borrowername\": \"string\",\n    \"cost type\": \"string\",\n    \"customer_id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8be9e0d-8daa-416f-98ef-e7b7d4d1920e",
+          "name": "Retrieve transactions for a specific customer ID",
+          "request": {
+            "name": "Retrieve transactions for a specific customer ID",
+            "description": {
+              "content": "Returns a list of transactions associated with a given customer ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "DB_USER",
+                  "description": "Database user name"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "DB_PASSWORD",
+                  "description": "Database user password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) The unique identifier of the customer"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "44d9cf33-310d-42c5-8045-b1351f43ae72",
+              "name": "A list of transactions for the specified customer ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique identifier of the customer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"1956-04-09\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 2011.7480736289629,\n    \"currency\": \"string\",\n    \"balance\": 7857.992655057283,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"borrowername\": \"string\",\n    \"cost type\": \"string\",\n    \"customer_id\": \"string\"\n  },\n  {\n    \"date\": \"2018-12-28\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 7730.480423947794,\n    \"currency\": \"string\",\n    \"balance\": 9445.442865915033,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"borrowername\": \"string\",\n    \"cost type\": \"string\",\n    \"customer_id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90bb7b98-82a7-40a2-8e9a-34bb62655113",
+              "name": "Bad request - missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique identifier of the customer"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "06ee6633-598b-4a8f-96b1-518b176874b9",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique identifier of the customer"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d95b16a3-178d-44e5-9c12-146618672ea1",
+          "name": "Retrieve transactions for a specific date",
+          "request": {
+            "name": "Retrieve transactions for a specific date",
+            "description": {
+              "content": "Returns a list of transactions for a given date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions",
+                "date",
+                ":date"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "DB_USER",
+                  "description": "Database user name"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "DB_PASSWORD",
+                  "description": "Database user password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<date>",
+                  "key": "date",
+                  "description": "(Required) The date to retrieve transactions for (YYYY-MM-DD)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fde9becc-003f-48ce-8004-3cbc06aaffd5",
+              "name": "A list of transactions for the specified date",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    "date",
+                    ":date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<date>",
+                      "key": "date",
+                      "description": "(Required) The date to retrieve transactions for (YYYY-MM-DD)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"1956-04-09\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 2011.7480736289629,\n    \"currency\": \"string\",\n    \"balance\": 7857.992655057283,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"borrowername\": \"string\",\n    \"cost type\": \"string\",\n    \"customer_id\": \"string\"\n  },\n  {\n    \"date\": \"2018-12-28\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 7730.480423947794,\n    \"currency\": \"string\",\n    \"balance\": 9445.442865915033,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"borrowername\": \"string\",\n    \"cost type\": \"string\",\n    \"customer_id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd90d21a-ee57-4558-b05a-1667835edb97",
+          "name": "Get transaction date range",
+          "request": {
+            "name": "Get transaction date range",
+            "description": {
+              "content": "Fetches the minimum and maximum transaction dates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions",
+                "daterange"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "DB_USER",
+                  "description": "Database user name"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "DB_PASSWORD",
+                  "description": "Database user password"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1c47ae37-c2e3-46e8-995d-ad71e69ac56e",
+              "name": "The date range for transactions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    "daterange"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"start_date\": \"1998-06-16\",\n  \"end_date\": \"1982-09-26\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77c489fe-2b75-4daa-8ca2-828c16e04071",
+          "name": "Get transactions between a date range",
+          "request": {
+            "name": "Get transactions between a date range",
+            "description": {
+              "content": "Fetches transactions between a date range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions",
+                "range"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "(Required) The start date of the range (YYYY-MM-DD)"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "(Required) The end date of the range (YYYY-MM-DD)"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "DB_USER",
+                  "description": "Database user name"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "DB_PASSWORD",
+                  "description": "Database user password"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18ac77de-2e28-46d5-9079-e9dd1f1a7c56",
+              "name": "A list of transactions in the specified date range.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    "range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"1956-04-09\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 2011.7480736289629,\n    \"currency\": \"string\",\n    \"balance\": 7857.992655057283,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"borrowername\": \"string\",\n    \"cost type\": \"string\",\n    \"customer_id\": \"string\"\n  },\n  {\n    \"date\": \"2018-12-28\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 7730.480423947794,\n    \"currency\": \"string\",\n    \"balance\": 9445.442865915033,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"borrowername\": \"string\",\n    \"cost type\": \"string\",\n    \"customer_id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78d8e6af-7b37-481f-a4a9-e49f6d454420",
+          "name": "Retrieve transactions for a specific client",
+          "request": {
+            "name": "Retrieve transactions for a specific client",
+            "description": {
+              "content": "Returns a list of transactions for a given client.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions",
+                ":clientname"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "DB_USER",
+                  "description": "Database user name"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "DB_PASSWORD",
+                  "description": "Database user password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientname",
+                  "description": "(Required) The name of the client to retrieve transactions for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d9481c2e-3d44-4da7-9536-0ea42f00fc9f",
+              "name": "A list of transactions for the specified client",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    ":clientname"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientname",
+                      "description": "(Required) The name of the client to retrieve transactions for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"1956-04-09\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 2011.7480736289629,\n    \"currency\": \"string\",\n    \"balance\": 7857.992655057283,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"borrowername\": \"string\",\n    \"cost type\": \"string\",\n    \"customer_id\": \"string\"\n  },\n  {\n    \"date\": \"2018-12-28\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 7730.480423947794,\n    \"currency\": \"string\",\n    \"balance\": 9445.442865915033,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"borrowername\": \"string\",\n    \"cost type\": \"string\",\n    \"customer_id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a825aba7-a9d1-4075-9cea-abb44ab32b0c",
+          "name": "Get transactions for a client on a specific date",
+          "request": {
+            "name": "Get transactions for a client on a specific date",
+            "description": {
+              "content": "Fetches transactions for a client on a specific date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions",
+                ":clientname",
+                "date",
+                ":date"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "DB_USER",
+                  "description": "Database user name"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "DB_PASSWORD",
+                  "description": "Database user password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientname",
+                  "description": "(Required) The name of the client to retrieve transactions for"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<date>",
+                  "key": "date",
+                  "description": "(Required) The date to retrieve transactions for (YYYY-MM-DD)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18ec71f6-46da-469e-8d2b-3863519fd9ce",
+              "name": "A list of transactions for the client on the specified date.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    ":clientname",
+                    "date",
+                    ":date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientname",
+                      "description": "(Required) The name of the client to retrieve transactions for"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<date>",
+                      "key": "date",
+                      "description": "(Required) The date to retrieve transactions for (YYYY-MM-DD)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"1956-04-09\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 2011.7480736289629,\n    \"currency\": \"string\",\n    \"balance\": 7857.992655057283,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"borrowername\": \"string\",\n    \"cost type\": \"string\",\n    \"customer_id\": \"string\"\n  },\n  {\n    \"date\": \"2018-12-28\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 7730.480423947794,\n    \"currency\": \"string\",\n    \"balance\": 9445.442865915033,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"borrowername\": \"string\",\n    \"cost type\": \"string\",\n    \"customer_id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a8f0289-8679-42bb-8d2a-64c535632303",
+          "name": "Get transaction date range for a specific client",
+          "request": {
+            "name": "Get transaction date range for a specific client",
+            "description": {
+              "content": "Fetches the minimum and maximum transaction dates for a specific client.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions",
+                ":clientname",
+                "daterange"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "DB_USER",
+                  "description": "Database user name"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "DB_PASSWORD",
+                  "description": "Database user password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientname",
+                  "description": "(Required) The name of the client to retrieve the date range for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "41121b54-de41-4107-bb39-08ff3827c43d",
+              "name": "The date range for transactions of the specified client.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    ":clientname",
+                    "daterange"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientname",
+                      "description": "(Required) The name of the client to retrieve the date range for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"start_date\": \"1998-06-16\",\n  \"end_date\": \"1982-09-26\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4bb7aec-2bb4-4e01-81df-a6206fbb1135",
+          "name": "Get transactions for a client between a date range",
+          "request": {
+            "name": "Get transactions for a client between a date range",
+            "description": {
+              "content": "Fetches transactions for a client between a date range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions",
+                ":clientname",
+                "range"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "(Required) The start date of the range (YYYY-MM-DD)"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "(Required) The end date of the range (YYYY-MM-DD)"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "DB_USER",
+                  "description": "Database user name"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "DB_PASSWORD",
+                  "description": "Database user password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientname",
+                  "description": "(Required) The name of the client to retrieve transactions for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0211c2cb-5f84-400f-a72d-39a93b6c1c82",
+              "name": "A list of transactions for the client in the specified date range.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    ":clientname",
+                    "range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientname",
+                      "description": "(Required) The name of the client to retrieve transactions for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"1956-04-09\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 2011.7480736289629,\n    \"currency\": \"string\",\n    \"balance\": 7857.992655057283,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"borrowername\": \"string\",\n    \"cost type\": \"string\",\n    \"customer_id\": \"string\"\n  },\n  {\n    \"date\": \"2018-12-28\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 7730.480423947794,\n    \"currency\": \"string\",\n    \"balance\": 9445.442865915033,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"borrowername\": \"string\",\n    \"cost type\": \"string\",\n    \"customer_id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b751da6-fce1-479c-8b3f-220193a02d37",
+          "name": "Get transactions for a specific IBAN",
+          "request": {
+            "name": "Get transactions for a specific IBAN",
+            "description": {
+              "content": "Fetches transactions for a specific IBAN.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions",
+                "iban",
+                ":iban"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "DB_USER",
+                  "description": "Database user name"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "DB_PASSWORD",
+                  "description": "Database user password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "iban",
+                  "description": "(Required) The IBAN to retrieve transactions for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ebdf51c4-c3ab-4dac-9a15-6af6d822eebe",
+              "name": "A list of transactions for the given IBAN.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    "iban",
+                    ":iban"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "iban",
+                      "description": "(Required) The IBAN to retrieve transactions for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"1956-04-09\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 2011.7480736289629,\n    \"currency\": \"string\",\n    \"balance\": 7857.992655057283,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"borrowername\": \"string\",\n    \"cost type\": \"string\",\n    \"customer_id\": \"string\"\n  },\n  {\n    \"date\": \"2018-12-28\",\n    \"description\": \"string\",\n    \"credit_debit_indicator\": \"string\",\n    \"amount\": 7730.480423947794,\n    \"currency\": \"string\",\n    \"balance\": 9445.442865915033,\n    \"category\": \"string\",\n    \"subcategory\": \"string\",\n    \"risk level\": \"string\",\n    \"bank name\": \"string\",\n    \"iban\": \"string\",\n    \"borrowername\": \"string\",\n    \"cost type\": \"string\",\n    \"customer_id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "350dde74-d46f-44fe-b0a5-1fefd6d34395",
+          "name": "Retrieve paginated transactions for a specific customer",
+          "request": {
+            "name": "Retrieve paginated transactions for a specific customer",
+            "description": {
+              "content": "Returns a paginated list of transactions for a given customer ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "paged-transactions",
+                "customer",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "DB_USER",
+                  "description": "Database user name"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "DB_PASSWORD",
+                  "description": "Database user password"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (default is 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "1000",
+                  "description": "Number of transactions per page (default is 1000)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) The unique customer ID to retrieve transactions for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6906e4b-2243-486c-93b9-fdeb8a8cf81d",
+              "name": "A paginated list of transactions for the specified customer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paged-transactions",
+                    "customer",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) The unique customer ID to retrieve transactions for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total_records\": 7798,\n  \"page\": 1771,\n  \"page_size\": 2070,\n  \"total_pages\": 6916,\n  \"transactions\": [\n    {\n      \"date\": \"2000-04-14\",\n      \"description\": \"string\",\n      \"credit_debit_indicator\": \"string\",\n      \"amount\": 8896.015726298472,\n      \"currency\": \"string\",\n      \"balance\": 6329.241217681436,\n      \"category\": \"string\",\n      \"subcategory\": \"string\",\n      \"risk level\": \"string\",\n      \"bank name\": \"string\",\n      \"iban\": \"string\",\n      \"borrowername\": \"string\",\n      \"cost type\": \"string\",\n      \"customer_id\": \"string\"\n    },\n    {\n      \"date\": \"1964-12-01\",\n      \"description\": \"string\",\n      \"credit_debit_indicator\": \"string\",\n      \"amount\": 8278.259154753368,\n      \"currency\": \"string\",\n      \"balance\": 5584.706262148683,\n      \"category\": \"string\",\n      \"subcategory\": \"string\",\n      \"risk level\": \"string\",\n      \"bank name\": \"string\",\n      \"iban\": \"string\",\n      \"borrowername\": \"string\",\n      \"cost type\": \"string\",\n      \"customer_id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad485b51-805c-43d7-b3a5-a9051d54f2f5",
+          "name": "Retrieve paginated transactions for a specific client",
+          "request": {
+            "name": "Retrieve paginated transactions for a specific client",
+            "description": {
+              "content": "Returns a paginated list of transactions for a given client.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "paged-transactions",
+                ":clientname"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "DB_USER",
+                  "description": "Database user name"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "DB_PASSWORD",
+                  "description": "Database user password"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (default is 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "1000",
+                  "description": "Number of transactions per page (default is 1000)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientname",
+                  "description": "(Required) The name of the client to retrieve transactions for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e8f681d-ae2c-4a6d-b57e-9657a982a679",
+              "name": "A paginated list of transactions for the specified client",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paged-transactions",
+                    ":clientname"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user",
+                      "value": "DB_USER"
+                    },
+                    {
+                      "key": "password",
+                      "value": "DB_PASSWORD"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientname",
+                      "description": "(Required) The name of the client to retrieve transactions for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total_records\": 695,\n  \"page\": 6824,\n  \"page_size\": 2084,\n  \"total_pages\": 4998,\n  \"transactions\": [\n    {\n      \"date\": \"1946-11-27\",\n      \"description\": \"string\",\n      \"credit_debit_indicator\": \"string\",\n      \"amount\": 3596.851347033483,\n      \"currency\": \"string\",\n      \"balance\": 8881.407487239854,\n      \"category\": \"string\",\n      \"subcategory\": \"string\",\n      \"risk level\": \"string\",\n      \"bank name\": \"string\",\n      \"iban\": \"string\",\n      \"borrowername\": \"string\",\n      \"cost type\": \"string\",\n      \"customer_id\": \"string\"\n    },\n    {\n      \"date\": \"2000-04-15\",\n      \"description\": \"string\",\n      \"credit_debit_indicator\": \"string\",\n      \"amount\": 8231.479927750577,\n      \"currency\": \"string\",\n      \"balance\": 556.2024068091797,\n      \"category\": \"string\",\n      \"subcategory\": \"string\",\n      \"risk level\": \"string\",\n      \"bank name\": \"string\",\n      \"iban\": \"string\",\n      \"borrowername\": \"string\",\n      \"cost type\": \"string\",\n      \"customer_id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7554228-1f9e-4c15-82c5-63d48cd7640c",
+          "name": "Categorise cheque deposits as Equity Transactions or Revenue",
+          "request": {
+            "name": "Categorise cheque deposits as Equity Transactions or Revenue",
+            "description": {
+              "content": "Starts a pipeline to reclassify cheque deposit transactions, recalculate KPIs and rerun the assessment for this customer_id.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "categorise-cheque-deposits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "Database user, passed as container_name to the pipeline"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "Database password for authentication"
+                },
+                {
+                  "disabled": false,
+                  "key": "customer_id",
+                  "value": "<string>",
+                  "description": "Customer ID for which cheque deposits will be recategorised"
+                },
+                {
+                  "disabled": false,
+                  "key": "target_category",
+                  "value": "<string>",
+                  "description": "Target category for cheque deposits"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "03264b40-e997-487e-96bb-7dad1e3031ff",
+              "name": "Pipeline triggered successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categorise-cheque-deposits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database user, passed as container_name to the pipeline",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "user"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database password for authentication",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "secretpassword"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Customer ID for which cheque deposits will be recategorised",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Target category for cheque deposits",
+                        "type": "text/plain"
+                      },
+                      "key": "target_category",
+                      "value": "Equity Transactions"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Pipeline triggered successfully\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da87fd80-9972-4b64-a4fb-1842d3db2aa4",
+              "name": "Bad request due to missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categorise-cheque-deposits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database user, passed as container_name to the pipeline",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "user"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database password for authentication",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "secretpassword"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Customer ID for which cheque deposits will be recategorised",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Target category for cheque deposits",
+                        "type": "text/plain"
+                      },
+                      "key": "target_category",
+                      "value": "Equity Transactions"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Missing required parameters user, password, customer_id, target_category\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fcab5e8-d2d4-4841-a010-ec4696e20bde",
+              "name": "Internal server error or pipeline trigger failure",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categorise-cheque-deposits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database user, passed as container_name to the pipeline",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "user"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database password for authentication",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "secretpassword"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Customer ID for which cheque deposits will be recategorised",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Target category for cheque deposits",
+                        "type": "text/plain"
+                      },
+                      "key": "target_category",
+                      "value": "Equity Transactions"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Failed to trigger pipeline\",\n  \"status_code\": 500,\n  \"response_text\": \"Pipeline trigger failed due to authentication error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33d26a23-09e3-445b-9ea7-ff758bd4c9c2",
+          "name": "Categorise partner transactions as Equity Transactions or Transfers",
+          "request": {
+            "name": "Categorise partner transactions as Equity Transactions or Transfers",
+            "description": {
+              "content": "Starts a pipeline to recategorize transactions based on the partner name found in the transaction description.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "categorise-partner-transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "Database user"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "Database password (used for auth only)"
+                },
+                {
+                  "disabled": false,
+                  "key": "customer_id",
+                  "value": "<string>",
+                  "description": "Customer ID whose transactions will be recategorized"
+                },
+                {
+                  "disabled": false,
+                  "key": "partner_name",
+                  "value": "<string>",
+                  "description": "Substring to match in transaction descriptions"
+                },
+                {
+                  "disabled": false,
+                  "key": "target_category",
+                  "value": "<string>",
+                  "description": "The new category to assign to matched transactions"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2252ac69-271b-4916-adff-3ef6a5c77f0f",
+              "name": "Pipeline triggered successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categorise-partner-transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database user",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "user"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database password (used for auth only)",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "secretpassword"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Customer ID whose transactions will be recategorized",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Substring to match in transaction descriptions",
+                        "type": "text/plain"
+                      },
+                      "key": "partner_name",
+                      "value": "ACME LLC"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The new category to assign to matched transactions",
+                        "type": "text/plain"
+                      },
+                      "key": "target_category",
+                      "value": "Transfers"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Pipeline triggered successfully\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f132902b-b142-4574-93fb-b36f45130e6e",
+              "name": "Bad request due to missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categorise-partner-transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database user",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "user"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database password (used for auth only)",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "secretpassword"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Customer ID whose transactions will be recategorized",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Substring to match in transaction descriptions",
+                        "type": "text/plain"
+                      },
+                      "key": "partner_name",
+                      "value": "ACME LLC"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The new category to assign to matched transactions",
+                        "type": "text/plain"
+                      },
+                      "key": "target_category",
+                      "value": "Transfers"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Missing required parameters user, password, customer_id, partner_name, target_category\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "637e7926-cf49-4025-9f2a-c27700707cab",
+              "name": "Internal server error or pipeline trigger failure",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categorise-partner-transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database user",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "user"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database password (used for auth only)",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "secretpassword"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Customer ID whose transactions will be recategorized",
+                        "type": "text/plain"
+                      },
+                      "key": "customer_id",
+                      "value": "43d027ff-e6cc-4f77-ab7a-1a8f34259035"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Substring to match in transaction descriptions",
+                        "type": "text/plain"
+                      },
+                      "key": "partner_name",
+                      "value": "ACME LLC"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The new category to assign to matched transactions",
+                        "type": "text/plain"
+                      },
+                      "key": "target_category",
+                      "value": "Transfers"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Failed to trigger pipeline\",\n  \"status_code\": 500,\n  \"response_text\": \"Pipeline trigger failed due to authentication error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "01a099a0-6a68-47a3-b373-2dcbdf502f7b",
+          "name": "Get transactions for a customer within a date range",
+          "request": {
+            "name": "Get transactions for a customer within a date range",
+            "description": {},
+            "url": {
+              "path": [
+                "transactions",
+                "customer",
+                ":customer_id",
+                "range"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "(Required) Start date (YYYY-MM-DD)"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "(Required) End date (YYYY-MM-DD)"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "username"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "password"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) Customer ID (GUID)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b654ccf4-443f-4dae-ab57-d3cc4c31bdcd",
+              "name": "Array of transactions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    "customer",
+                    ":customer_id",
+                    "range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) Customer ID (GUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"2025-06-01\",\n    \"description\": \"POS Purchase\",\n    \"credit_debit_indicator\": \"debit\",\n    \"amount\": 120.5,\n    \"currency\": \"AED\",\n    \"balance\": 5400.75,\n    \"category\": \"Expenses\",\n    \"subcategory\": \"Hospitality\",\n    \"risk level\": \"Low\",\n    \"bank name\": \"Mashreq\",\n    \"iban\": \"AE070331234567890123456\",\n    \"borrowername\": \"ACME LLC\",\n    \"cost type\": \"Variable\",\n    \"customer_id\": \"43d027ff-e6cc-4f77-ab7a-1a8f34259035\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07ce5ecf-2f8d-4891-8196-1dfc67fed112",
+              "name": "Missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    "customer",
+                    ":customer_id",
+                    "range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) Customer ID (GUID)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "74c80279-5f8a-4d41-adfe-669eb628fadf",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    "customer",
+                    ":customer_id",
+                    "range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) Customer ID (GUID)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "151cf6ab-8f9b-42d1-bd50-33a3031f9e50",
+          "name": "Get paginated transactions for a customer within a date range",
+          "request": {
+            "name": "Get paginated transactions for a customer within a date range",
+            "description": {},
+            "url": {
+              "path": [
+                "paged-transactions",
+                "customer",
+                ":customer_id",
+                "range"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6cf42eec-0f20-44d3-a3b9-d1b7d942501b",
+              "name": "Paginated transactions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paged-transactions",
+                    "customer",
+                    ":customer_id",
+                    "range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total_records\": 5768,\n  \"page\": 4340,\n  \"page_size\": 3587,\n  \"total_pages\": 417,\n  \"transactions\": [\n    {\n      \"date\": \"1983-01-29\",\n      \"description\": \"string\",\n      \"credit_debit_indicator\": \"debit\",\n      \"amount\": 1720.286947094426,\n      \"currency\": \"AED\",\n      \"balance\": 5515.764763194585,\n      \"category\": \"string\",\n      \"subcategory\": \"string\",\n      \"risk level\": \"string\",\n      \"bank name\": \"string\",\n      \"iban\": \"string\",\n      \"borrowername\": \"string\",\n      \"cost type\": \"string\",\n      \"customer_id\": \"69199cfd-60d0-7e5d-7292-f2ebfcbc4a3f\"\n    },\n    {\n      \"date\": \"1950-10-17\",\n      \"description\": \"string\",\n      \"credit_debit_indicator\": \"debit\",\n      \"amount\": 947.9707090816569,\n      \"currency\": \"AED\",\n      \"balance\": 4142.527120407813,\n      \"category\": \"string\",\n      \"subcategory\": \"string\",\n      \"risk level\": \"string\",\n      \"bank name\": \"string\",\n      \"iban\": \"string\",\n      \"borrowername\": \"string\",\n      \"cost type\": \"string\",\n      \"customer_id\": \"559e5dd5-6b5e-ea1b-05e9-53556082196d\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0bc8b2e-2c7f-425b-943d-ad401eaef985",
+              "name": "Missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paged-transactions",
+                    "customer",
+                    ":customer_id",
+                    "range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "83a62a4c-175b-4059-9a0f-cb90c05ed3d3",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paged-transactions",
+                    "customer",
+                    ":customer_id",
+                    "range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sa.orbii.ai/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b1c5cc30-b961-4a73-89ca-022f87f64a34",
+    "name": "Orbii KSA Business Category Assignment Transactions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing transactions, clients, and companies.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Orbii KSA Business Category Assignment API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Business Category Assignment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get business categories with their subcategories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/assign-category",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Username for SQL authentication"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Password for SQL authentication"
+              }
+            ]
+          },
+          "docs": "Returns a JSON object mapping each business category to a list of its subcategories."
+        },
+        {
+          "info": {
+            "name": "Submit customer business category",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sa.orbii.ai/assign-category",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "user",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                },
+                {
+                  "name": "customer_id",
+                  "value": ""
+                },
+                {
+                  "name": "category_name",
+                  "value": ""
+                },
+                {
+                  "name": "subcategory_name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Stores or updates the selected business category and subcategory for the specified customer ID in the [Reporting].[CustomerBusinessCategory] table. Requires SQL credentials as form fields.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

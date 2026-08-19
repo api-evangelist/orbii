@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Orbii KSA Business Category Assignment IBANs API",
+    "version": "1.0.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "IBANs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get distinct IBANs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sa.orbii.ai/ibans",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetches all distinct IBANs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
