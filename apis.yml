@@ -36,6 +36,18 @@ modified: '2026-07-20'
 image: https://cdn.prod.website-files.com/6894ac031d066c1f144fb082/68bdc4495f740a290c12b9c4_dark.webp
 tags:
 - Company
+- Artificial Intelligence
+- Lending
+- Credit
+- Fintech
+- Underwriting
+- Banking
+- SME
+- Embedded Finance
+- MENA
+- Risk
+tags_raw:
+- Company
 - Ai
 - Lending
 - Credit
@@ -108,7 +120,8 @@ apis:
   description: The General API from Orbii — 1 operation(s) for general.
   humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
   baseURL: https://api.orbii.ai
-  tags:
+  tags: []
+  tags_raw:
   - General
   properties:
   - type: OpenAPI
@@ -199,6 +212,8 @@ apis:
   humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
   baseURL: https://api.orbii.ai
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
