@@ -1,0 +1,47 @@
+slug: orbii
+provider: Orbii
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Risk Assessment
+  spec_file: orbii-risk-assessment-api-openapi.yml
+  capability_id: BC-1320.20
+  capability_id_l1: BC-1320
+  capability_name: Credit Underwriting & Decisioning Management
+  confidence: 0.8
+  evidence: '"Get risk assessment for a specific customer", "Get band classification for a specific customer",
+    "Update a KPI rule threshold", "Reruns Assessment"'
+  reason: Produces borrower risk assessments and band/grade classifications with tunable KPI rules — credit
+    underwriting and decisioning. Some ambiguity versus credit risk modelling (BC-1320.60), so 0.8.
+- tag: Invoices
+  spec_file: orbii-invoices-api-openapi.yml
+  capability_id: BC-1320.20
+  capability_id_l1: BC-1320
+  capability_name: Credit Underwriting & Decisioning Management
+  confidence: 0.75
+  evidence: GET /invoice-risk_assessment/customer/{customer_id} 'Get invoice risk assessments by customer_id';
+    GET /invoice-suggested-loan/customer/{customer_id} 'Get invoice suggested loan by customer_id'; GET
+    /invoice-suggested-loan-allocation/customer/{customer_id}
+  reason: Beyond invoice extract ingestion, the operations produce risk assessments, band classifications
+    and suggested loan amounts/allocations per borrower — i.e. automated credit assessment and decisioning
+    support for lenders, matching Credit Underwriting & Decisioning. Some ambiguity versus invoice/receivables
+    finance product handling, hence 0.75.
+- tag: Lending Actions
+  spec_file: orbii-lending-actions-api-openapi.yml
+  capability_id: BC-1320.20
+  capability_id_l1: BC-1320
+  capability_name: Credit Underwriting & Decisioning Management
+  confidence: 0.7
+  evidence: POST /log-lending — "Log a lending decision from email"
+  reason: The single operation records a lending decision, which sits in credit underwriting/decisioning
+    for this credit-infrastructure vendor. Thin surface (one endpoint), hence moderate confidence.

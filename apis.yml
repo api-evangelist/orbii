@@ -230,6 +230,9 @@ apis:
   - type: OpenAPI
     url: openapi/orbii-transactions-api-openapi.yml
 common:
+- type: CapabilityMap
+  url: capabilities/orbii-capability-edges.yml
+  name: Orbii Business Capability Map
 - type: Website
   url: https://orbii.ai
 - type: DeveloperPortal
