@@ -1,22 +1,54 @@
-generated: '2026-07-20'
+generated: '2026-09-16'
 method: generated
-source: openapi/orbii-ksa-openapi-original.json, openapi/orbii-omn-openapi-original.json, openapi/orbii-uae-openapi-original.json
+source: openapi/orbii-business-category-assignment-api-openapi.yml, openapi/orbii-categories-api-openapi.yml,
+  openapi/orbii-clients-api-openapi.yml, openapi/orbii-company-management-api-openapi.yml, openapi/orbii-data-check-api-openapi.yml,
+  openapi/orbii-general-api-openapi.yml, openapi/orbii-ibans-api-openapi.yml, openapi/orbii-invoices-api-openapi.yml,
+  openapi/orbii-kpis-api-openapi.yml, openapi/orbii-lending-actions-api-openapi.yml, openapi/orbii-merchants-api-openapi.yml,
+  openapi/orbii-pdfs-api-openapi.yml, openapi/orbii-risk-assessment-api-openapi.yml, openapi/orbii-subcategories-api-openapi.yml,
+  openapi/orbii-transactions-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 161
+  operations: 61
   by_action_class:
-    connected: 132
-    acting: 29
+    connected: 50
+    acting: 11
   by_consequence:
-    read: 132
-    write: 21
-    physical: 8
+    read: 50
+    write: 7
+    physical: 4
   human_in_the_loop_required: 0
 operations:
-- path: /
+- path: /assign-category
   method: get
+  operationId: getAssignCategory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /assign-category
+  method: post
+  operationId: postAssignCategory
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /categories/{clientname}
+  method: get
+  operationId: getCategoriesByClientname
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -26,487 +58,7 @@ operations:
     audit: none
 - path: /clients
   method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/date/{date}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/daterange
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/range
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/{clientname}/date/{date}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/{clientname}/daterange
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/{clientname}/range
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /ibans
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/iban/{iban}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /categories/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /subcategories/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /client-kpis/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /predictive-kpis/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /client-kpis
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /client-kpis/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /predictive-kpis
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /predictive-kpis/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /Check-for-new-data-received
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /add-company
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /pdf-list
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /pdf-list-from-date
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /pdf-upload
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /paged-transactions/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /paged-transactions/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions_with_merchant/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /paged-transactions_with_merchant/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /top_buyers/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /top_sellers/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /risk_assessment/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /band_classification/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /update-kpi-rule
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /rerun-assessment
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /start-pdf-extraction
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /categorise-cheque-deposits
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /categorise-partner-transactions
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /assign-category
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /assign-category
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /log-lending
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /top_buyers_recent/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /top_sellers_recent/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /band_classification
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/customer/{customer_id}/range
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /paged-transactions/customer/{customer_id}/range
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions_with_merchant/customer/{customer_id}/range
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /paged-transactions_with_merchant/customer/{customer_id}/range
-  method: get
+  operationId: getClients
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -516,204 +68,7 @@ operations:
     audit: none
 - path: /clients/range
   method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /clients
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/date/{date}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/daterange
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/range
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/{clientname}/date/{date}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/{clientname}/daterange
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/{clientname}/range
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /ibans
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/iban/{iban}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /categories/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /subcategories/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /client-kpis/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /predictive-kpis/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /client-kpis
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /client-kpis/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /predictive-kpis
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /predictive-kpis/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /Check-for-new-data-received
-  method: get
+  operationId: getClientsRange
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -723,6 +78,7 @@ operations:
     audit: none
 - path: /add-company
   method: post
+  operationId: postAddCompany
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -736,294 +92,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /pdf-list
+- path: /Check-for-new-data-received
   method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /pdf-list-from-date
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /pdf-upload
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /paged-transactions/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /paged-transactions/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions_with_merchant/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /paged-transactions_with_merchant/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /top_buyers/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /top_sellers/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /risk_assessment/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /band_classification/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /update-kpi-rule
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /rerun-assessment
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /start-pdf-extraction
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /categorise-cheque-deposits
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /categorise-partner-transactions
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /assign-category
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /assign-category
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /log-lending
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /top_buyers_recent/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /top_sellers_recent/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /band_classification
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/customer/{customer_id}/range
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /paged-transactions/customer/{customer_id}/range
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions_with_merchant/customer/{customer_id}/range
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /paged-transactions_with_merchant/customer/{customer_id}/range
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /clients/range
-  method: get
+  operationId: getCheckForNewDataReceived
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1033,96 +104,7 @@ operations:
     audit: none
 - path: /
   method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /clients
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/date/{date}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/daterange
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/range
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/{clientname}/date/{date}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/{clientname}/daterange
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/{clientname}/range
-  method: get
+  operationId: getRoot
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1132,352 +114,7 @@ operations:
     audit: none
 - path: /ibans
   method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions/iban/{iban}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /categories/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /subcategories/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /client-kpis/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /predictive-kpis/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /client-kpis
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /client-kpis/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /predictive-kpis
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /predictive-kpis/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /Check-for-new-data-received
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /add-company
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /pdf-list
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /pdf-list-from-date
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /pdf-upload
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /paged-transactions/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /paged-transactions/{clientname}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /transactions_with_merchant/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /paged-transactions_with_merchant/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /top_buyers/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /top_sellers/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /risk_assessment/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /band_classification/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /update-kpi-rule
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /rerun-assessment
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /start-pdf-extraction
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /categorise-cheque-deposits
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /categorise-partner-transactions
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /assign-category
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /assign-category
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /log-lending
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /top_buyers_recent/customer/{customer_id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /top_sellers_recent/customer/{customer_id}
-  method: get
+  operationId: getIbans
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1487,6 +124,7 @@ operations:
     audit: none
 - path: /invoice-extract-upload
   method: post
+  operationId: postInvoiceExtractUpload
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1502,17 +140,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /band_classification
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /start-invoice-extraction
   method: post
+  operationId: postStartInvoiceExtraction
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1530,6 +160,7 @@ operations:
     audit: required
 - path: /invoice-kpis/customer/{customer_id}
   method: get
+  operationId: getInvoiceKpisCustomerByCustomerId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1539,6 +170,7 @@ operations:
     audit: none
 - path: /invoice-risk_assessment/customer/{customer_id}
   method: get
+  operationId: getInvoiceRiskAssessmentCustomerByCustomerId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1548,6 +180,7 @@ operations:
     audit: none
 - path: /invoice-band_classification/customer/{customer_id}
   method: get
+  operationId: getInvoiceBandClassificationCustomerByCustomerId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1557,6 +190,7 @@ operations:
     audit: none
 - path: /invoice-company-kpis/customer/{customer_id}
   method: get
+  operationId: getInvoiceCompanyKpisCustomerByCustomerId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1566,6 +200,7 @@ operations:
     audit: none
 - path: /invoice-company-risk_assessment/customer/{customer_id}
   method: get
+  operationId: getInvoiceCompanyRiskAssessmentCustomerByCustomerId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1575,6 +210,7 @@ operations:
     audit: none
 - path: /invoice-company-band_classification/customer/{customer_id}
   method: get
+  operationId: getInvoiceCompanyBandClassificationCustomerByCustomerId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1584,6 +220,7 @@ operations:
     audit: none
 - path: /invoice-suggested-loan/customer/{customer_id}
   method: get
+  operationId: getInvoiceSuggestedLoanCustomerByCustomerId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1593,6 +230,7 @@ operations:
     audit: none
 - path: /invoice-suggested-loan-allocation/customer/{customer_id}
   method: get
+  operationId: getInvoiceSuggestedLoanAllocationCustomerByCustomerId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1602,6 +240,7 @@ operations:
     audit: none
 - path: /invoice-suggested-loan-summary/customer/{customer_id}
   method: get
+  operationId: getInvoiceSuggestedLoanSummaryCustomerByCustomerId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1609,8 +248,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /transactions/customer/{customer_id}/range
+- path: /client-kpis/customer/{customer_id}
   method: get
+  operationId: getClientKpisCustomerByCustomerId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1618,8 +258,125 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /paged-transactions/customer/{customer_id}/range
+- path: /predictive-kpis/customer/{customer_id}
   method: get
+  operationId: getPredictiveKpisCustomerByCustomerId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /client-kpis
+  method: get
+  operationId: getClientKpis
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /client-kpis/{clientname}
+  method: get
+  operationId: getClientKpisByClientname
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /predictive-kpis
+  method: get
+  operationId: getPredictiveKpis
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /predictive-kpis/{clientname}
+  method: get
+  operationId: getPredictiveKpisByClientname
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /log-lending
+  method: post
+  operationId: postLogLending
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /transactions_with_merchant/customer/{customer_id}
+  method: get
+  operationId: getTransactionsWithMerchantCustomerByCustomerId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /paged-transactions_with_merchant/customer/{customer_id}
+  method: get
+  operationId: getPagedTransactionsWithMerchantCustomerByCustomerId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /top_buyers/customer/{customer_id}
+  method: get
+  operationId: getTopBuyersCustomerByCustomerId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /top_sellers/customer/{customer_id}
+  method: get
+  operationId: getTopSellersCustomerByCustomerId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /top_buyers_recent/customer/{customer_id}
+  method: get
+  operationId: getTopBuyersRecentCustomerByCustomerId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /top_sellers_recent/customer/{customer_id}
+  method: get
+  operationId: getTopSellersRecentCustomerByCustomerId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1629,6 +386,7 @@ operations:
     audit: none
 - path: /transactions_with_merchant/customer/{customer_id}/range
   method: get
+  operationId: getTransactionsWithMerchantCustomerByCustomerIdRange
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1638,6 +396,7 @@ operations:
     audit: none
 - path: /paged-transactions_with_merchant/customer/{customer_id}/range
   method: get
+  operationId: getPagedTransactionsWithMerchantCustomerByCustomerIdRange
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1645,8 +404,299 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /clients/range
+- path: /pdf-list
   method: get
+  operationId: getPdfList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /pdf-list-from-date
+  method: get
+  operationId: getPdfListFromDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /pdf-upload
+  method: post
+  operationId: postPdfUpload
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /start-pdf-extraction
+  method: post
+  operationId: postStartPdfExtraction
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /risk_assessment/customer/{customer_id}
+  method: get
+  operationId: getRiskAssessmentCustomerByCustomerId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /band_classification/customer/{customer_id}
+  method: get
+  operationId: getBandClassificationCustomerByCustomerId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /update-kpi-rule
+  method: post
+  operationId: postUpdateKpiRule
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /rerun-assessment
+  method: post
+  operationId: postRerunAssessment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /band_classification
+  method: get
+  operationId: getBandClassification
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /subcategories/{clientname}
+  method: get
+  operationId: getSubcategoriesByClientname
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions
+  method: get
+  operationId: getTransactions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/customer/{customer_id}
+  method: get
+  operationId: getTransactionsCustomerByCustomerId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/date/{date}
+  method: get
+  operationId: getTransactionsDateByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/daterange
+  method: get
+  operationId: getTransactionsDaterange
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/range
+  method: get
+  operationId: getTransactionsRange
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/{clientname}
+  method: get
+  operationId: getTransactionsByClientname
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/{clientname}/date/{date}
+  method: get
+  operationId: getTransactionsByClientnameDateByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/{clientname}/daterange
+  method: get
+  operationId: getTransactionsByClientnameDaterange
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/{clientname}/range
+  method: get
+  operationId: getTransactionsByClientnameRange
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/iban/{iban}
+  method: get
+  operationId: getTransactionsIbanByIban
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /paged-transactions/customer/{customer_id}
+  method: get
+  operationId: getPagedTransactionsCustomerByCustomerId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /paged-transactions/{clientname}
+  method: get
+  operationId: getPagedTransactionsByClientname
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /categorise-cheque-deposits
+  method: post
+  operationId: postCategoriseChequeDeposits
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /categorise-partner-transactions
+  method: post
+  operationId: postCategorisePartnerTransactions
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /transactions/customer/{customer_id}/range
+  method: get
+  operationId: getTransactionsCustomerByCustomerIdRange
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /paged-transactions/customer/{customer_id}/range
+  method: get
+  operationId: getPagedTransactionsCustomerByCustomerIdRange
   x-agentic-access:
     action-class: connected
     consequence: read
