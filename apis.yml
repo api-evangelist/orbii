@@ -137,16 +137,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/orbii-general-api-openapi.yml
-- aid: orbii:orbii-ibans-api
-  name: Orbii IBANs API
-  description: The IBANs API from Orbii — 1 operation(s) for ibans.
-  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
-  baseURL: https://api.orbii.ai
-  tags:
-  - IBANs
-  properties:
-  - type: OpenAPI
-    url: openapi/orbii-ibans-api-openapi.yml
 - aid: orbii:orbii-invoices-api
   name: Orbii Invoices API
   description: The Invoices API from Orbii — 11 operation(s) for invoices.
@@ -187,16 +177,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/orbii-merchants-api-openapi.yml
-- aid: orbii:orbii-pdfs-api
-  name: Orbii PDFs API
-  description: The PDFs API from Orbii — 4 operation(s) for pdfs.
-  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
-  baseURL: https://api.orbii.ai
-  tags:
-  - PDFs
-  properties:
-  - type: OpenAPI
-    url: openapi/orbii-pdfs-api-openapi.yml
 - aid: orbii:orbii-risk-assessment-api
   name: Orbii Risk Assessment API
   description: The Risk Assessment API from Orbii — 5 operation(s) for risk assessment.
@@ -229,6 +209,26 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/orbii-transactions-api-openapi.yml
+- aid: orbii:orbii-ibans-api
+  name: Orbii IBA Ns API
+  description: The IBANs API from Orbii — 1 operation(s) for ibans.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - IBANs
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-ibans-api-openapi.yml
+- aid: orbii:orbii-pdfs-api
+  name: Orbii PD Fs API
+  description: The PDFs API from Orbii — 4 operation(s) for pdfs.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - PDFs
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-pdfs-api-openapi.yml
 common:
 - type: CapabilityMap
   url: capabilities/orbii-capability-edges.yml
