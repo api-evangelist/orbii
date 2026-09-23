@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Orbii KSA Business Category Assignment KPIs API
+  title: Orbii KP Is API
   description: API for managing transactions, clients, and companies.
-  version: 1.0.3
+  version: 1.0.5-oas3
 servers:
-- url: https://api.sa.orbii.ai/
+- url: https://api.orbii.ai
   description: Production server
 tags:
 - name: KPIs
@@ -24,14 +24,14 @@ paths:
           type: string
       - name: user
         in: query
-        description: Database user name
+        description: username
         required: false
         schema:
           type: string
-          default: DB_USER
+          default: username
       - name: password
         in: query
-        description: Database user password
+        description: password
         required: false
         schema:
           type: string
@@ -63,6 +63,8 @@ paths:
           description: Bad request - missing or invalid parameters
         '500':
           description: Internal server error
+      operationId: getClientKpisCustomerByCustomerId
+      x-operation-id-source: derived
   /predictive-kpis/customer/{customer_id}:
     get:
       summary: Retrieve predictive KPIs for a specific customer ID
@@ -78,14 +80,14 @@ paths:
           type: string
       - name: user
         in: query
-        description: Database user name
+        description: username
         required: false
         schema:
           type: string
-          default: DB_USER
+          default: username
       - name: password
         in: query
-        description: Database user password
+        description: password
         required: false
         schema:
           type: string
@@ -130,6 +132,8 @@ paths:
           description: Bad request - missing or invalid parameters
         '500':
           description: Internal server error
+      operationId: getPredictiveKpisCustomerByCustomerId
+      x-operation-id-source: derived
   /client-kpis:
     get:
       summary: Get KPIs for all clients
@@ -139,14 +143,14 @@ paths:
       parameters:
       - name: user
         in: query
-        description: Database user name
+        description: username
         required: false
         schema:
           type: string
-          default: DB_USER
+          default: username
       - name: password
         in: query
-        description: Database user password
+        description: password
         required: false
         schema:
           type: string
@@ -177,6 +181,8 @@ paths:
                     month:
                       type: integer
                       description: The month associated with the KPI
+      operationId: getClientKpis
+      x-operation-id-source: derived
   /client-kpis/{clientname}:
     get:
       summary: Get KPIs for a specific client
@@ -192,14 +198,14 @@ paths:
           type: string
       - name: user
         in: query
-        description: Database user name
+        description: username
         required: false
         schema:
           type: string
-          default: DB_USER
+          default: username
       - name: password
         in: query
-        description: Database user password
+        description: password
         required: false
         schema:
           type: string
@@ -230,6 +236,8 @@ paths:
                     month:
                       type: integer
                       description: The month associated with the KPI
+      operationId: getClientKpisByClientname
+      x-operation-id-source: derived
   /predictive-kpis:
     get:
       summary: Get predictive KPIs for all clients
@@ -256,6 +264,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PredictiveKPI'
+      operationId: getPredictiveKpis
+      x-operation-id-source: derived
   /predictive-kpis/{clientname}:
     get:
       summary: Get predictive KPIs for a specific client
@@ -287,6 +297,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PredictiveKPI'
+      operationId: getPredictiveKpisByClientname
+      x-operation-id-source: derived
 components:
   schemas:
     PredictiveKPI:

@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Orbii KSA Business Category Assignment PDFs API
+  title: Orbii PD Fs API
   description: API for managing transactions, clients, and companies.
-  version: 1.0.3
+  version: 1.0.5-oas3
 servers:
-- url: https://api.sa.orbii.ai/
+- url: https://api.orbii.ai
   description: Production server
 tags:
 - name: PDFs
@@ -12,9 +12,7 @@ paths:
   /pdf-list:
     get:
       summary: Retrieve the list of PDFs with metadata and client details
-      description: 'Fetches the list of PDFs along with their metadata and client details.
-
-        '
+      description: Fetches the list of PDFs along with their metadata and client details.
       tags:
       - PDFs
       parameters:
@@ -23,13 +21,13 @@ paths:
         required: true
         schema:
           type: string
-        description: Database username for authentication
+        description: username
       - name: password
         in: query
         required: true
         schema:
           type: string
-        description: Database password for authentication
+        description: password
       responses:
         '200':
           description: A JSON array of PDF records
@@ -77,12 +75,12 @@ paths:
           description: Invalid request, missing parameters
         '500':
           description: Internal server error, database connection issue
+      operationId: getPdfList
+      x-operation-id-source: derived
   /pdf-list-from-date:
     get:
       summary: Retrieve PDFs extracted on or after a specific datetime
-      description: 'Returns the list of PDFs and their metadata where the extraction date is greater than or equal  to the given datetime. If no datetime is provided, it defaults to 2025-05-01 00:00:00.000.
-
-        '
+      description: Returns the list of PDFs and their metadata where the extraction date is greater than or equal to the given datetime. If no datetime is provided, it defaults to 2025-05-01 00:00:00.000.
       tags:
       - PDFs
       parameters:
@@ -97,13 +95,13 @@ paths:
           example: '2025-05-01 00:00:00.000'
       - name: user
         in: query
-        description: Database username (optional; defaults to environment variable)
+        description: username
         required: false
         schema:
           type: string
       - name: password
         in: query
-        description: Database password (optional; defaults to environment variable)
+        description: password
         required: false
         schema:
           type: string
@@ -169,10 +167,20 @@ paths:
                 properties:
                   error:
                     type: string
+      operationId: getPdfListFromDate
+      x-operation-id-source: derived
   /pdf-upload:
     post:
       summary: Upload multiple PDFs
-      description: "Allows users to upload multiple PDF files.\nThe uploaded files are stored in a dynamically generated directory with the format: \n`{customer_identifier}-{bank name}-{YYYYMMDD}` inside the container `{user}`.\nIf `bank name` is not provided, it defaults to `\"unspecified_bank\"`.\nIf `date` is not provided, it defaults to the current date in `YYYYMMDD` format.\n"
+      description: 'Allows users to upload multiple PDF files.
+
+        The uploaded files are stored in a dynamically generated directory with the format:
+
+        `{customer_identifier}-{bank name}-{YYYYMMDD}` inside the container `{user}`.
+
+        If `bank name` is not provided, it defaults to `"unspecified_bank"`.
+
+        If `date` is not provided, it defaults to the current date in `YYYYMMDD` format.'
       tags:
       - PDFs
       requestBody:
@@ -232,14 +240,14 @@ paths:
           description: Invalid request, missing parameters or incorrect date format
         '500':
           description: Internal server error, failed to upload files
+      operationId: postPdfUpload
+      x-operation-id-source: derived
   /start-pdf-extraction:
     post:
       summary: Trigger PDF extraction pipeline
       description: 'Starts the pipeline to process PDF data for the specified customer. An optional `mode` parameter allows specifying whether to override or append to existing data (defaults to `Override`).
 
-        If a pipeline is already running for the same customer_id, this endpoint will return a 409 Conflict response.
-
-        '
+        If a pipeline is already running for the same customer_id, this endpoint will return a 409 Conflict response.'
       tags:
       - PDFs
       requestBody:
@@ -317,3 +325,5 @@ paths:
                   response_text:
                     type: string
                     example: <Azure error message here>
+      operationId: postStartPdfExtraction
+      x-operation-id-source: derived

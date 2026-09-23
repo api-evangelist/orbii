@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Orbii KSA Business Category Assignment Company Management API
+  title: Orbii Company Management API
   description: API for managing transactions, clients, and companies.
-  version: 1.0.3
+  version: 1.0.5-oas3
 servers:
-- url: https://api.sa.orbii.ai/
+- url: https://api.orbii.ai
   description: Production server
 tags:
 - name: Company Management
@@ -74,3 +74,5 @@ paths:
                 properties:
                   error:
                     type: string
+      operationId: postAddCompany
+      x-operation-id-source: derived

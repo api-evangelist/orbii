@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Orbii KSA Business Category Assignment Clients API
+  title: Orbii Clients API
   description: API for managing transactions, clients, and companies.
-  version: 1.0.3
+  version: 1.0.5-oas3
 servers:
-- url: https://api.sa.orbii.ai/
+- url: https://api.orbii.ai
   description: Production server
 tags:
 - name: Clients
@@ -41,6 +41,8 @@ paths:
                       format: date-time
                     customer_id:
                       type: string
+      operationId: getClients
+      x-operation-id-source: derived
   /clients/range:
     get:
       summary: Get clients added within a date range
@@ -86,6 +88,8 @@ paths:
           description: Missing or invalid parameters
         '500':
           description: Server error
+      operationId: getClientsRange
+      x-operation-id-source: derived
 components:
   schemas:
     Client:
