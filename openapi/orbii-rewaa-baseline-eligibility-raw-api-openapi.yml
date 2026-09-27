@@ -1,0 +1,142 @@
+openapi: 3.2.0
+info:
+  title: Orbii API - Rewaa Rewaa Baseline Eligibility Raw API
+  version: 1.0.4
+  description: API for Rewaa.
+servers:
+- url: https://api.rewaa.orbii.ai/
+tags:
+- name: Rewaa Baseline Eligibility Raw
+paths:
+  /Rewaa_Baseline_Eligibility_Raw:
+    get:
+      summary: Baseline Eligibility (raw)
+      operationId: getRewaaBaselineEligibilityRaw
+      parameters:
+      - $ref: '#/components/parameters/UserQ'
+      - $ref: '#/components/parameters/PasswordQ'
+      - $ref: '#/components/parameters/PageQ'
+      - $ref: '#/components/parameters/PageSizeQ'
+      - in: query
+        name: schema_name
+        schema:
+          type: string
+        description: Optional exact filter by schema_name
+      responses:
+        '200':
+          description: Paged baseline eligibility results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedBaselineEligibility'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      tags:
+      - Rewaa Baseline Eligibility Raw
+components:
+  responses:
+    InternalError:
+      description: Unexpected server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request (missing/invalid parameters)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    BaselineEligibilityRow:
+      type: object
+      properties:
+        schema_name:
+          type: string
+        Annual_Revenue_SAR_Last_12:
+          type: number
+          format: double
+        Business_Age_Months:
+          type: number
+          format: double
+        Largest_Daily_Revenue_Share_Percentage:
+          type: number
+          format: double
+        Worst_Monthly_Revenue_Drop_Percentage:
+          type: number
+          format: double
+        Active_Months_Last_12:
+          type: number
+          format: double
+        Inactivity_Max_Days:
+          type: number
+          format: double
+        Inactivity_Period_Count:
+          type: number
+          format: double
+    PageEnvelope:
+      type: object
+      properties:
+        total_records:
+          type: integer
+        total_pages:
+          type: integer
+        current_page:
+          type: integer
+        page_size:
+          type: integer
+        data:
+          type: array
+          items:
+            type: object
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: Missing 'user' or 'password' query parameters
+    PagedBaselineEligibility:
+      allOf:
+      - $ref: '#/components/schemas/PageEnvelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/BaselineEligibilityRow'
+  parameters:
+    PageQ:
+      in: query
+      name: page
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: 1-based page index
+    UserQ:
+      in: query
+      name: user
+      required: true
+      schema:
+        type: string
+      description: Database username (also used to derive container for some endpoints)
+    PageSizeQ:
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1000
+      description: Page size
+    PasswordQ:
+      in: query
+      name: password
+      required: true
+      schema:
+        type: string
+      description: Database password

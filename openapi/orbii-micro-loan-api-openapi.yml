@@ -1,0 +1,193 @@
+openapi: 3.2.0
+info:
+  title: Orbii API - Foodics Micro Loan API
+  version: 1.0.2
+  description: API for retrieving micro loan KPIs, scoring, risk assessment, band classification, and related data.
+servers:
+- url: https://api.foodics.orbii.ai/
+  description: Production Server
+tags:
+- name: Micro Loan
+paths:
+  /Micro_Loan_Loan_Amounts:
+    get:
+      summary: Get paginated micro loan amounts
+      tags:
+      - Micro Loan
+      parameters:
+      - in: query
+        name: user
+        required: true
+        schema:
+          type: string
+        description: Database username
+      - in: query
+        name: password
+        required: true
+        schema:
+          type: string
+        description: Database password
+      - in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1000
+      responses:
+        '200':
+          description: Paginated results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_records:
+                    type: integer
+                  total_pages:
+                    type: integer
+                  current_page:
+                    type: integer
+                  page_size:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        BUSINESS_REFERENCE:
+                          type: integer
+                        BAND:
+                          type: string
+                        rms_annual_revenue:
+                          type: number
+                          format: float
+                        rms_max_loan_amount:
+                          type: number
+                          format: float
+                        rms_daily_payment_6m:
+                          type: number
+                          format: float
+                        rms_daily_payment_12m:
+                          type: number
+                          format: float
+                        rms_daily_payment_24m:
+                          type: number
+                          format: float
+                        pay_annual_revenue:
+                          type: number
+                          format: float
+                        pay_max_loan_amount:
+                          type: number
+                          format: float
+                        pay_daily_payment_6m:
+                          type: number
+                          format: float
+                        pay_daily_payment_12m:
+                          type: number
+                          format: float
+                        pay_daily_payment_24m:
+                          type: number
+                          format: float
+        '400':
+          description: Bad request
+        '500':
+          description: Server error
+      operationId: getMicroLoanLoanAmounts
+      x-operation-id-source: derived
+    post:
+      summary: Recalculate loan amounts and return a paginated page
+      tags:
+      - Micro Loan
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: string
+                  description: Database username
+                password:
+                  type: string
+                  description: Database password
+                page:
+                  type: integer
+                  minimum: 1
+                  default: 1
+                page_size:
+                  type: integer
+                  minimum: 1
+                  default: 1000
+              required:
+              - user
+              - password
+      responses:
+        '200':
+          description: Recalculated and paginated results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_records:
+                    type: integer
+                  total_pages:
+                    type: integer
+                  current_page:
+                    type: integer
+                  page_size:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        BUSINESS_REFERENCE:
+                          type: integer
+                        BAND:
+                          type: string
+                        rms_annual_revenue:
+                          type: number
+                          format: float
+                        rms_max_loan_amount:
+                          type: number
+                          format: float
+                        rms_daily_payment_6m:
+                          type: number
+                          format: float
+                        rms_daily_payment_12m:
+                          type: number
+                          format: float
+                        rms_daily_payment_24m:
+                          type: number
+                          format: float
+                        pay_annual_revenue:
+                          type: number
+                          format: float
+                        pay_max_loan_amount:
+                          type: number
+                          format: float
+                        pay_daily_payment_6m:
+                          type: number
+                          format: float
+                        pay_daily_payment_12m:
+                          type: number
+                          format: float
+                        pay_daily_payment_24m:
+                          type: number
+                          format: float
+        '400':
+          description: Bad request
+        '500':
+          description: Server error
+      operationId: postMicroLoanLoanAmounts
+      x-operation-id-source: derived

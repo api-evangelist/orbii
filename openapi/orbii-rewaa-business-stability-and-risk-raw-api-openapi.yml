@@ -1,0 +1,144 @@
+openapi: 3.2.0
+info:
+  title: Orbii API - Rewaa Rewaa Business Stability And Risk Raw API
+  version: 1.0.4
+  description: API for Rewaa.
+servers:
+- url: https://api.rewaa.orbii.ai/
+tags:
+- name: Rewaa Business Stability And Risk Raw
+paths:
+  /Rewaa_Business_Stability_And_Risk_Raw:
+    get:
+      summary: Business Stability & Risk (raw)
+      operationId: getRewaaBusinessStabilityAndRiskRaw
+      parameters:
+      - $ref: '#/components/parameters/UserQ'
+      - $ref: '#/components/parameters/PasswordQ'
+      - $ref: '#/components/parameters/PageQ'
+      - $ref: '#/components/parameters/PageSizeQ'
+      - in: query
+        name: schema_name
+        schema:
+          type: string
+        description: Optional exact filter by schema_name
+      responses:
+        '200':
+          description: Paged business stability & risk results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedBusinessStabilityRisk'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      tags:
+      - Rewaa Business Stability And Risk Raw
+components:
+  responses:
+    InternalError:
+      description: Unexpected server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request (missing/invalid parameters)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    PageEnvelope:
+      type: object
+      properties:
+        total_records:
+          type: integer
+        total_pages:
+          type: integer
+        current_page:
+          type: integer
+        page_size:
+          type: integer
+        data:
+          type: array
+          items:
+            type: object
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: Missing 'user' or 'password' query parameters
+    PagedBusinessStabilityRisk:
+      allOf:
+      - $ref: '#/components/schemas/PageEnvelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/BusinessStabilityRiskRow'
+    BusinessStabilityRiskRow:
+      type: object
+      properties:
+        schema_name:
+          type: string
+        Revenue_Variability_Percentage:
+          type: number
+          format: double
+        Peak_Day_Stability_Ratio:
+          type: number
+          format: double
+        Industry_Name:
+          type: string
+        Revenue_Industry_Comparison_Percentage:
+          type: number
+          format: double
+        Seasonal_Revenue_Risk_Percentage:
+          type: number
+          format: double
+        Branch_Count:
+          type: number
+          format: double
+        Business_Age_Years:
+          type: number
+          format: double
+        Forecasted_Growth_Percentage:
+          type: number
+          format: double
+  parameters:
+    PageQ:
+      in: query
+      name: page
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: 1-based page index
+    UserQ:
+      in: query
+      name: user
+      required: true
+      schema:
+        type: string
+      description: Database username (also used to derive container for some endpoints)
+    PageSizeQ:
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1000
+      description: Page size
+    PasswordQ:
+      in: query
+      name: password
+      required: true
+      schema:
+        type: string
+      description: Database password

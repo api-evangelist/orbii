@@ -1,0 +1,169 @@
+openapi: 3.2.0
+info:
+  title: Orbii API - Rewaa … Rewaa Revenue And Sales Performance Raw…
+  version: 1.0.4
+  description: API for Rewaa.
+servers:
+- url: https://api.rewaa.orbii.ai/
+tags:
+- name: Rewaa Revenue And Sales Performance Raw
+paths:
+  /Rewaa_Revenue_And_Sales_Performance_Raw:
+    get:
+      summary: Revenue & Sales Performance (raw)
+      operationId: getRewaaRevenueAndSalesPerformanceRaw
+      parameters:
+      - $ref: '#/components/parameters/UserQ'
+      - $ref: '#/components/parameters/PasswordQ'
+      - $ref: '#/components/parameters/PageQ'
+      - $ref: '#/components/parameters/PageSizeQ'
+      - in: query
+        name: schema_name
+        schema:
+          type: string
+        description: Optional exact filter by schema_name
+      responses:
+        '200':
+          description: Paged revenue & sales performance results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedRevenueSales'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      tags:
+      - Rewaa Revenue And Sales Performance Raw
+components:
+  schemas:
+    RevenueSalesRow:
+      type: object
+      properties:
+        schema_name:
+          type: string
+        Total_Revenue_SAR:
+          type: number
+          format: double
+        Avg_Monthly_Quantity_Sold:
+          type: number
+          format: double
+        YoY_Growth_Percentage:
+          type: number
+          format: double
+        Revenue_Variability_Percentage:
+          type: number
+          format: double
+        Positive_Growth_Percentage:
+          type: number
+          format: double
+        Avg_Sold_Per_Day:
+          type: number
+          format: double
+        Seasonal_Spike_Percentage:
+          type: number
+          format: double
+        Monthly_Positive_Trend_Percentage:
+          type: number
+          format: double
+        Card_Transaction_Ratio_Percentage:
+          type: number
+          format: double
+        Transfer_Transaction_Ratio_Percentage:
+          type: number
+          format: double
+        Revenue_Regularity_Percentage:
+          type: number
+          format: double
+        Revenue_Stability_Percentage:
+          type: number
+          format: double
+        Daily_Sales_Stability_Percentage:
+          type: number
+          format: double
+        Unique_Payment_Methods_Count:
+          type: number
+          format: double
+        Forecasted_Sales_Growth_Percentage:
+          type: number
+          format: double
+        Active_Months_Last_12:
+          type: number
+          format: double
+    PageEnvelope:
+      type: object
+      properties:
+        total_records:
+          type: integer
+        total_pages:
+          type: integer
+        current_page:
+          type: integer
+        page_size:
+          type: integer
+        data:
+          type: array
+          items:
+            type: object
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: Missing 'user' or 'password' query parameters
+    PagedRevenueSales:
+      allOf:
+      - $ref: '#/components/schemas/PageEnvelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/RevenueSalesRow'
+  responses:
+    InternalError:
+      description: Unexpected server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request (missing/invalid parameters)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    PageQ:
+      in: query
+      name: page
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: 1-based page index
+    UserQ:
+      in: query
+      name: user
+      required: true
+      schema:
+        type: string
+      description: Database username (also used to derive container for some endpoints)
+    PageSizeQ:
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1000
+      description: Page size
+    PasswordQ:
+      in: query
+      name: password
+      required: true
+      schema:
+        type: string
+      description: Database password

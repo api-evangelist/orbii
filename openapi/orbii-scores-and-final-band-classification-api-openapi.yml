@@ -1,0 +1,100 @@
+openapi: 3.2.0
+info:
+  title: Orbii API - Foodics Scores and Final Band Classification API
+  version: 1.0.2
+  description: API for retrieving micro loan KPIs, scoring, risk assessment, band classification, and related data.
+servers:
+- url: https://api.foodics.orbii.ai/
+  description: Production Server
+tags:
+- name: Scores and Final Band Classification
+paths:
+  /Micro_Loan_Final_Band_Classification:
+    get:
+      summary: Get paginated final band classification
+      tags:
+      - Scores and Final Band Classification
+      parameters:
+      - $ref: '#/components/parameters/User'
+      - $ref: '#/components/parameters/Password'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: Paginated final band classification data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResult'
+      operationId: getMicroLoanFinalBandClassification
+      x-operation-id-source: derived
+  /Micro_Loan_Final_Band_Classification/Business_Reference:
+    get:
+      summary: Get final band classification for a specific business reference
+      tags:
+      - Scores and Final Band Classification
+      parameters:
+      - $ref: '#/components/parameters/User'
+      - $ref: '#/components/parameters/Password'
+      - name: business_reference
+        in: query
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Final band classification data for specified business reference
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: getMicroLoanFinalBandClassificationBusinessReference
+      x-operation-id-source: derived
+components:
+  parameters:
+    User:
+      name: user
+      in: query
+      required: true
+      schema:
+        type: string
+    PageSize:
+      name: page_size
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 1000
+      description: Number of records per page (must be >= 1)
+    Page:
+      name: page
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 1
+      description: Page number (must be >= 1)
+    Password:
+      name: password
+      in: query
+      required: true
+      schema:
+        type: string
+  schemas:
+    PaginatedResult:
+      type: object
+      properties:
+        total_records:
+          type: integer
+        total_pages:
+          type: integer
+        current_page:
+          type: integer
+        page_size:
+          type: integer
+        data:
+          type: array
+          items:
+            type: object

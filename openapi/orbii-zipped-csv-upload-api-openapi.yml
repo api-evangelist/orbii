@@ -1,0 +1,77 @@
+openapi: 3.2.0
+info:
+  title: Orbii API - Rewaa Zipped Csv Upload API
+  version: 1.0.4
+  description: API for Rewaa.
+servers:
+- url: https://api.rewaa.orbii.ai/
+tags:
+- name: Zipped Csv Upload
+paths:
+  /zipped-csv-upload:
+    post:
+      summary: Upload ZIP file(s) to secure storage
+      description: Accepts one or more `.zip` files and uploads each ZIP.
+      operationId: zippedCsvUpload
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - files
+              properties:
+                files:
+                  type: array
+                  description: One or more `.zip` files to upload (each stored as-is)
+                  items:
+                    type: string
+                    format: binary
+            encoding:
+              files:
+                contentType: application/zip
+      responses:
+        '200':
+          description: ZIP file(s) uploaded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: ZIP file(s) uploaded successfully.
+                  container:
+                    type: string
+                    example: rewaa
+                  uploaded_files:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - merchant_payment_transactions.zip
+                    - merchant_sales_transactions.zip
+        '400':
+          description: Bad request (no files, invalid ZIP, wrong extension)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error (container creation or upload failure)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Zipped Csv Upload
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: Missing 'user' or 'password' query parameters

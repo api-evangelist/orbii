@@ -1,0 +1,176 @@
+openapi: 3.2.0
+info:
+  title: Orbii API - Rewaa Rewaa Loan Amounts API
+  version: 1.0.4
+  description: API for Rewaa.
+servers:
+- url: https://api.rewaa.orbii.ai/
+tags:
+- name: Rewaa Loan Amounts
+paths:
+  /Rewaa_Loan_Amounts:
+    get:
+      summary: Loan Amounts
+      operationId: getRewaaLoanAmounts
+      parameters:
+      - $ref: '#/components/parameters/UserQ'
+      - $ref: '#/components/parameters/PasswordQ'
+      - $ref: '#/components/parameters/PageQ'
+      - $ref: '#/components/parameters/PageSizeQ'
+      - in: query
+        name: schema_name
+        schema:
+          type: string
+        description: Optional exact filter by schema_name
+      responses:
+        '200':
+          description: Paged loan amounts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedLoanAmounts'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      tags:
+      - Rewaa Loan Amounts
+    post:
+      summary: Rebuild Loan Amounts and return a paged page
+      operationId: rebuildRewaaLoanAmounts
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - user
+              - password
+              properties:
+                user:
+                  type: string
+                password:
+                  type: string
+                page:
+                  type: integer
+                  minimum: 1
+                  default: 1
+                page_size:
+                  type: integer
+                  minimum: 1
+                  default: 1000
+      responses:
+        '200':
+          description: Paged loan amounts after rebuild
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedLoanAmounts'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      tags:
+      - Rewaa Loan Amounts
+components:
+  schemas:
+    PagedLoanAmounts:
+      allOf:
+      - $ref: '#/components/schemas/PageEnvelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/LoanAmountsRow'
+    PageEnvelope:
+      type: object
+      properties:
+        total_records:
+          type: integer
+        total_pages:
+          type: integer
+        current_page:
+          type: integer
+        page_size:
+          type: integer
+        data:
+          type: array
+          items:
+            type: object
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: Missing 'user' or 'password' query parameters
+    LoanAmountsRow:
+      type: object
+      properties:
+        schema_name:
+          type: string
+        Band:
+          type: string
+        Annual_Revenue_SAR_Last_12:
+          type: number
+          format: double
+        Max_Loan_Amount_SAR:
+          type: number
+          format: double
+        Daily_Payment_6m_SAR:
+          type: number
+          format: double
+        Daily_Payment_12m_SAR:
+          type: number
+          format: double
+        Daily_Payment_24m_SAR:
+          type: number
+          format: double
+  responses:
+    InternalError:
+      description: Unexpected server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request (missing/invalid parameters)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    PageQ:
+      in: query
+      name: page
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: 1-based page index
+    UserQ:
+      in: query
+      name: user
+      required: true
+      schema:
+        type: string
+      description: Database username (also used to derive container for some endpoints)
+    PageSizeQ:
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1000
+      description: Page size
+    PasswordQ:
+      in: query
+      name: password
+      required: true
+      schema:
+        type: string
+      description: Database password

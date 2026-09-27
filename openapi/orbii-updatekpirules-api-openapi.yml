@@ -1,0 +1,84 @@
+openapi: 3.2.0
+info:
+  title: Orbii API - Rewaa Update Kpi Rules API
+  version: 1.0.4
+  description: API for Rewaa.
+servers:
+- url: https://api.rewaa.orbii.ai/
+tags:
+- name: UpdateKpiRules
+paths:
+  /UpdateKpiRules:
+    post:
+      summary: Update a KPI rule threshold
+      description: Uupdates a KPI rule's threshold.
+      operationId: updateKpiRules
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: string
+                  description: Database username (optional; defaults to env `DB_USER`)
+                password:
+                  type: string
+                  format: password
+                  description: Database password (optional; defaults to env `DB_PASSWORD`)
+                category:
+                  type: string
+                  description: KPI category to update
+                rule:
+                  type: string
+                  description: Rule name within the category
+                new_threshold:
+                  type: string
+                  description: New threshold value (sent as string; converted by stored procedure)
+              required:
+              - category
+              - rule
+              - new_threshold
+      responses:
+        '200':
+          description: KPI rule updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: KPI rule updated successfully
+        '400':
+          description: Missing credentials or required form fields
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                missingField:
+                  value:
+                    error: Missing 'category', 'rule', or 'new_threshold' in form data
+        '500':
+          description: Database or server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                dbError:
+                  value:
+                    error: ('42000', '[Microsoft][ODBC Driver 17 for SQL Server] ...')
+      tags:
+      - UpdateKpiRules
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: Missing 'user' or 'password' query parameters

@@ -1,0 +1,154 @@
+openapi: 3.2.0
+info:
+  title: Orbii API - Rewaa Rewaa Payment Processing And Liquidity……
+  version: 1.0.4
+  description: API for Rewaa.
+servers:
+- url: https://api.rewaa.orbii.ai/
+tags:
+- name: Rewaa Payment Processing And Liquidity Raw
+paths:
+  /Rewaa_Payment_Processing_And_Liquidity_Raw:
+    get:
+      summary: Payment Processing & Liquidity (raw)
+      operationId: getRewaaPaymentProcessingAndLiquidityRaw
+      parameters:
+      - $ref: '#/components/parameters/UserQ'
+      - $ref: '#/components/parameters/PasswordQ'
+      - $ref: '#/components/parameters/PageQ'
+      - $ref: '#/components/parameters/PageSizeQ'
+      - in: query
+        name: schema_name
+        schema:
+          type: string
+        description: Optional exact filter by schema_name
+      responses:
+        '200':
+          description: Paged payment processing & liquidity results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedPaymentLiquidity'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      tags:
+      - Rewaa Payment Processing And Liquidity Raw
+components:
+  schemas:
+    PagedPaymentLiquidity:
+      allOf:
+      - $ref: '#/components/schemas/PageEnvelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/PaymentLiquidityRow'
+    PaymentLiquidityRow:
+      type: object
+      properties:
+        schema_name:
+          type: string
+        Total_Transactions:
+          type: number
+          format: double
+        Card_Transactions:
+          type: number
+          format: double
+        Card_Transaction_Ratio_Percentage:
+          type: number
+          format: double
+        Transfer_Transactions:
+          type: number
+          format: double
+        Transfer_Transaction_Ratio_Percentage:
+          type: number
+          format: double
+        Cash_Transactions:
+          type: number
+          format: double
+        Cash_Transaction_Ratio_Percentage:
+          type: number
+          format: double
+        CustomerDebit_Transactions:
+          type: number
+          format: double
+        CustomerDebit_Transaction_Ratio_Percentage:
+          type: number
+          format: double
+        Total_Active_Days:
+          type: number
+          format: double
+        Transactions_Per_Day:
+          type: number
+          format: double
+    PageEnvelope:
+      type: object
+      properties:
+        total_records:
+          type: integer
+        total_pages:
+          type: integer
+        current_page:
+          type: integer
+        page_size:
+          type: integer
+        data:
+          type: array
+          items:
+            type: object
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: Missing 'user' or 'password' query parameters
+  responses:
+    InternalError:
+      description: Unexpected server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request (missing/invalid parameters)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    PageQ:
+      in: query
+      name: page
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: 1-based page index
+    UserQ:
+      in: query
+      name: user
+      required: true
+      schema:
+        type: string
+      description: Database username (also used to derive container for some endpoints)
+    PageSizeQ:
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1000
+      description: Page size
+    PasswordQ:
+      in: query
+      name: password
+      required: true
+      schema:
+        type: string
+      description: Database password

@@ -1,0 +1,70 @@
+openapi: 3.2.0
+info:
+  title: Orbii API - Rewaa Run Assessment API
+  version: 1.0.4
+  description: API for Rewaa.
+servers:
+- url: https://api.rewaa.orbii.ai/
+tags:
+- name: Run Assessment
+paths:
+  /Run_Assessment:
+    post:
+      summary: Trigger assessment pipeline
+      operationId: runAssessment
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - user
+              - password
+              properties:
+                user:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Pipeline triggered
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Assessment pipeline triggered successfully
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          description: Pipeline trigger failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  response_text:
+                    type: string
+      tags:
+      - Run Assessment
+components:
+  responses:
+    BadRequest:
+      description: Bad request (missing/invalid parameters)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: Missing 'user' or 'password' query parameters

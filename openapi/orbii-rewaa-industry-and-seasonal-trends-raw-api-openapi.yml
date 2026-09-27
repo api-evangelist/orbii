@@ -1,0 +1,159 @@
+openapi: 3.2.0
+info:
+  title: Orbii API - Rewaa Rewaa Industry And Seasonal Trends Raw API
+  version: 1.0.4
+  description: API for Rewaa.
+servers:
+- url: https://api.rewaa.orbii.ai/
+tags:
+- name: Rewaa Industry And Seasonal Trends Raw
+paths:
+  /Rewaa_Industry_And_Seasonal_Trends_Raw:
+    get:
+      summary: Industry & Seasonal Trends (raw)
+      operationId: getRewaaIndustryAndSeasonalTrendsRaw
+      parameters:
+      - $ref: '#/components/parameters/UserQ'
+      - $ref: '#/components/parameters/PasswordQ'
+      - $ref: '#/components/parameters/PageQ'
+      - $ref: '#/components/parameters/PageSizeQ'
+      - in: query
+        name: schema_name
+        schema:
+          type: string
+        description: Optional exact filter by schema_name
+      responses:
+        '200':
+          description: Paged industry & seasonal trends results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedIndustrySeasonal'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      tags:
+      - Rewaa Industry And Seasonal Trends Raw
+components:
+  schemas:
+    IndustrySeasonalRow:
+      type: object
+      properties:
+        schema_name:
+          type: string
+        Industry_Name:
+          type: string
+        Industry_Stability_Score:
+          type: number
+          format: double
+        Business_Avg_Monthly_Revenue_SAR:
+          type: number
+          format: double
+        Industry_Avg_Monthly_Revenue_SAR:
+          type: number
+          format: double
+        Revenue_vs_Industry_Percentage:
+          type: number
+          format: double
+        Revenue_Variability_Percentage:
+          type: number
+          format: double
+        Active_Months_Count:
+          type: number
+          format: double
+        Total_Branches:
+          type: number
+          format: double
+        Avg_Branches_in_Industry:
+          type: number
+          format: double
+        Branches_vs_Industry_Percentage:
+          type: number
+          format: double
+        Active_Months_Last_12:
+          type: number
+          format: double
+        Coverage_12M:
+          type: number
+          format: double
+        Data_Quality_12M:
+          type: number
+          format: double
+    PagedIndustrySeasonal:
+      allOf:
+      - $ref: '#/components/schemas/PageEnvelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/IndustrySeasonalRow'
+    PageEnvelope:
+      type: object
+      properties:
+        total_records:
+          type: integer
+        total_pages:
+          type: integer
+        current_page:
+          type: integer
+        page_size:
+          type: integer
+        data:
+          type: array
+          items:
+            type: object
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: Missing 'user' or 'password' query parameters
+  responses:
+    InternalError:
+      description: Unexpected server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request (missing/invalid parameters)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    PageQ:
+      in: query
+      name: page
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: 1-based page index
+    UserQ:
+      in: query
+      name: user
+      required: true
+      schema:
+        type: string
+      description: Database username (also used to derive container for some endpoints)
+    PageSizeQ:
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1000
+      description: Page size
+    PasswordQ:
+      in: query
+      name: password
+      required: true
+      schema:
+        type: string
+      description: Database password

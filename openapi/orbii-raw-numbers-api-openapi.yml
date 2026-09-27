@@ -1,0 +1,176 @@
+openapi: 3.2.0
+info:
+  title: Orbii API - Foodics Raw Numbers API
+  version: 1.0.2
+  description: API for retrieving micro loan KPIs, scoring, risk assessment, band classification, and related data.
+servers:
+- url: https://api.foodics.orbii.ai/
+  description: Production Server
+tags:
+- name: Raw Numbers
+paths:
+  /Micro_Loan_Baseline_Eligibility_Raw:
+    get:
+      summary: Get paginated baseline eligibility raw numbers
+      tags:
+      - Raw Numbers
+      parameters:
+      - $ref: '#/components/parameters/User'
+      - $ref: '#/components/parameters/Password'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: Paginated baseline eligibility data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResult'
+      operationId: getMicroLoanBaselineEligibilityRaw
+      x-operation-id-source: derived
+  /Micro_Loan_Business_Stability_And_Risk_Raw:
+    get:
+      summary: Get paginated business stability and risk raw numbers
+      tags:
+      - Raw Numbers
+      parameters:
+      - $ref: '#/components/parameters/User'
+      - $ref: '#/components/parameters/Password'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: Paginated business stability and risk data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResult'
+      operationId: getMicroLoanBusinessStabilityAndRiskRaw
+      x-operation-id-source: derived
+  /Micro_Loan_Industry_And_Seasonal_Trends_Raw:
+    get:
+      summary: Get paginated industry and seasonal trends raw numbers
+      tags:
+      - Raw Numbers
+      parameters:
+      - $ref: '#/components/parameters/User'
+      - $ref: '#/components/parameters/Password'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: Paginated industry and seasonal trends data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResult'
+      operationId: getMicroLoanIndustryAndSeasonalTrendsRaw
+      x-operation-id-source: derived
+  /Micro_Loan_Payment_Processing_And_Liquidity_Raw:
+    get:
+      summary: Get paginated payment processing and liquidity raw numbers
+      tags:
+      - Raw Numbers
+      parameters:
+      - $ref: '#/components/parameters/User'
+      - $ref: '#/components/parameters/Password'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: Paginated payment processing and liquidity data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResult'
+      operationId: getMicroLoanPaymentProcessingAndLiquidityRaw
+      x-operation-id-source: derived
+  /Micro_Loan_Revenue_And_Sales_Performance_Raw:
+    get:
+      summary: Get paginated revenue and sales performance raw numbers
+      tags:
+      - Raw Numbers
+      parameters:
+      - $ref: '#/components/parameters/User'
+      - $ref: '#/components/parameters/Password'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: Paginated revenue and sales performance data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResult'
+      operationId: getMicroLoanRevenueAndSalesPerformanceRaw
+      x-operation-id-source: derived
+  /Micro_Loan_Raw_Numbers/Business_Reference:
+    get:
+      summary: Get KPI raw and text data for a specific business reference
+      tags:
+      - Raw Numbers
+      parameters:
+      - $ref: '#/components/parameters/User'
+      - $ref: '#/components/parameters/Password'
+      - name: business_reference
+        in: query
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: KPI data for specified business reference
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      operationId: getMicroLoanRawNumbersBusinessReference
+      x-operation-id-source: derived
+components:
+  parameters:
+    User:
+      name: user
+      in: query
+      required: true
+      schema:
+        type: string
+    PageSize:
+      name: page_size
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 1000
+      description: Number of records per page (must be >= 1)
+    Page:
+      name: page
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 1
+      description: Page number (must be >= 1)
+    Password:
+      name: password
+      in: query
+      required: true
+      schema:
+        type: string
+  schemas:
+    PaginatedResult:
+      type: object
+      properties:
+        total_records:
+          type: integer
+        total_pages:
+          type: integer
+        current_page:
+          type: integer
+        page_size:
+          type: integer
+        data:
+          type: array
+          items:
+            type: object

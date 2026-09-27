@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Orbii IBA Ns API
+  title: Orbii IBANs API
   description: API for managing transactions, clients, and companies.
   version: 1.0.5-oas3
 servers:

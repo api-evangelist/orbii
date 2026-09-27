@@ -1,0 +1,156 @@
+openapi: 3.2.0
+info:
+  title: Orbii API - Rewaa Rewaa Final Band Classification API
+  version: 1.0.4
+  description: API for Rewaa.
+servers:
+- url: https://api.rewaa.orbii.ai/
+tags:
+- name: Rewaa Final Band Classification
+paths:
+  /Rewaa_Final_Band_Classification:
+    get:
+      summary: Final Band Classification
+      operationId: getRewaaFinalBandClassification
+      parameters:
+      - $ref: '#/components/parameters/UserQ'
+      - $ref: '#/components/parameters/PasswordQ'
+      - $ref: '#/components/parameters/PageQ'
+      - $ref: '#/components/parameters/PageSizeQ'
+      - in: query
+        name: schema_name
+        schema:
+          type: string
+        description: Optional exact filter by schema_name
+      responses:
+        '200':
+          description: Paged final band classification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedFinalBand'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      tags:
+      - Rewaa Final Band Classification
+components:
+  schemas:
+    FinalBandRow:
+      type: object
+      properties:
+        schema_name:
+          type: string
+        Baseline_Eligibility_Score:
+          type: number
+          format: double
+        Business_Stability_and_Risk_Score:
+          type: number
+          format: double
+        Industry_and_Seasonal_Trends_Score:
+          type: number
+          format: double
+        Payment_Processing_and_Liquidity_Score:
+          type: number
+          format: double
+        Revenue_and_Sales_Performance_Score:
+          type: number
+          format: double
+        Baseline_Eligibility_Score_Value:
+          type: number
+          format: double
+        Business_Stability_and_Risk_Score_Value:
+          type: number
+          format: double
+        Industry_and_Seasonal_Trends_Score_Value:
+          type: number
+          format: double
+        Payment_Processing_and_Liquidity_Score_Value:
+          type: number
+          format: double
+        Revenue_and_Sales_Performance_Score_Value:
+          type: number
+          format: double
+        Total_Score:
+          type: number
+          format: double
+        Band:
+          type: string
+    PageEnvelope:
+      type: object
+      properties:
+        total_records:
+          type: integer
+        total_pages:
+          type: integer
+        current_page:
+          type: integer
+        page_size:
+          type: integer
+        data:
+          type: array
+          items:
+            type: object
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: Missing 'user' or 'password' query parameters
+    PagedFinalBand:
+      allOf:
+      - $ref: '#/components/schemas/PageEnvelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/FinalBandRow'
+  responses:
+    InternalError:
+      description: Unexpected server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request (missing/invalid parameters)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    UserQ:
+      in: query
+      name: user
+      required: true
+      schema:
+        type: string
+      description: Database username (also used to derive container for some endpoints)
+    PageQ:
+      in: query
+      name: page
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: 1-based page index
+    PageSizeQ:
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1000
+      description: Page size
+    PasswordQ:
+      in: query
+      name: password
+      required: true
+      schema:
+        type: string
+      description: Database password

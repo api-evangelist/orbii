@@ -53,10 +53,10 @@ tags:
 - Fintech
 - Underwriting
 - Banking
-- SME
+- Small Business
 - Embedded Finance
 - MENA
-- Risk
+- Risk Management
 tags_raw:
 - Company
 - Ai
@@ -229,6 +229,169 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/orbii-pdfs-api-openapi.yml
+- aid: orbii:orbii-micro-loan-api
+  name: Orbii Micro Loan API
+  description: The Micro Loan API from Orbii — 1 operation(s) for micro loan.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Micro Loan
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-micro-loan-api-openapi.yml
+- aid: orbii:orbii-raw-numbers-api
+  name: Orbii Raw Numbers API
+  description: The Raw Numbers API from Orbii — 6 operation(s) for raw numbers.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Raw Numbers
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-raw-numbers-api-openapi.yml
+- aid: orbii:orbii-rewaa-baseline-eligibility-raw-api
+  name: Orbii Rewaa Baseline Eligibility Raw API
+  description: >-
+    The Rewaa Baseline Eligibility Raw API from Orbii — 1 operation(s) for rewaa baseline eligibility
+    raw.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Rewaa Baseline Eligibility Raw
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-rewaa-baseline-eligibility-raw-api-openapi.yml
+- aid: orbii:orbii-rewaa-business-stability-and-risk-raw-api
+  name: Orbii Rewaa Business Stability And Risk Raw API
+  description: >-
+    The Rewaa Business Stability And Risk Raw API from Orbii — 1 operation(s) for rewaa business stability
+    and risk raw.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Rewaa Business Stability And Risk Raw
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-rewaa-business-stability-and-risk-raw-api-openapi.yml
+- aid: orbii:orbii-rewaa-final-band-classification-api
+  name: Orbii Rewaa Final Band Classification API
+  description: >-
+    The Rewaa Final Band Classification API from Orbii — 1 operation(s) for rewaa final band classification.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Rewaa Final Band Classification
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-rewaa-final-band-classification-api-openapi.yml
+- aid: orbii:orbii-rewaa-industry-and-seasonal-trends-raw-api
+  name: Orbii Rewaa Industry And Seasonal Trends Raw API
+  description: >-
+    The Rewaa Industry And Seasonal Trends Raw API from Orbii — 1 operation(s) for rewaa industry and
+    seasonal trends raw.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Rewaa Industry And Seasonal Trends Raw
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-rewaa-industry-and-seasonal-trends-raw-api-openapi.yml
+- aid: orbii:orbii-rewaa-kpi-rules-api
+  name: Orbii Rewaa KPI Rules API
+  description: The Rewaa KPI Rules API from Orbii — 1 operation(s) for rewaa kpi rules.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Rewaa KPI Rules
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-rewaa-kpi-rules-api-openapi.yml
+- aid: orbii:orbii-rewaa-loan-amounts-api
+  name: Orbii Rewaa Loan Amounts API
+  description: The Rewaa Loan Amounts API from Orbii — 1 operation(s) for rewaa loan amounts.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Rewaa Loan Amounts
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-rewaa-loan-amounts-api-openapi.yml
+- aid: orbii:orbii-rewaa-payment-processing-and-liquidity-raw-api
+  name: Orbii Rewaa Payment Processing And Liquidity Raw API
+  description: >-
+    The Rewaa Payment Processing And Liquidity Raw API from Orbii — 1 operation(s) for rewaa payment processing
+    and liquidity raw.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Rewaa Payment Processing And Liquidity Raw
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-rewaa-payment-processing-and-liquidity-raw-api-openapi.yml
+- aid: orbii:orbii-rewaa-revenue-and-sales-performance-raw-api
+  name: Orbii Rewaa Revenue And Sales Performance Raw API
+  description: >-
+    The Rewaa Revenue And Sales Performance Raw API from Orbii — 1 operation(s) for rewaa revenue and
+    sales performance raw.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Rewaa Revenue And Sales Performance Raw
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-rewaa-revenue-and-sales-performance-raw-api-openapi.yml
+- aid: orbii:orbii-rewaa-risk-assessment-api
+  name: Orbii Rewaa Risk Assessment API
+  description: The Rewaa Risk Assessment API from Orbii — 1 operation(s) for rewaa risk assessment.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Rewaa Risk Assessment
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-rewaa-risk-assessment-api-openapi.yml
+- aid: orbii:orbii-run-assessment-api
+  name: Orbii Run Assessment API
+  description: The Run Assessment API from Orbii — 1 operation(s) for run assessment.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Run Assessment
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-run-assessment-api-openapi.yml
+- aid: orbii:orbii-scores-and-final-band-classification-api
+  name: Orbii Scores and Final Band Classification API
+  description: >-
+    The Scores and Final Band Classification API from Orbii — 2 operation(s) for scores and final band
+    classification.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Scores and Final Band Classification
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-scores-and-final-band-classification-api-openapi.yml
+- aid: orbii:orbii-updatekpirules-api
+  name: Orbii Update Kpi Rules API
+  description: The UpdateKpiRules API from Orbii — 1 operation(s) for updatekpirules.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - UpdateKpiRules
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-updatekpirules-api-openapi.yml
+- aid: orbii:orbii-zipped-csv-upload-api
+  name: Orbii Zipped Csv Upload API
+  description: The Zipped Csv Upload API from Orbii — 1 operation(s) for zipped csv upload.
+  humanURL: https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3
+  baseURL: https://api.orbii.ai
+  tags:
+  - Zipped Csv Upload
+  properties:
+  - type: OpenAPI
+    url: openapi/orbii-zipped-csv-upload-api-openapi.yml
 common:
 - type: CapabilityMap
   url: capabilities/orbii-capability-edges.yml
