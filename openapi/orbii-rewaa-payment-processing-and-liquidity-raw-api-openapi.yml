@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Orbii API - Rewaa Rewaa Payment Processing And Liquidity……
+  title: Orbii API - Rewaa Rewaa Payment Processing And Liquidity………
   version: 1.0.4
   description: API for Rewaa.
 servers:
@@ -37,15 +37,6 @@ paths:
       - Rewaa Payment Processing And Liquidity Raw
 components:
   schemas:
-    PagedPaymentLiquidity:
-      allOf:
-      - $ref: '#/components/schemas/PageEnvelope'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/PaymentLiquidityRow'
     PaymentLiquidityRow:
       type: object
       properties:
@@ -106,20 +97,36 @@ components:
           type: string
       example:
         error: Missing 'user' or 'password' query parameters
+    PagedPaymentLiquidity:
+      allOf:
+      - $ref: '#/components/schemas/PageEnvelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/PaymentLiquidityRow'
   responses:
-    InternalError:
-      description: Unexpected server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     BadRequest:
       description: Bad request (missing/invalid parameters)
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    InternalError:
+      description: Unexpected server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
+    UserQ:
+      in: query
+      name: user
+      required: true
+      schema:
+        type: string
+      description: Database username (also used to derive container for some endpoints)
     PageQ:
       in: query
       name: page
@@ -129,13 +136,13 @@ components:
         minimum: 1
         default: 1
       description: 1-based page index
-    UserQ:
+    PasswordQ:
       in: query
-      name: user
+      name: password
       required: true
       schema:
         type: string
-      description: Database username (also used to derive container for some endpoints)
+      description: Database password
     PageSizeQ:
       in: query
       name: page_size
@@ -145,10 +152,3 @@ components:
         minimum: 1
         default: 1000
       description: Page size
-    PasswordQ:
-      in: query
-      name: password
-      required: true
-      schema:
-        type: string
-      description: Database password

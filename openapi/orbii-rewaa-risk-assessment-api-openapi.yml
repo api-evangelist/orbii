@@ -52,18 +52,51 @@ paths:
       - Rewaa Risk Assessment
 components:
   responses:
-    InternalError:
-      description: Unexpected server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     BadRequest:
       description: Bad request (missing/invalid parameters)
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    InternalError:
+      description: Unexpected server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    UserQ:
+      in: query
+      name: user
+      required: true
+      schema:
+        type: string
+      description: Database username (also used to derive container for some endpoints)
+    PageQ:
+      in: query
+      name: page
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: 1-based page index
+    PasswordQ:
+      in: query
+      name: password
+      required: true
+      schema:
+        type: string
+      description: Database password
+    PageSizeQ:
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1000
+      description: Page size
   schemas:
     PageEnvelope:
       type: object
@@ -132,36 +165,3 @@ components:
         Assessed_At:
           type: string
           format: date-time
-  parameters:
-    PageQ:
-      in: query
-      name: page
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: 1-based page index
-    UserQ:
-      in: query
-      name: user
-      required: true
-      schema:
-        type: string
-      description: Database username (also used to derive container for some endpoints)
-    PageSizeQ:
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        default: 1000
-      description: Page size
-    PasswordQ:
-      in: query
-      name: password
-      required: true
-      schema:
-        type: string
-      description: Database password

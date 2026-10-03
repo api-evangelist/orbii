@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Orbii Risk Assessment API
   version: '1.0'
-  description: 'Operations tagged Risk Assessment across 2 of this provider''s published API definitions: orbii-uae-openapi-original.json, orbii-tech-ltd-risk-assessment-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Risk Assessment across 2 of this provider''s published API definitions: orbii-uae-openapi-original.json, orbii-risk-assessment-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.orbii.ai
   description: Production server
@@ -557,20 +557,12 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    User:
-      name: user
+    Password:
+      name: password
       in: query
       required: true
       schema:
         type: string
-    PageSize:
-      name: page_size
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 1000
-      description: Number of records per page (must be >= 1)
     Page:
       name: page
       in: query
@@ -579,8 +571,16 @@ components:
         type: integer
         default: 1
       description: Page number (must be >= 1)
-    Password:
-      name: password
+    PageSize:
+      name: page_size
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 1000
+      description: Number of records per page (must be >= 1)
+    User:
+      name: user
       in: query
       required: true
       schema:
@@ -603,4 +603,4 @@ components:
             type: object
 x-refined-from:
 - orbii-uae-openapi-original.json
-- orbii-tech-ltd-risk-assessment-api-openapi.yml
+- orbii-risk-assessment-api-openapi.yml

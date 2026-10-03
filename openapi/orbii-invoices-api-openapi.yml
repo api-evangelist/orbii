@@ -755,106 +755,28 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    InvoiceCompanyKpi:
+    InvoiceRiskAssessment:
       type: object
       properties:
-        company:
-          type: string
-          example: Acme Trading LLC
         category:
           type: string
-          example: Revenue
-        kpi:
+          example: Revenue & Income
+        rule:
           type: string
-          example: Monthly revenue
+          example: Revenue consistency above threshold
         value:
           type:
           - number
           - 'null'
           format: float
-          example: 128450.55
-    InvoiceSuggestedLoan:
-      type: object
-      properties:
+          example: 0.87
+        assessment:
+          type: string
+          example: Pass
         customer_id:
           type: string
           format: uuid
           example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
-        band:
-          type: string
-          example: A
-        annual_revenue:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 1250000.0
-        multiplier:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 0.35
-        suggested_loan:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 437500.0
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          example: Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'
-    InvoiceSuggestedLoanAllocation:
-      type: object
-      properties:
-        customer_id:
-          type: string
-          format: uuid
-          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
-        company:
-          type: string
-          example: Acme Trading LLC
-        band:
-          type: string
-          example: A
-        total_score:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 3.98
-        due_amount:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 150000.0
-        multiplier:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 0.35
-        company_cap:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 120000.0
-        allocated_amount:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 120000.0
-        rank_by_score:
-          type:
-          - integer
-          - 'null'
-          example: 1
     InvoiceCompanyBandClassification:
       type: object
       properties:
@@ -897,82 +819,6 @@ components:
         band:
           type: string
           example: A
-        customer_id:
-          type: string
-          format: uuid
-          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
-    InvoiceRiskAssessment:
-      type: object
-      properties:
-        category:
-          type: string
-          example: Revenue & Income
-        rule:
-          type: string
-          example: Revenue consistency above threshold
-        value:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 0.87
-        assessment:
-          type: string
-          example: Pass
-        customer_id:
-          type: string
-          format: uuid
-          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
-    InvoiceKpi:
-      type: object
-      properties:
-        category:
-          type: string
-          example: Revenue
-        kpi:
-          type: string
-          example: Monthly revenue
-        value:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 123456.78
-        year:
-          type: integer
-          example: 2025
-        month:
-          type: integer
-          minimum: 1
-          maximum: 12
-          example: 9
-    InvoiceSuggestedLoanSummary:
-      type: object
-      properties:
-        suggested_loan:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 437500.0
-        total_company_caps:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 190000.0
-        total_allocated:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 185000.0
-        unallocated_remainder:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 252500.0
         customer_id:
           type: string
           format: uuid
@@ -1038,6 +884,132 @@ components:
           type: string
           format: uuid
           example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+    InvoiceSuggestedLoanAllocation:
+      type: object
+      properties:
+        customer_id:
+          type: string
+          format: uuid
+          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+        company:
+          type: string
+          example: Acme Trading LLC
+        band:
+          type: string
+          example: A
+        total_score:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 3.98
+        due_amount:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 150000.0
+        multiplier:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 0.35
+        company_cap:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 120000.0
+        allocated_amount:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 120000.0
+        rank_by_score:
+          type:
+          - integer
+          - 'null'
+          example: 1
+    InvoiceKpi:
+      type: object
+      properties:
+        category:
+          type: string
+          example: Revenue
+        kpi:
+          type: string
+          example: Monthly revenue
+        value:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 123456.78
+        year:
+          type: integer
+          example: 2025
+        month:
+          type: integer
+          minimum: 1
+          maximum: 12
+          example: 9
+    InvoiceCompanyKpi:
+      type: object
+      properties:
+        company:
+          type: string
+          example: Acme Trading LLC
+        category:
+          type: string
+          example: Revenue
+        kpi:
+          type: string
+          example: Monthly revenue
+        value:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 128450.55
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'
+    InvoiceSuggestedLoanSummary:
+      type: object
+      properties:
+        suggested_loan:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 437500.0
+        total_company_caps:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 190000.0
+        total_allocated:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 185000.0
+        unallocated_remainder:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 252500.0
+        customer_id:
+          type: string
+          format: uuid
+          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
     InvoiceCompanyRiskAssessment:
       type: object
       properties:
@@ -1063,3 +1035,31 @@ components:
           type: string
           format: uuid
           example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+    InvoiceSuggestedLoan:
+      type: object
+      properties:
+        customer_id:
+          type: string
+          format: uuid
+          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+        band:
+          type: string
+          example: A
+        annual_revenue:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 1250000.0
+        multiplier:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 0.35
+        suggested_loan:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 437500.0

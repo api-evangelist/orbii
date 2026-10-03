@@ -2,22 +2,22 @@
   "provider": "orbii",
   "sources": [
     "_original/orbii-uae-openapi-original.json",
-    "orbii-tech-ltd-micro-loan-api-openapi.yml",
-    "orbii-tech-ltd-raw-numbers-api-openapi.yml",
-    "orbii-tech-ltd-rewaa-baseline-eligibility-raw-api-openapi.yml",
-    "orbii-tech-ltd-rewaa-business-stability-and-risk-raw-api-openapi.yml",
-    "orbii-tech-ltd-rewaa-final-band-classification-api-openapi.yml",
-    "orbii-tech-ltd-rewaa-industry-and-seasonal-trends-raw-api-openapi.yml",
-    "orbii-tech-ltd-rewaa-kpi-rules-api-openapi.yml",
-    "orbii-tech-ltd-rewaa-loan-amounts-api-openapi.yml",
-    "orbii-tech-ltd-rewaa-payment-processing-and-liquidity-raw-api-openapi.yml",
-    "orbii-tech-ltd-rewaa-revenue-and-sales-performance-raw-api-openapi.yml",
-    "orbii-tech-ltd-rewaa-risk-assessment-api-openapi.yml",
-    "orbii-tech-ltd-risk-assessment-api-openapi.yml",
-    "orbii-tech-ltd-run-assessment-api-openapi.yml",
-    "orbii-tech-ltd-scores-and-final-band-classification-api-openapi.yml",
-    "orbii-tech-ltd-updatekpirules-api-openapi.yml",
-    "orbii-tech-ltd-zipped-csv-upload-api-openapi.yml"
+    "orbii-micro-loan-api-openapi.yml",
+    "orbii-raw-numbers-api-openapi.yml",
+    "orbii-rewaa-baseline-eligibility-raw-api-openapi.yml",
+    "orbii-rewaa-business-stability-and-risk-raw-api-openapi.yml",
+    "orbii-rewaa-final-band-classification-api-openapi.yml",
+    "orbii-rewaa-industry-and-seasonal-trends-raw-api-openapi.yml",
+    "orbii-rewaa-kpi-rules-api-openapi.yml",
+    "orbii-rewaa-loan-amounts-api-openapi.yml",
+    "orbii-rewaa-payment-processing-and-liquidity-raw-api-openapi.yml",
+    "orbii-rewaa-revenue-and-sales-performance-raw-api-openapi.yml",
+    "orbii-rewaa-risk-assessment-api-openapi.yml",
+    "orbii-risk-assessment-api-openapi.yml",
+    "orbii-run-assessment-api-openapi.yml",
+    "orbii-scores-and-final-band-classification-api-openapi.yml",
+    "orbii-updatekpirules-api-openapi.yml",
+    "orbii-zipped-csv-upload-api-openapi.yml"
   ],
   "outputs": [
     "orbii-business-category-assignment-api-openapi.yml",
@@ -51,27 +51,25 @@
     "orbii-updatekpirules-api-openapi.yml",
     "orbii-zipped-csv-upload-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 16 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [
-    "orbii-tech-ltd-micro-loan-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /Micro_Loan_Loan_Amounts get, /Micro_Loan_Loan_Amounts post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "orbii-tech-ltd-raw-numbers-api-openapi.yml: previously refined output kept for 6 operation(s) no archived document covers (e.g. /Micro_Loan_Baseline_Eligibility_Raw get, /Micro_Loan_Business_Stability_And_Risk_Raw get, /Micro_Loan_Industry_And_Seasonal_Trends_Raw get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "orbii-tech-ltd-rewaa-baseline-eligibility-raw-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Rewaa_Baseline_Eligibility_Raw get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "orbii-tech-ltd-rewaa-business-stability-and-risk-raw-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Rewaa_Business_Stability_And_Risk_Raw get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "orbii-tech-ltd-rewaa-final-band-classification-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Rewaa_Final_Band_Classification get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "orbii-tech-ltd-rewaa-industry-and-seasonal-trends-raw-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Rewaa_Industry_And_Seasonal_Trends_Raw get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "orbii-tech-ltd-rewaa-kpi-rules-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Rewaa_KPI_Rules get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "orbii-tech-ltd-rewaa-loan-amounts-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /Rewaa_Loan_Amounts get, /Rewaa_Loan_Amounts post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "orbii-tech-ltd-rewaa-payment-processing-and-liquidity-raw-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Rewaa_Payment_Processing_And_Liquidity_Raw get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "orbii-tech-ltd-rewaa-revenue-and-sales-performance-raw-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Rewaa_Revenue_And_Sales_Performance_Raw get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "orbii-tech-ltd-rewaa-risk-assessment-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Rewaa_Risk_Assessment get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "orbii-tech-ltd-risk-assessment-api-openapi.yml: previously refined output kept for 5 operation(s) no archived document covers (e.g. /Micro_Loan_KPI_Rules get, /Micro_Loan_Rerun_Assessment post, /Micro_Loan_Risk_Assessment get); its other 5 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "orbii-tech-ltd-run-assessment-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Run_Assessment post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "orbii-tech-ltd-scores-and-final-band-classification-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /Micro_Loan_Final_Band_Classification get, /Micro_Loan_Final_Band_Classification/Business_Reference get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "orbii-tech-ltd-updatekpirules-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /UpdateKpiRules post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "orbii-tech-ltd-zipped-csv-upload-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /zipped-csv-upload post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+    "orbii-micro-loan-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /Micro_Loan_Loan_Amounts get, /Micro_Loan_Loan_Amounts post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "orbii-raw-numbers-api-openapi.yml: previously refined output kept for 6 operation(s) no archived document covers (e.g. /Micro_Loan_Baseline_Eligibility_Raw get, /Micro_Loan_Business_Stability_And_Risk_Raw get, /Micro_Loan_Industry_And_Seasonal_Trends_Raw get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "orbii-rewaa-baseline-eligibility-raw-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Rewaa_Baseline_Eligibility_Raw get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "orbii-rewaa-business-stability-and-risk-raw-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Rewaa_Business_Stability_And_Risk_Raw get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "orbii-rewaa-final-band-classification-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Rewaa_Final_Band_Classification get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "orbii-rewaa-industry-and-seasonal-trends-raw-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Rewaa_Industry_And_Seasonal_Trends_Raw get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "orbii-rewaa-kpi-rules-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Rewaa_KPI_Rules get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "orbii-rewaa-loan-amounts-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /Rewaa_Loan_Amounts get, /Rewaa_Loan_Amounts post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "orbii-rewaa-payment-processing-and-liquidity-raw-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Rewaa_Payment_Processing_And_Liquidity_Raw get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "orbii-rewaa-revenue-and-sales-performance-raw-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Rewaa_Revenue_And_Sales_Performance_Raw get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "orbii-rewaa-risk-assessment-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Rewaa_Risk_Assessment get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "orbii-risk-assessment-api-openapi.yml: previously refined output kept for 5 operation(s) no archived document covers (e.g. /Micro_Loan_KPI_Rules get, /Micro_Loan_Rerun_Assessment post, /Micro_Loan_Risk_Assessment get); its other 5 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "orbii-run-assessment-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /Run_Assessment post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "orbii-scores-and-final-band-classification-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /Micro_Loan_Final_Band_Classification get, /Micro_Loan_Final_Band_Classification/Business_Reference get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "orbii-updatekpirules-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /UpdateKpiRules post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "orbii-zipped-csv-upload-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /zipped-csv-upload post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
   ],
   "notes": [
     "2 archived document(s) dropped as subsets of other archived documents",
@@ -92,9 +90,8 @@
     "orbii-uae-openapi-original.json: declared missing tag: Risk Assessment",
     "orbii-uae-openapi-original.json: declared missing tag: Subcategories",
     "orbii-uae-openapi-original.json: declared missing tag: Transactions",
-    "tag 'Risk Assessment' spans 2 source specs (orbii-uae-openapi-original.json, orbii-tech-ltd-risk-assessment-api-openapi.yml): per-path servers applied",
-    "superseded outputs removed: orbii-tech-ltd-micro-loan-api-openapi.yml, orbii-tech-ltd-raw-numbers-api-openapi.yml, orbii-tech-ltd-rewaa-baseline-eligibility-raw-api-openapi.yml, orbii-tech-ltd-rewaa-business-stability-and-risk-raw-api-openapi.yml, orbii-tech-ltd-rewaa-final-band-classification-api-openapi.yml \u2026",
-    "apis.yml register: written (+15 apis, 30 total)"
+    "tag 'Risk Assessment' spans 2 source specs (orbii-uae-openapi-original.json, orbii-risk-assessment-api-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "_original/orbii-omn-openapi-original.json: archived document superseded by a larger archived document",
@@ -111,7 +108,6 @@
     "orbii-lending-actions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "orbii-merchants-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "orbii-pdfs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "orbii-risk-assessment-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "orbii-subcategories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "orbii-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]

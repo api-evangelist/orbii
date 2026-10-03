@@ -130,20 +130,12 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    User:
-      name: user
+    Password:
+      name: password
       in: query
       required: true
       schema:
         type: string
-    PageSize:
-      name: page_size
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 1000
-      description: Number of records per page (must be >= 1)
     Page:
       name: page
       in: query
@@ -152,8 +144,16 @@ components:
         type: integer
         default: 1
       description: Page number (must be >= 1)
-    Password:
-      name: password
+    PageSize:
+      name: page_size
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 1000
+      description: Number of records per page (must be >= 1)
+    User:
+      name: user
       in: query
       required: true
       schema:
