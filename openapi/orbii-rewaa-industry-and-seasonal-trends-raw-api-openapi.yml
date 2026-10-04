@@ -36,27 +36,7 @@ paths:
       tags:
       - Rewaa Industry And Seasonal Trends Raw
 components:
-  responses:
-    BadRequest:
-      description: Bad request (missing/invalid parameters)
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalError:
-      description: Unexpected server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
-    UserQ:
-      in: query
-      name: user
-      required: true
-      schema:
-        type: string
-      description: Database username (also used to derive container for some endpoints)
     PageQ:
       in: query
       name: page
@@ -66,13 +46,6 @@ components:
         minimum: 1
         default: 1
       description: 1-based page index
-    PasswordQ:
-      in: query
-      name: password
-      required: true
-      schema:
-        type: string
-      description: Database password
     PageSizeQ:
       in: query
       name: page_size
@@ -82,38 +55,21 @@ components:
         minimum: 1
         default: 1000
       description: Page size
+    UserQ:
+      in: query
+      name: user
+      required: true
+      schema:
+        type: string
+      description: Database username (also used to derive container for some endpoints)
+    PasswordQ:
+      in: query
+      name: password
+      required: true
+      schema:
+        type: string
+      description: Database password
   schemas:
-    PagedIndustrySeasonal:
-      allOf:
-      - $ref: '#/components/schemas/PageEnvelope'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/IndustrySeasonalRow'
-    PageEnvelope:
-      type: object
-      properties:
-        total_records:
-          type: integer
-        total_pages:
-          type: integer
-        current_page:
-          type: integer
-        page_size:
-          type: integer
-        data:
-          type: array
-          items:
-            type: object
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-      example:
-        error: Missing 'user' or 'password' query parameters
     IndustrySeasonalRow:
       type: object
       properties:
@@ -157,3 +113,47 @@ components:
         Data_Quality_12M:
           type: number
           format: double
+    PageEnvelope:
+      type: object
+      properties:
+        total_records:
+          type: integer
+        total_pages:
+          type: integer
+        current_page:
+          type: integer
+        page_size:
+          type: integer
+        data:
+          type: array
+          items:
+            type: object
+    PagedIndustrySeasonal:
+      allOf:
+      - $ref: '#/components/schemas/PageEnvelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/IndustrySeasonalRow'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: Missing 'user' or 'password' query parameters
+  responses:
+    BadRequest:
+      description: Bad request (missing/invalid parameters)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalError:
+      description: Unexpected server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

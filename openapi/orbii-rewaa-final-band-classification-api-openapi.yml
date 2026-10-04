@@ -36,52 +36,6 @@ paths:
       tags:
       - Rewaa Final Band Classification
 components:
-  responses:
-    BadRequest:
-      description: Bad request (missing/invalid parameters)
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalError:
-      description: Unexpected server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    UserQ:
-      in: query
-      name: user
-      required: true
-      schema:
-        type: string
-      description: Database username (also used to derive container for some endpoints)
-    PageQ:
-      in: query
-      name: page
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: 1-based page index
-    PasswordQ:
-      in: query
-      name: password
-      required: true
-      schema:
-        type: string
-      description: Database password
-    PageSizeQ:
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        default: 1000
-      description: Page size
   schemas:
     FinalBandRow:
       type: object
@@ -154,3 +108,49 @@ components:
           type: string
       example:
         error: Missing 'user' or 'password' query parameters
+  parameters:
+    PageQ:
+      in: query
+      name: page
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: 1-based page index
+    PageSizeQ:
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1000
+      description: Page size
+    UserQ:
+      in: query
+      name: user
+      required: true
+      schema:
+        type: string
+      description: Database username (also used to derive container for some endpoints)
+    PasswordQ:
+      in: query
+      name: password
+      required: true
+      schema:
+        type: string
+      description: Database password
+  responses:
+    BadRequest:
+      description: Bad request (missing/invalid parameters)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalError:
+      description: Unexpected server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

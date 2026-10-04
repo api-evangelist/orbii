@@ -777,52 +777,79 @@ components:
           type: string
           format: uuid
           example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
-    InvoiceCompanyBandClassification:
+    InvoiceCompanyRiskAssessment:
       type: object
       properties:
         company:
           type: string
           example: Acme Trading LLC
-        activity_and_relationship_score:
-          type: integer
-          example: 4
-        spend_and_concentration_score:
-          type: integer
-          example: 3
-        payment_behaviour_score:
-          type: integer
-          example: 5
-        activity_and_relationship_score_value:
+        category:
+          type: string
+          example: Revenue & Income
+        rule:
+          type: string
+          example: Revenue consistency above threshold
+        value:
           type:
           - number
           - 'null'
           format: float
-          example: 0.78
-        spend_and_concentration_score_value:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 0.65
-        payment_behaviour_score_value:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 0.92
+          example: 0.87
+        assessment:
+          type: string
+          example: Pass
+        customer_id:
+          type: string
+          format: uuid
+          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+    InvoiceSuggestedLoanAllocation:
+      type: object
+      properties:
+        customer_id:
+          type: string
+          format: uuid
+          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+        company:
+          type: string
+          example: Acme Trading LLC
+        band:
+          type: string
+          example: A
         total_score:
           type:
           - number
           - 'null'
           format: float
           example: 3.98
-        band:
-          type: string
-          example: A
-        customer_id:
-          type: string
-          format: uuid
-          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+        due_amount:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 150000.0
+        multiplier:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 0.35
+        company_cap:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 120000.0
+        allocated_amount:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 120000.0
+        rank_by_score:
+          type:
+          - integer
+          - 'null'
+          example: 1
     InvoiceBandClassification:
       type: object
       properties:
@@ -884,77 +911,6 @@ components:
           type: string
           format: uuid
           example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
-    InvoiceSuggestedLoanAllocation:
-      type: object
-      properties:
-        customer_id:
-          type: string
-          format: uuid
-          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
-        company:
-          type: string
-          example: Acme Trading LLC
-        band:
-          type: string
-          example: A
-        total_score:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 3.98
-        due_amount:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 150000.0
-        multiplier:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 0.35
-        company_cap:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 120000.0
-        allocated_amount:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 120000.0
-        rank_by_score:
-          type:
-          - integer
-          - 'null'
-          example: 1
-    InvoiceKpi:
-      type: object
-      properties:
-        category:
-          type: string
-          example: Revenue
-        kpi:
-          type: string
-          example: Monthly revenue
-        value:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 123456.78
-        year:
-          type: integer
-          example: 2025
-        month:
-          type: integer
-          minimum: 1
-          maximum: 12
-          example: 9
     InvoiceCompanyKpi:
       type: object
       properties:
@@ -973,12 +929,80 @@ components:
           - 'null'
           format: float
           example: 128450.55
-    Error:
+    InvoiceSuggestedLoan:
       type: object
       properties:
-        error:
+        customer_id:
           type: string
-          example: Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'
+          format: uuid
+          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
+        band:
+          type: string
+          example: A
+        annual_revenue:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 1250000.0
+        multiplier:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 0.35
+        suggested_loan:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 437500.0
+    InvoiceCompanyBandClassification:
+      type: object
+      properties:
+        company:
+          type: string
+          example: Acme Trading LLC
+        activity_and_relationship_score:
+          type: integer
+          example: 4
+        spend_and_concentration_score:
+          type: integer
+          example: 3
+        payment_behaviour_score:
+          type: integer
+          example: 5
+        activity_and_relationship_score_value:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 0.78
+        spend_and_concentration_score_value:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 0.65
+        payment_behaviour_score_value:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 0.92
+        total_score:
+          type:
+          - number
+          - 'null'
+          format: float
+          example: 3.98
+        band:
+          type: string
+          example: A
+        customer_id:
+          type: string
+          format: uuid
+          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
     InvoiceSuggestedLoanSummary:
       type: object
       properties:
@@ -1010,56 +1034,32 @@ components:
           type: string
           format: uuid
           example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
-    InvoiceCompanyRiskAssessment:
+    Error:
       type: object
       properties:
-        company:
+        error:
           type: string
-          example: Acme Trading LLC
+          example: Invalid datetime format. Expected 'YYYY-MM-DD HH:MM:SS.sss'
+    InvoiceKpi:
+      type: object
+      properties:
         category:
           type: string
-          example: Revenue & Income
-        rule:
+          example: Revenue
+        kpi:
           type: string
-          example: Revenue consistency above threshold
+          example: Monthly revenue
         value:
           type:
           - number
           - 'null'
           format: float
-          example: 0.87
-        assessment:
-          type: string
-          example: Pass
-        customer_id:
-          type: string
-          format: uuid
-          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
-    InvoiceSuggestedLoan:
-      type: object
-      properties:
-        customer_id:
-          type: string
-          format: uuid
-          example: 03789f7f-6b22-4319-aee8-c4d76dc93fd1
-        band:
-          type: string
-          example: A
-        annual_revenue:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 1250000.0
-        multiplier:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 0.35
-        suggested_loan:
-          type:
-          - number
-          - 'null'
-          format: float
-          example: 437500.0
+          example: 123456.78
+        year:
+          type: integer
+          example: 2025
+        month:
+          type: integer
+          minimum: 1
+          maximum: 12
+          example: 9
