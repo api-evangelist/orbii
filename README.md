@@ -64,6 +64,157 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Orbii is a company surfaced as a portfolio company of prosus-ventures and added to the API Evangelist network as a stub for enrichment. Sector: ai. This profile is a lead awaiting the enrichment pipeline.
+Orbii is a Riyadh-based credit infrastructure company providing AI-powered underwriting and lending infrastructure for banks, fintechs, neobanks, and B2B platforms across the MENA region. Its APIs ingest and enrich transaction and invoice data to produce borrower intelligence — client and predictive KPIs, risk assessments, band classifications, and suggested loan allocations — so lenders can launch SME lending products (salary advance, merchant financing, working capital, BNPL, embedded lending) without building an internal credit function. Orbii exposes region-specific REST APIs for Saudi Arabia (KSA), the United Arab Emirates (UAE), and Oman (OMN), documented on a SwaggerHub portal. Backed by a $3.6M seed round led by Prosus Ventures.
 
-Backed by: prosus-ventures — https://orbii.ai
+**Areas:** Company · Artificial Intelligence · Lending · Credit · Fintech · Underwriting · Banking · Small Business · Embedded Finance · MENA · Risk Management
+
+## Orbii on APIs.io
+
+Everything profiled for Orbii is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/orbii/](https://apis.io/providers/orbii/)** — or go straight to one of the APIs or properties below.
+
+### APIs (30)
+
+- [Orbii Business Category Assignment API](https://apis.io/apis/orbii/orbii-business-category-assignment-api/) — The Business Category Assignment API from Orbii — 1 operation(s) for business category assignment.
+- [Orbii Categories API](https://apis.io/apis/orbii/orbii-categories-api/) — The Categories API from Orbii — 1 operation(s) for categories.
+- [Orbii Clients API](https://apis.io/apis/orbii/orbii-clients-api/) — The Clients API from Orbii — 2 operation(s) for clients.
+- [Orbii Company Management API](https://apis.io/apis/orbii/orbii-company-management-api/) — The Company Management API from Orbii — 1 operation(s) for company management.
+- [Orbii Data Check API](https://apis.io/apis/orbii/orbii-data-check-api/) — The Data Check API from Orbii — 1 operation(s) for data check.
+- [Orbii General API](https://apis.io/apis/orbii/orbii-general-api/) — The General API from Orbii — 1 operation(s) for general.
+- [Orbii Invoices API](https://apis.io/apis/orbii/orbii-invoices-api/) — The Invoices API from Orbii — 11 operation(s) for invoices.
+- [Orbii KPIs API](https://apis.io/apis/orbii/orbii-kpis-api/) — The KPIs API from Orbii — 6 operation(s) for kpis.
+- [Orbii Lending Actions API](https://apis.io/apis/orbii/orbii-lending-actions-api/) — The Lending Actions API from Orbii — 1 operation(s) for lending actions.
+- [Orbii Merchants API](https://apis.io/apis/orbii/orbii-merchants-api/) — The Merchants API from Orbii — 8 operation(s) for merchants.
+- [Orbii Risk Assessment API](https://apis.io/apis/orbii/orbii-risk-assessment-api/) — The Risk Assessment API from Orbii — 5 operation(s) for risk assessment.
+- [Orbii Subcategories API](https://apis.io/apis/orbii/orbii-subcategories-api/) — The Subcategories API from Orbii — 1 operation(s) for subcategories.
+- [Orbii Transactions API](https://apis.io/apis/orbii/orbii-transactions-api/) — The Transactions API from Orbii — 16 operation(s) for transactions.
+- [Orbii IBA Ns API](https://apis.io/apis/orbii/orbii-ibans-api/) — The IBANs API from Orbii — 1 operation(s) for ibans.
+- [Orbii PD Fs API](https://apis.io/apis/orbii/orbii-pdfs-api/) — The PDFs API from Orbii — 4 operation(s) for pdfs.
+- [Orbii Micro Loan API](https://apis.io/apis/orbii/orbii-micro-loan-api/) — The Micro Loan API from Orbii — 1 operation(s) for micro loan.
+- [Orbii Raw Numbers API](https://apis.io/apis/orbii/orbii-raw-numbers-api/) — The Raw Numbers API from Orbii — 6 operation(s) for raw numbers.
+- [Orbii Rewaa Baseline Eligibility Raw API](https://apis.io/apis/orbii/orbii-rewaa-baseline-eligibility-raw-api/) — The Rewaa Baseline Eligibility Raw API from Orbii — 1 operation(s) for rewaa baseline eligibility raw.
+- [Orbii Rewaa Business Stability And Risk Raw API](https://apis.io/apis/orbii/orbii-rewaa-business-stability-and-risk-raw-api/) — The Rewaa Business Stability And Risk Raw API from Orbii — 1 operation(s) for rewaa business stability and risk raw.
+- [Orbii Rewaa Final Band Classification API](https://apis.io/apis/orbii/orbii-rewaa-final-band-classification-api/) — The Rewaa Final Band Classification API from Orbii — 1 operation(s) for rewaa final band classification.
+- [Orbii Rewaa Industry And Seasonal Trends Raw API](https://apis.io/apis/orbii/orbii-rewaa-industry-and-seasonal-trends-raw-api/) — The Rewaa Industry And Seasonal Trends Raw API from Orbii — 1 operation(s) for rewaa industry and seasonal trends raw.
+- [Orbii Rewaa KPI Rules API](https://apis.io/apis/orbii/orbii-rewaa-kpi-rules-api/) — The Rewaa KPI Rules API from Orbii — 1 operation(s) for rewaa kpi rules.
+- [Orbii Rewaa Loan Amounts API](https://apis.io/apis/orbii/orbii-rewaa-loan-amounts-api/) — The Rewaa Loan Amounts API from Orbii — 1 operation(s) for rewaa loan amounts.
+- [Orbii Rewaa Payment Processing And Liquidity Raw API](https://apis.io/apis/orbii/orbii-rewaa-payment-processing-and-liquidity-raw-api/) — The Rewaa Payment Processing And Liquidity Raw API from Orbii — 1 operation(s) for rewaa payment processing and liquidity raw.
+- [Orbii Rewaa Revenue And Sales Performance Raw API](https://apis.io/apis/orbii/orbii-rewaa-revenue-and-sales-performance-raw-api/) — The Rewaa Revenue And Sales Performance Raw API from Orbii — 1 operation(s) for rewaa revenue and sales performance raw.
+- [Orbii Rewaa Risk Assessment API](https://apis.io/apis/orbii/orbii-rewaa-risk-assessment-api/) — The Rewaa Risk Assessment API from Orbii — 1 operation(s) for rewaa risk assessment.
+- [Orbii Run Assessment API](https://apis.io/apis/orbii/orbii-run-assessment-api/) — The Run Assessment API from Orbii — 1 operation(s) for run assessment.
+- [Orbii Scores and Final Band Classification API](https://apis.io/apis/orbii/orbii-scores-and-final-band-classification-api/) — The Scores and Final Band Classification API from Orbii — 2 operation(s) for scores and final band classification.
+- [Orbii Update Kpi Rules API](https://apis.io/apis/orbii/orbii-updatekpirules-api/) — The UpdateKpiRules API from Orbii — 1 operation(s) for updatekpirules.
+- [Orbii Zipped Csv Upload API](https://apis.io/apis/orbii/orbii-zipped-csv-upload-api/) — The Zipped Csv Upload API from Orbii — 1 operation(s) for zipped csv upload.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [orbii](https://apis.io/servers/orbii/orbii/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Orbii Agentic Access](https://apis.io/agentic-access/orbii/orbii-agentic-access/)
+
+#### Collections (15)
+
+Postman and Open Collection request collections.
+
+- [Orbii KSA Business Category Assignment API](https://apis.io/collections/orbii/open-orbii-business-category-assignment-api/)
+- [Orbii KSA Business Category Assignment Categories API](https://apis.io/collections/orbii/open-orbii-categories-api/)
+- [Orbii KSA Business Category Assignment Clients API](https://apis.io/collections/orbii/open-orbii-clients-api/)
+- [Orbii KSA Business Category Assignment Company Management API](https://apis.io/collections/orbii/open-orbii-company-management-api/)
+- [Orbii KSA Business Category Assignment Data Check API](https://apis.io/collections/orbii/open-orbii-data-check-api/)
+- [Orbii KSA Business Category Assignment General API](https://apis.io/collections/orbii/open-orbii-general-api/)
+- [Orbii KSA Business Category Assignment IBANs API](https://apis.io/collections/orbii/open-orbii-ibans-api/)
+- [Orbii KSA Business Category Assignment Invoices API](https://apis.io/collections/orbii/open-orbii-invoices-api/)
+- [Orbii KSA Business Category Assignment KPIs API](https://apis.io/collections/orbii/open-orbii-kpis-api/)
+- [Orbii KSA Business Category Assignment Lending Actions API](https://apis.io/collections/orbii/open-orbii-lending-actions-api/)
+- [Orbii KSA Business Category Assignment Merchants API](https://apis.io/collections/orbii/open-orbii-merchants-api/)
+- [Orbii KSA Business Category Assignment PDFs API](https://apis.io/collections/orbii/open-orbii-pdfs-api/)
+- [Orbii KSA Business Category Assignment Risk Assessment API](https://apis.io/collections/orbii/open-orbii-risk-assessment-api/)
+- [Orbii KSA Business Category Assignment Subcategories API](https://apis.io/collections/orbii/open-orbii-subcategories-api/)
+- [Orbii KSA Business Category Assignment Transactions API](https://apis.io/collections/orbii/open-orbii-transactions-api/)
+
+#### Overlays (3)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Orbii Ksa Overlay](https://apis.io/overlays/orbii/orbii-ksa-overlay/)
+- [Orbii Omn Overlay](https://apis.io/overlays/orbii/orbii-omn-overlay/)
+- [Orbii Uae Overlay](https://apis.io/overlays/orbii/orbii-uae-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Orbii Authentication](https://apis.io/security/orbii/orbii-authentication/)
+- [Orbii Domain Security](https://apis.io/security/orbii/orbii-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://orbii.ai)
+- [Documentation](https://api.docs.orbii.ai/)
+- [API reference](https://api.docs.orbii.ai/uae/docs/orbii-api-v-1-0-5-oas3)
+- [Support](https://join.slack.com/t/orbii/shared_invite/zt-3dyey2n3l-6E880uPZ33_TsUPW3XMgkQ)
+- [Blog](https://www.orbii.ai/news)
+
+## API Evangelist rating
+
+**Kin Score 27.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 41.4 |
+| Contract governance | 4.5 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 47.0 |
+| Access clarity | 0.0 |
+
+**Agent readiness 26.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 13.9** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/orbii/](https://apis.io/providers/orbii/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Orbii: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/orbii/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
